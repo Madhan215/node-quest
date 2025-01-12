@@ -1,0 +1,16 @@
+{
+  "name": "custom-bootstrap",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "sass bootstrap.scss bootstrap.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "highlight.js": "^11.10.0"
+  }
+}

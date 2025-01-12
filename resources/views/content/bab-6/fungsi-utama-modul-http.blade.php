@@ -1,0 +1,55 @@
+@extends('layouts.base')
+
+@section('container-base-content')
+
+<h2>6.2 Fungsi Utama Modul HTTP</h2>
+<p class="lh-lg">
+    Modul HTTP memiliki beberapa fungsi utama yang sangat penting dalam mengambangkan aplikasi menggunakan Node.js, diantaranya:
+</p>
+<ol class="list-group list-group-numbered">
+    <li class="text-dark m-0 p-0 border-0 ms-3 mt-2 list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+            <p class="m-0">Membuat Server HTTP</p>
+            <p>Fungsi utama dari Modul HTTP adalah membuat server web yang dapat menerima permintaan dari klien. Dengan menggunakan fungsi http.createServer(), pengembang dapat membuat server lokal yang dapat menangani permintaan dan memberikan respon yang sesuai.</p> 
+        </div>
+    </li>
+    <li class="text-dark m-0 p-0 border-0 ms-3 mt-2 list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+            <p class="m-0">Mengelola Permintaan dan Respons HTTP</p>
+            <p>Modul ini dapat menangani berbagai jenis permintaan HTTP seperti GET, POST, PUT, dan DELETE.</p> 
+        </div>
+    </li>
+    <li class="text-dark m-0 p-0 border-0 ms-3 mt-2 list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+            <p class="m-0">Menangani Header dan Status Kode</p>
+            <p>HTTP menggunakan header dan status kode untuk memberikan informasi terhadap permintaan dan respon dari klien. Dengan menggunakan modul HTTP, pengembang dapat mengatur respon dan status kode tersebut. Misalnya kode 200 untuk OK, 404 untuk Not Found, dan lain-lain.</p> 
+        </div>
+    </li>
+    <li class="text-dark m-0 p-0 border-0 ms-3 mt-2 list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+            <p class="m-0">Menyediakan Akses ke Data dari URL</p>
+            <p class="m-1">Modul HTTP dapat digunakan pengembang untuk mengakses parameter dari URL dan query string yang dikirimkan oleh klien. Fitur ini umumnya digunakan dalam pengembangan aplikasi berbasis REST API, dimana klien sering mengirim data melalui URL untuk mengakses atau memanipulasi sumber daya tertentu.</p>
+            <p class="m-1">Dengan menggunakan fungsi bawaan seperti req.url, url.parse(), dan req.query, pengembang dapat dengan mudah menangani request data yang dikirimkan oleh klien, Berikut contoh klien yang mengirimkan permintaan ke URL</p>
+            <div class="border rounded"><p class="m-1 text-black">http://localhost:3000/user?id=123&name=John</p></div>
+            
+            <p class="m-1">
+                Maka, data id dan name tersebut dapat diakses dan diproses dalam server menggunakan modul HTTP. Fitur ini dapat membuat aplikasi lebih dinamis dan responsif, terutama pada aplikasi yang memerlukan filtering, pagination, atau pencarian data pada server.
+            </p>
+        </div>
+    </li>
+</ol>
+<p class="lh-lg mt-2">
+    Dengan berbagai macam fitur HTTP yang ditawarkan modul ini, membuat Node.js semakin andal dalam pengembangan aplikasi berbasis server side.
+</p>
+<div class="p-0 p-md-3 my-4 my-md-2">
+    <div class="card">
+        <div class="p-3 d-flex align-items-center card-header">
+            <div class="mb-0 h6 fw-semibold card-title">Aktivitas 6.2</div>
+        </div>
+        <div class="card-body">
+            <p class="small mb-3 card-text">Untuk menguji pemahaman kamu pada materi diatas, kerjakanlah kuis-kuis berikut ini dengan baik dan benar!</p>
+            <p class="fw-semibold bg-primary text-white p-2 rounded card-text">Pertanyaan 1 dari <span id="noSoal">1</span></p>
+        </div>
+    </div>
+</div>
+@endsection

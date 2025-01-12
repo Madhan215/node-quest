@@ -1,0 +1,9 @@
+// custom.scss
+$primary: #006735; // Warna primary baru
+
+// Mengubah font Bootstrap ke PT Sans
+$font-family-base: 'PT Sans', sans-serif;
+$font-family-heading: 'PT Sans', sans-serif;
+
+// Import Bootstrap
+@import 'node_modules/bootstrap/scss/bootstrap';
