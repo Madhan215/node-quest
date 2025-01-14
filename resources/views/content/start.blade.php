@@ -19,7 +19,7 @@
             <div class="text-center p-4 card-body">
                 <div class="card-title h5">MATERI</div>
                 <img src="{{asset('img/Materi.png')}}" class="card-img w-75 mx-auto d-block" alt="Materi">
-                <a href="/javascript-runtime-nodejs" role="button" tabindex="0" class="btn btn-primary">MULAI BELAJAR</a>
+                <a href="/pengenalan/javascript-runtime-nodejs" role="button" tabindex="0" class="btn btn-primary">MULAI BELAJAR</a>
             </div>
         </div> 
     </div>
