@@ -8,14 +8,20 @@ class ContentBab6Controller extends Controller
 {
     public function modulHttp()
     {
-        return view('content.bab-6.modul-http');
+        $prevUrl = null;
+        $nextUrl = '/modul-http/fungsi-utama-modul-http';
+        return view('content.bab-6.modul-http',compact('prevUrl','nextUrl'));
     }
     public function fungsiUtamaModulHttp()
     {
-        return view('content.bab-6.fungsi-utama-modul-http');
+        $prevUrl = '/modul-http/modul-http';
+        $nextUrl = '/modul-http/contoh-kode-penggunaan-modul-http';
+        return view('content.bab-6.fungsi-utama-modul-http',compact('prevUrl','nextUrl'));
     }
     public function contohKodePenggunaanModulHttp()
     {
-        return view('content.bab-6.contoh-kode-penggunaan-modul-http');
+        $prevUrl = '/modul-http/fungsi-utama-modul-http';
+        $nextUrl = null;
+        return view('content.bab-6.contoh-kode-penggunaan-modul-http',compact('prevUrl','nextUrl'));
     }
 }

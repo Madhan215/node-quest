@@ -1,14 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CodeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\ContentController;
+use App\Http\Controllers\TerminalController;
 use App\Http\Controllers\ContentBab1Controller;
 use App\Http\Controllers\ContentBab2Controller;
 use App\Http\Controllers\ContentBab3Controller;
 use App\Http\Controllers\ContentBab4Controller;
 use App\Http\Controllers\ContentBab5Controller;
 use App\Http\Controllers\ContentBab6Controller;
+
+// Auth Controller
+Route::get('/masuk',[AuthController::class, 'masuk'])->name('masuk');
+Route::get('/daftar',[AuthController::class, 'daftar'])->name('daftar');
 
 // Home Controller
 Route::get('/', [HomeController::class, 'beranda'])->name('beranda');
@@ -22,13 +30,15 @@ Route::get('/start',[ContentController::class, 'start'])->name('start');
 // Materi BAB 1
 Route::controller(ContentBab1Controller::class)->group(function () {
     Route::get('/pengenalan/javascript-runtime-nodejs', 'javascriptRuntimeNodejs')->name('bab1-1');
-    Route::get('/pengenalan/persiapan-belajar-nodejs', 'persiapanBelajarNodejs')->name('bab1-2');
-    Route::get('/pengenalan/pemrograman-sinkronus-dan-asinkronus', 'pemrogramanSinkronusDanAsinkronus')->name('bab1-3');
-    Route::get('/pengenalan/hubungan-nodejs-dengan-browser', 'hubunganNodejsDenganBrowser')->name('bab1-4');
-    Route::get('/pengenalan/engine-v8', 'engineV8')->name('bab1-5');
-    Route::get('/pengenalan/installasi-nodejs','installasiNodejs')->name('bab1-6');
-    Route::get('/pengenalan/repl-read-evaluate-print-loop','replReadEvaluatePrintLoop')->name('bab1-7');
-    Route::get('/pengenalan/membuat-projek-nodejs','membuatProjekNodejs')->name('bab1-8');
+    Route::get('/pengenalan/pemrograman-sisi-klien-dan-sisi-server', 'pemrogramanSisiKlienDanSisiServer')->name('bab1-2');
+    Route::get('/pengenalan/persiapan-belajar-nodejs', 'persiapanBelajarNodejs')->name('bab1-3');
+    Route::get('/pengenalan/pemrograman-sinkronus-dan-asinkronus', 'pemrogramanSinkronusDanAsinkronus')->name('bab1-4');
+    Route::get('/pengenalan/hubungan-nodejs-dengan-browser', 'hubunganNodejsDenganBrowser')->name('bab1-5');
+    Route::get('/pengenalan/engine-v8', 'engineV8')->name('bab1-6');
+    Route::get('/pengenalan/installasi-nodejs','installasiNodejs')->name('bab1-7');
+    Route::get('/pengenalan/repl-read-evaluate-print-loop','replReadEvaluatePrintLoop')->name('bab1-8');
+    Route::get('/pengenalan/membuat-projek-nodejs','membuatProjekNodejs')->name('bab1-9');
+    Route::get('/pengenalan/kuis','kuis')->name('kuis-1');
 });
 
 // Materi BAB 2
@@ -67,3 +77,17 @@ Route::controller(ContentBab6Controller::class)->group(function(){
     Route::get('/modul-http/contoh-kode-penggunaan-modul-http','contohKodePenggunaanModulHttp')->name('bab6-3');
 });
 
+// ChatBot
+Route::get('/chatbot', [ChatbotController::class, 'index'])->name('chatbot');
+Route::post('/ask-chatbot', [ChatbotController::class, 'askChatbot']);
+
+// Code
+Route::get('/editor', function () {
+    return view('home.editor');
+})->name('editor');
+Route::post('/run', [CodeController::class, 'runCode']);
+Route::post('/execute', [CodeController::class, 'term']);
+
+// Terminal
+Route::get('/terminal', [TerminalController::class, 'index'])->name('terminal');
+Route::post('/log-command', [TerminalController::class, 'logCommand']);

@@ -33,29 +33,32 @@
                                 <a href="/pengenalan/javascript-runtime-nodejs"
                                     class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-1') ? 'active' : '' }}">
                                     <span><i class="bi bi-dot"></i> Javascript Runtime Node.js</span></a>
-                                <a href="/pengenalan/persiapan-belajar-nodejs"
+                                <a href="/pengenalan/pemrograman-sisi-klien-dan-sisi-server"
                                     class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-2') ? 'active' : '' }}">
+                                    <span><i class="bi bi-dot"></i> Pemrograman Sisi Klien dan Sisi Server</span></a>
+                                <a href="/pengenalan/persiapan-belajar-nodejs"
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-3') ? 'active' : '' }}">
                                     <span><i class="bi bi-dot"></i> Persiapan belajar Node.js</span></a>
                                 <a href="/pengenalan/pemrograman-sinkronus-dan-asinkronus"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-3') ? 'active' : '' }}">
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-4') ? 'active' : '' }}">
                                     <span><i class="bi bi-dot"></i> Pemrograman Sinkronous dan Asinkronous</span></a>
                                 <a href="/pengenalan/hubungan-nodejs-dengan-browser"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-4') ? 'active' : '' }}">
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-5') ? 'active' : '' }}">
                                     <span><i class="bi bi-dot"></i> Hubungan Node.js dengan Browser</span></a>
                                 <a href="/pengenalan/engine-v8"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-5') ? 'active' : '' }}">
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-6') ? 'active' : '' }}">
                                     <span><i class="bi bi-dot"></i> Engine V8</span></a>
                                 <a href="/pengenalan/installasi-nodejs"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-6') ? 'active' : '' }}">
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-7') ? 'active' : '' }}">
                                     <span><i class="bi bi-dot"></i> Installasi Node.js</span></a>
                                 <a href="/pengenalan/repl-read-evaluate-print-loop"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-7') ? 'active' : '' }}">
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-8') ? 'active' : '' }}">
                                     <span><i class="bi bi-dot"></i> REPL (Read - Evaluate - Print - Loop)</span></a>
                                 <a href="/pengenalan/membuat-projek-nodejs"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-8') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Membuat Projek Node.js</span></a>
-                                <a href="#"
                                     class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-9') ? 'active' : '' }}">
+                                    <span><i class="bi bi-dot"></i> Membuat Projek Node.js</span></a>
+                                <a href="/pengenalan/kuis"
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('kuis-1') ? 'active' : '' }}">
                                     <span><i class="bi bi-dot"></i> Kuis 1</span></a>
                             </div>
                         </div>
@@ -187,7 +190,7 @@
                                 aria-expanded="true" aria-controls="menuCollapse6">
                                 <i class="bi bi-6-square"></i>
                                 &nbsp;
-                                MODUL FILE SYSTEM
+                                MODUL HTTP
                             </button>
                         </h2>
                         <div id="menuCollapse6" class="accordion-collapse collapse  {{ Route::is('bab6-*') ? 'show' : '' }}"
@@ -221,6 +224,31 @@
             </div>
             <div class="p-4 p-lg-5">
                 @yield('container-base-content')
+                <div class="w-100 py-5 d-flex align-items-center justify-content-between bottom-0  ">
+                    {{-- Tombol Sebelumnya --}}
+                    @if ($prevUrl)
+                        <a href="{{ $prevUrl }}"
+                            class="d-flex align-items-center py-2 px-3 text-white btn btn-danger" id="prevButton">
+                            <i class="bi bi-chevron-double-left"></i> Sebelumnya
+                        </a>
+                    @else
+                        <span class="d-flex align-items-center py-2 px-3 text-white btn btn-danger disabled">
+                            <i class="bi bi-chevron-double-left"></i> Sebelumnya
+                        </span>
+                    @endif
+
+                    {{-- Tombol Selanjutnya --}}
+                    @if ($nextUrl)
+                        <a href="{{ $nextUrl }}"
+                            class="d-flex align-items-center py-2 px-3 text-white btn btn-success" id="nextButton">
+                            Selanjutnya <i class="bi bi-chevron-double-right"></i>
+                        </a>
+                    @else
+                        <span class="d-flex align-items-center py-2 px-3 text-white btn btn-success disabled">
+                            Selanjutnya <i class="bi bi-chevron-double-right"></i>
+                        </span>
+                    @endif
+                </div>
             </div>
         </div>
     </div>

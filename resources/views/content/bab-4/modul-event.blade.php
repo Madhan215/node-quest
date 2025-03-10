@@ -68,15 +68,94 @@
         </div>
     </li>
 </ul>
-<div class="p-0 p-md-3 my-4 my-md-2">
+<div class="p-0 p-md-3 my-4 my-md-2" id="aktivitas">
     <div class="card">
         <div class="p-3 d-flex align-items-center card-header">
             <div class="mb-0 h6 fw-semibold card-title">Aktivitas 4.1</div>
         </div>
         <div class="card-body">
-            <p class="small mb-3 card-text">Untuk menguji pemahaman kamu pada materi diatas, kerjakanlah kuis-kuis berikut ini dengan baik dan benar!</p>
-            <p class="fw-semibold bg-primary text-white p-2 rounded card-text">Pertanyaan 1 dari <span id="noSoal">1</span></p>
+            <p class="small mb-3 card-text">Untuk menguji pemahaman kamu pada materi diatas, kerjakanlah kuis-kuis
+                berikut ini dengan baik dan benar!</p>
+            <p class="fw-semibold bg-primary text-white p-2 rounded card-text">
+                Pertanyaan <span id="noSoal">1</span> dari <span id="totalSoal">1</span>
+            </p>
+            <div class="soal-container" style="height: 40vh; overflow-y: auto;">
+                <p class="lh-lg" id="soal">Soal</p>
+                <div class="mb-4" id="pilihanContainer"></div>
+                <div id="penjelasan" hidden>
+                    <div class="fade alert show" id="alertPenjelasan">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="me-2 bi fs-5" id="iconPenjelasan"></i>
+                            <h6 class="fw-bold mb-0 mt-1" id="ketHasil"></h6>
+                        </div>
+                        <p class="mb-0" id="ketPenjelasan"></p>
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="btnNext">LANJUT</button>
+            </div>
         </div>
     </div>
 </div>
+
+<script>
+    const penjelasanSalah = "Bukan merupakan jawaban, ayo cari dong jawaban yang benar. Kamu pasti bisa kamu hebat jangan menyerah sampai titik ini";
+    const bankSoal = [
+    {
+        soal: "Apa yang dimaksud dengan modul Event di Node.js?",
+        pilihan: [
+            "Modul yang digunakan untuk mengakses file sistem.",
+            "Modul yang digunakan untuk menangani event dalam aplikasi.",
+            "Modul untuk membuat koneksi jaringan.",
+            "Modul untuk menjalankan kode sinkron."
+        ],
+        benar: 1,
+        penjelasan: "Modul Event di Node.js digunakan untuk menangani event dalam aplikasi, memungkinkan pemrograman berbasis event."
+    },
+    {
+        soal: "Objek inti yang disediakan oleh modul Event untuk mengelola event dalam Node.js adalah:",
+        pilihan: [
+            "EventTrigger",
+            "EventController",
+            "EventManager",
+            "EventEmitter"
+        ],
+        benar: 3,
+        penjelasan: "EventEmitter adalah objek inti dalam modul Event yang digunakan untuk menangani event dalam Node.js."
+    },
+    {
+        soal: "Mengapa modul Event penting dalam arsitektur Node.js?",
+        pilihan: [
+            "Karena membantu mengelola event asinkron secara efisien dalam aplikasi.",
+            "Karena memungkinkan pemrograman yang terstruktur dengan baik.",
+            "Karena memudahkan akses ke modul HTTP.",
+            "Karena menyediakan fungsi untuk koneksi ke basis data."
+        ],
+        benar: 0,
+        penjelasan: "Modul Event penting karena membantu mengelola event asinkron secara efisien, yang merupakan inti dari arsitektur Node.js."
+    },
+    {
+        soal: "Apa yang dimaksud dengan emit dalam konteks modul Event di Node.js?",
+        pilihan: [
+            "Fungsi yang mendengarkan kejadian tertentu dan menjalankan aksi ketika event terjadi.",
+            "Fungsi yang memicu suatu event dan menjalankan semua listener yang terdaftar untuk event tersebut.",
+            "Fungsi yang mengatur urutan eksekusi kode dalam aplikasi.",
+            "Fungsi yang mematikan event setelah terjadi."
+        ],
+        benar: 1,
+        penjelasan: "emit() digunakan untuk memicu event dalam EventEmitter, yang akan mengeksekusi semua listener yang terdaftar untuk event tersebut."
+    },
+    {
+        soal: "Apa yang dimaksud dengan Listener dalam konteks EventEmitter di Node.js?",
+        pilihan: [
+            "Fungsi yang dipanggil untuk memicu event di dalam aplikasi.",
+            "Fungsi yang menunggu suatu event terjadi dan menjalankan aksi ketika event tersebut dipicu.",
+            "Fungsi yang mengatur event untuk dieksekusi pada waktu tertentu.",
+            "Fungsi yang menghapus event yang sudah diproses."
+        ],
+        benar: 1,
+        penjelasan: "Listener adalah fungsi yang menunggu suatu event terjadi dan menjalankan aksi saat event tersebut dipicu."
+    }
+];
+
+</script>
 @endsection

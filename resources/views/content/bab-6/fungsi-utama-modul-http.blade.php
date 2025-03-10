@@ -41,15 +41,94 @@
 <p class="lh-lg mt-2">
     Dengan berbagai macam fitur HTTP yang ditawarkan modul ini, membuat Node.js semakin andal dalam pengembangan aplikasi berbasis server side.
 </p>
-<div class="p-0 p-md-3 my-4 my-md-2">
+<div class="p-0 p-md-3 my-4 my-md-2" id="aktivitas">
     <div class="card">
         <div class="p-3 d-flex align-items-center card-header">
             <div class="mb-0 h6 fw-semibold card-title">Aktivitas 6.2</div>
         </div>
         <div class="card-body">
-            <p class="small mb-3 card-text">Untuk menguji pemahaman kamu pada materi diatas, kerjakanlah kuis-kuis berikut ini dengan baik dan benar!</p>
-            <p class="fw-semibold bg-primary text-white p-2 rounded card-text">Pertanyaan 1 dari <span id="noSoal">1</span></p>
+            <p class="small mb-3 card-text">Untuk menguji pemahaman kamu pada materi diatas, kerjakanlah kuis-kuis
+                berikut ini dengan baik dan benar!</p>
+            <p class="fw-semibold bg-primary text-white p-2 rounded card-text">
+                Pertanyaan <span id="noSoal">1</span> dari <span id="totalSoal">1</span>
+            </p>
+            <div class="soal-container" style="height: 40vh; overflow-y: auto;">
+                <p class="lh-lg" id="soal">Soal</p>
+                <div class="mb-4" id="pilihanContainer"></div>
+                <div id="penjelasan" hidden>
+                    <div class="fade alert show" id="alertPenjelasan">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="me-2 bi fs-5" id="iconPenjelasan"></i>
+                            <h6 class="fw-bold mb-0 mt-1" id="ketHasil"></h6>
+                        </div>
+                        <p class="mb-0" id="ketPenjelasan"></p>
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="btnNext">LANJUT</button>
+            </div>
         </div>
     </div>
 </div>
+
+<script>
+    const penjelasanSalah = "Bukan merupakan jawaban, ayo cari dong jawaban yang benar. Kamu pasti bisa kamu hebat jangan menyerah sampai titik ini";
+    const bankSoal = [
+    {
+        soal: "Apa peran utama dari Hypertext Transfer Protocol (HTTP) dalam komunikasi web?",
+        pilihan: [
+            "Menghubungkan database dengan aplikasi.",
+            "Mengirim dan menerima file dalam jaringan lokal.",
+            "Menyediakan aturan untuk pertukaran data antara klien dan server di web.",
+            "Mengoptimalkan performa sistem operasi."
+        ],
+        benar: 2,
+        penjelasan: "HTTP adalah protokol yang mendefinisikan bagaimana data dikirim dan diterima antara klien (browser) dan server di web."
+    },
+    {
+        soal: "Apa fungsi utama dari Modul HTTP dalam Node.js?",
+        pilihan: [
+            "Menyimpan data dalam database.",
+            "Mengelola permintaan dan respons HTTP.",
+            "Mengoptimalkan performa aplikasi.",
+            "Mengelola sesi pengguna."
+        ],
+        benar: 1,
+        penjelasan: "Modul HTTP di Node.js digunakan untuk membuat server dan menangani permintaan serta respons HTTP."
+    },
+    {
+        soal: "Apa yang dilakukan fungsi http.createServer()?",
+        pilihan: [
+            "Menghapus server yang sedang berjalan.",
+            "Mengatur koneksi ke database.",
+            "Membuat server HTTP yang dapat menerima dan merespons permintaan.",
+            "Mengoptimalkan pengiriman data."
+        ],
+        benar: 2,
+        penjelasan: "Fungsi `http.createServer()` digunakan untuk membuat server HTTP yang dapat menangani permintaan dari klien."
+    },
+    {
+        soal: "Bagaimana cara menangani permintaan GET dengan parameter query di server Node.js?",
+        pilihan: [
+            "Dengan menggunakan http.getParameter()",
+            "Dengan memparsing req.url dan memanfaatkan querystring atau URL module",
+            "Dengan http.createServer()",
+            "Dengan fs.readFile()"
+        ],
+        benar: 1,
+        penjelasan: "Permintaan GET dengan parameter query dapat diambil dengan memparsing `req.url` dan menggunakan modul `querystring` atau `URL`."
+    },
+    {
+        soal: "Mengapa penting untuk mengatur status kode pada respons HTTP di server Node.js?",
+        pilihan: [
+            "Untuk meningkatkan kecepatan server",
+            "Agar klien memahami hasil permintaan, apakah sukses atau gagal",
+            "Untuk menyimpan data pengguna secara otomatis",
+            "Untuk menambah keamanan pada server"
+        ],
+        benar: 1,
+        penjelasan: "Status kode HTTP memberikan informasi kepada klien tentang hasil permintaan, apakah sukses (200), gagal (404), atau error server (500)."
+    }
+];
+
+</script>
 @endsection

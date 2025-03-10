@@ -67,15 +67,94 @@
         </div>
     </li>
 </ol>
-<div class="p-0 p-md-3 my-4 my-md-2">
+<div class="p-0 p-md-3 my-4 my-md-2" id="aktivitas">
     <div class="card">
         <div class="p-3 d-flex align-items-center card-header">
             <div class="mb-0 h6 fw-semibold card-title">Aktivitas 2.1</div>
         </div>
         <div class="card-body">
-            <p class="small mb-3 card-text">Untuk menguji pemahaman kamu pada materi diatas, kerjakanlah kuis-kuis berikut ini dengan baik dan benar!</p>
-            <p class="fw-semibold bg-primary text-white p-2 rounded card-text">Pertanyaan 1 dari <span id="noSoal">1</span></p>
+            <p class="small mb-3 card-text">Untuk menguji pemahaman kamu pada materi diatas, kerjakanlah kuis-kuis
+                berikut ini dengan baik dan benar!</p>
+            <p class="fw-semibold bg-primary text-white p-2 rounded card-text">
+                Pertanyaan <span id="noSoal">1</span> dari <span id="totalSoal">1</span>
+            </p>
+            <div class="soal-container" style="height: 40vh; overflow-y: auto;">
+                <p class="lh-lg" id="soal">Soal</p>
+                <div class="mb-4" id="pilihanContainer"></div>
+                <div id="penjelasan" hidden>
+                    <div class="fade alert show" id="alertPenjelasan">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="me-2 bi fs-5" id="iconPenjelasan"></i>
+                            <h6 class="fw-bold mb-0 mt-1" id="ketHasil"></h6>
+                        </div>
+                        <p class="mb-0" id="ketPenjelasan"></p>
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="btnNext">LANJUT</button>
+            </div>
         </div>
     </div>
 </div>
+
+<script>
+    const penjelasanSalah = "Bukan merupakan jawaban, ayo cari dong jawaban yang benar. Kamu pasti bisa kamu hebat jangan menyerah sampai titik ini";
+    const bankSoal = [
+    {
+        soal: "Modul pada Node.js merupakan kumpulan dari …",
+        pilihan: [
+            "Program dan Database",
+            "Fungsi dan Objek",
+            "Interface dan API",
+            "Style dan Script"
+        ],
+        benar: 1,
+        penjelasan: "Modul pada Node.js terdiri dari kumpulan fungsi dan objek yang dapat digunakan kembali dalam aplikasi."
+    },
+    {
+        soal: "Sebelum menggunakan modul di Node.js, langkah yang harus dilakukan oleh pengguna adalah …",
+        pilihan: [
+            "Membuat Variabel Baru",
+            "Menulis ulang seluruh kode",
+            "Mengimpor modul menggunakan require()",
+            "Menginstal ulang Node.js"
+        ],
+        benar: 2,
+        penjelasan: "Untuk menggunakan modul di Node.js, pengguna harus mengimpornya dengan require()."
+    },
+    {
+        soal: "Modul bawaan yang sudah tersedia di dalam sistem Node.js dikenal sebagai … Modules.",
+        pilihan: [
+            "Native",
+            "Core",
+            "External",
+            "Custom"
+        ],
+        benar: 1,
+        penjelasan: "Modul bawaan yang disediakan oleh Node.js disebut Core Modules."
+    },
+    {
+        soal: "Modul Node.js yang dibuat oleh pengembang disebut … Modules.",
+        pilihan: [
+            "Core",
+            "Local",
+            "Third-party",
+            "Native"
+        ],
+        benar: 1,
+        penjelasan: "Modul yang dibuat oleh pengembang sendiri disebut Local Modules."
+    },
+    {
+        soal: "Modul Node.js yang dibuat oleh pihak ketiga disebut … Modules.",
+        pilihan: [
+            "Third-party",
+            "Core",
+            "User-defined",
+            "Built-in"
+        ],
+        benar: 0,
+        penjelasan: "Modul yang dikembangkan oleh pihak ketiga dan dapat diunduh melalui npm disebut Third-party Modules."
+    }
+];
+
+</script>
 @endsection

@@ -8,14 +8,20 @@ class ContentBab5Controller extends Controller
 {
     public function moduleFileSystem()
     {
-        return view('content.bab-5.modul-file-system');
+        $prevUrl = null;
+        $nextUrl = '/modul-file-system/fungsi-dan-operasi-dasar-modul-file-system';
+        return view('content.bab-5.modul-file-system',compact('prevUrl','nextUrl'));
     }
     public function fungsiDanOperasiDasarModulFileSystem()
     {
-        return view('content.bab-5.fungsi-dan-operasi-dasar-modul-file-system');
+        $prevUrl = '/modul-file-system/modul-file-system';
+        $nextUrl = '/modul-file-system/contoh-kode-modul-file-system';
+        return view('content.bab-5.fungsi-dan-operasi-dasar-modul-file-system',compact('prevUrl','nextUrl'));
     }
     public function contohKodeModuleFileSystem()
     {
-        return view('content.bab-5.contoh-kode-modul-file-system');
+        $prevUrl = '/modul-file-system/fungsi-dan-operasi-dasar-modul-file-system';
+        $nextUrl = null;
+        return view('content.bab-5.contoh-kode-modul-file-system',compact('prevUrl','nextUrl'));
     }
 }

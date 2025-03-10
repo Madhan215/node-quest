@@ -68,15 +68,94 @@ myEmitter.emit('first-load');
 <p class="lh-lg">
     Dengan adanya fungsi-fungsi diatas, memungkinkan pengembangan membuat aplikasi yang responsif dan efisien. Dengan pemanfaatan Modul Event ini sangat sesuai untuk pengembangan aplikasi web, sistem monitoring, dan aplikasi real-time lainnya. Karena sistem event-driven programming memungkinkan kita untuk menjaga alur asinkron yang menghindari dari blocking atau penundaan yang tidak perlu dalam pemrosesan.
 </p>
-<div class="p-0 p-md-3 my-4 my-md-2">
+<div class="p-0 p-md-3 my-4 my-md-2" id="aktivitas">
     <div class="card">
         <div class="p-3 d-flex align-items-center card-header">
             <div class="mb-0 h6 fw-semibold card-title">Aktivitas 4.2</div>
         </div>
         <div class="card-body">
-            <p class="small mb-3 card-text">Untuk menguji pemahaman kamu pada materi diatas, kerjakanlah kuis-kuis berikut ini dengan baik dan benar!</p>
-            <p class="fw-semibold bg-primary text-white p-2 rounded card-text">Pertanyaan 1 dari <span id="noSoal">1</span></p>
+            <p class="small mb-3 card-text">Untuk menguji pemahaman kamu pada materi diatas, kerjakanlah kuis-kuis
+                berikut ini dengan baik dan benar!</p>
+            <p class="fw-semibold bg-primary text-white p-2 rounded card-text">
+                Pertanyaan <span id="noSoal">1</span> dari <span id="totalSoal">1</span>
+            </p>
+            <div class="soal-container" style="height: 40vh; overflow-y: auto;">
+                <p class="lh-lg" id="soal">Soal</p>
+                <div class="mb-4" id="pilihanContainer"></div>
+                <div id="penjelasan" hidden>
+                    <div class="fade alert show" id="alertPenjelasan">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="me-2 bi fs-5" id="iconPenjelasan"></i>
+                            <h6 class="fw-bold mb-0 mt-1" id="ketHasil"></h6>
+                        </div>
+                        <p class="mb-0" id="ketPenjelasan"></p>
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="btnNext">LANJUT</button>
+            </div>
         </div>
     </div>
 </div>
+
+<script>
+    const penjelasanSalah = "Bukan merupakan jawaban, ayo cari dong jawaban yang benar. Kamu pasti bisa kamu hebat jangan menyerah sampai titik ini";
+    const bankSoal = [
+    {
+        soal: "Apa keuntungan menggunakan modul event dalam pengembangan aplikasi Node.js berbasis event-driven?",
+        pilihan: [
+            "Memungkinkan aplikasi untuk dijalankan secara sinkron dan menghindari penggunaan asinkron.",
+            "Membantu mengelola event asinkron dengan cara yang efisien dan terstruktur, meningkatkan responsivitas aplikasi.",
+            "Memudahkan pembuatan antarmuka pengguna tanpa memerlukan JavaScript.",
+            "Memastikan aplikasi dapat berjalan dengan satu thread secara terus menerus tanpa gangguan."
+        ],
+        benar: 1,
+        penjelasan: "Modul event membantu mengelola event asinkron dengan efisien, sehingga meningkatkan responsivitas dan performa aplikasi berbasis event-driven."
+    },
+    {
+        soal: "Metode on dalam modul Event di Node.js digunakan untuk?",
+        pilihan: [
+            "Memicu event tertentu.",
+            "Menambahkan listener untuk event tertentu.",
+            "Menghapus listener dari event.",
+            "Menangkap error dalam aplikasi."
+        ],
+        benar: 1,
+        penjelasan: "Metode on digunakan untuk mendaftarkan listener ke event tertentu dalam EventEmitter."
+    },
+    {
+        soal: "Apa fungsi dari metode emit dalam modul Event?",
+        pilihan: [
+            "Menghentikan event yang sedang berjalan.",
+            "Menambahkan listener untuk event.",
+            "Memicu atau memanggil event tertentu.",
+            "Menangkap error dalam aplikasi."
+        ],
+        benar: 2,
+        penjelasan: "Metode emit digunakan untuk memicu event yang telah didaftarkan sebelumnya, sehingga semua listener yang terkait akan dieksekusi."
+    },
+    {
+        soal: "Kapan kita menggunakan metode once dalam modul Event?",
+        pilihan: [
+            "Saat kita ingin listener dieksekusi berulang kali.",
+            "Saat kita ingin listener hanya dieksekusi sekali untuk event tersebut.",
+            "Saat kita ingin menghapus listener dari event.",
+            "Saat kita ingin memicu event baru."
+        ],
+        benar: 1,
+        penjelasan: "Metode once digunakan jika kita ingin event listener hanya dieksekusi satu kali sebelum dihapus secara otomatis."
+    },
+    {
+        soal: "Apa keuntungan dari menghapus listener yang tidak diperlukan lagi menggunakan removeListener?",
+        pilihan: [
+            "Mengurangi beban memori dan meningkatkan performa aplikasi.",
+            "Menambahkan lebih banyak listener.",
+            "Memperbanyak jumlah event yang bisa dipicu.",
+            "Menggandakan jumlah listener untuk setiap event."
+        ],
+        benar: 0,
+        penjelasan: "Menghapus listener yang tidak diperlukan membantu menghemat memori dan meningkatkan efisiensi aplikasi, terutama pada aplikasi yang menangani banyak event."
+    }
+];
+
+</script>
 @endsection

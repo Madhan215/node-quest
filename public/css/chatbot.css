@@ -1,0 +1,258 @@
+/* Chatbot */
+#chatbot-container {
+    position: fixed;
+    bottom: 20px; /* Atur agar tidak terlalu ke bawah */
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 10000; /* Pastikan selalu di atas */
+}
+
+#chatbot-toggle {
+    background-color: var(--bs-primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 9999; /* Pastikan tombol tidak tertutup */
+
+    /* Buat teks/ikon di dalam tombol berada di tengah */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#chatbot-box {
+    display: none;
+    width: 320px;
+    background: white;
+    border-radius: 10px; /* Membuat kotak lebih melengkung */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    z-index: 10000;
+    overflow: hidden; /* Menghindari elemen dalamnya keluar dari radius */
+}
+
+
+#chatbot-header {
+    background: var(--bs-primary);
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between; /* Memberi jarak antara nama & tombol close */
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.chatbot-header-content {
+    display: flex;
+    align-items: center;
+}
+
+.chatbot-header-content img {
+    border-radius: 50%; /* Membuat gambar bulat jika ingin */
+    margin-right: 10px; /* Beri jarak antara gambar dan teks */
+}
+
+.chatbot-title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.chatbot-header-content img {
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%; /* Membuat gambar bulat */
+    background: white; /* Background putih */
+    padding: 3px; /* Memberikan jarak antara gambar dan border */
+    border: 2px solid #ddd; /* Opsional: Tambahkan border tipis */
+    margin-right: 10px; /* Jarak antara gambar dan teks */
+}
+
+
+#chatbot-close {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#chatbot-content {
+    height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+#chatbot-input-container {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #ddd;
+    padding: 5px;
+    background: white;
+}
+
+#chatbot-input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+#chatbot-send {
+    background-color: var(--bs-primary);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#chatbot-send:hover {
+    background-color: darkblue;
+}
+
+
+
+/* Dari Sebelumnya */
+.chat-container {
+    margin: 20px;
+    width: 300px;
+    height: 400px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    font-size: 15px;
+}
+
+.chat-header {
+    color: #fff;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.chat-body {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.chat-message {
+    display: flex;
+}
+
+.user-message {
+    justify-content: flex-end;
+    /* Pesan pengguna di sebelah kanan */
+}
+
+.bot-message {
+    justify-content: flex-start;
+    /* Pesan bot di sebelah kiri */
+}
+
+.chat-name {
+    font-weight: bold;
+    display: block;
+    font-size: 12px;
+}
+
+.user-message .chat-time {
+    font-size: 10px;
+    color: black;
+    display: block;
+    text-align: left;
+}
+
+.bot-message .chat-time {
+    font-size: 10px;
+    color: black;
+    display: block;
+    text-align: right;
+}
+
+.user-message .chat-bubble {
+    background-color: lightblue;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+    position: relative;
+    margin: 5px 0;
+}
+
+.user-message .chat-bubble::after {
+    content: "";
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-left-color: lightblue;
+    border-right: 0;
+    border-top: 0;
+    margin-top: -5px;
+}
+
+/* Untuk pesan bot */
+.bot-message .chat-bubble {
+    background-color: lightgreen;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+    position: relative;
+    margin: 5px 0;
+}
+
+.bot-message .chat-bubble::after {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-right-color: lightgreen;
+    border-left: 0;
+    border-top: 0;
+    margin-top: -5px;
+}
+
+.chat-bubble p {
+    margin-bottom: 5px;
+}
+
+#user-input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

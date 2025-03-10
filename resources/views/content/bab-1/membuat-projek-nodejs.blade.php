@@ -2,7 +2,7 @@
 
 @section('container-base-content')
 
-<h2>1.8 Membuat Projek Node.js</h2>
+<h2>1.9 Membuat Projek Node.js</h2>
 <p class="lh-lg">
     Program node.js dapat dijalankan pada terminal, dengan cara menjalankan file JavaScript tersebut melalu terminal, berikut program sederhana untuk menjalankan Node.js
 </p>
@@ -23,7 +23,7 @@
 <div class="p-0 p-md-3 my-4 my-md-2">
     <div class="card">
         <div class="p-3 d-flex align-items-center card-header">
-            <div class="mb-0 h6 fw-semibold card-title">Aktivitas 1.8</div>
+            <div class="mb-0 h6 fw-semibold card-title">Aktivitas 1.9</div>
         </div>
         <div class="card-body">
             <p class="small mb-3 card-text">Untuk menguji pemahaman kamu pada materi diatas, kerjakanlah kuis-kuis berikut ini dengan baik dan benar!</p>

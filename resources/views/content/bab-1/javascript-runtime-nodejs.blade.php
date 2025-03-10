@@ -83,160 +83,56 @@
                 <p class="fw-semibold bg-primary text-white p-2 rounded card-text">
                     Pertanyaan <span id="noSoal">1</span> dari <span id="totalSoal">1</span>
                 </p>
-                <p class="lh-lg" id="soal">Soal</p>
-                <div class="mb-4" id="pilihanContainer"></div>
-                <div id="penjelasan" hidden>
-                    <div class="fade alert show" id="alertPenjelasan">
-                        <div class="d-flex align-items-center mb-3">
-                            <i class="me-2 bi fs-3" id="iconPenjelasan"></i>
-                            <h6 class="fw-bold mb-0 mt-1" id="ketHasil"></h6>
+                <div class="soal-container" style="height: 40vh; overflow-y: auto;">
+                    <p class="lh-lg" id="soal">Soal</p>
+                    <div class="mb-4" id="pilihanContainer"></div>
+                    <div id="penjelasan" hidden>
+                        <div class="fade alert show" id="alertPenjelasan">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="me-2 bi fs-5" id="iconPenjelasan"></i>
+                                <h6 class="fw-bold mb-0 mt-1" id="ketHasil"></h6>
+                            </div>
+                            <p class="mb-0" id="ketPenjelasan"></p>
                         </div>
-                        <p class="mb-0" id="ketPenjelasan"></p>
                     </div>
+                    <button class="btn btn-primary" id="btnNext">LANJUT</button>
                 </div>
-                <button class="btn btn-primary" id="btnNext">LANJUT</button>
             </div>
         </div>
     </div>
 
     <script>
-        const salah = "Bukan merupakan jawaban";
+        const penjelasanSalah = "bukan merupakan jawaban, ayo ulangi dan cari jawaban yang benar!";
         const bankSoal = [{
-                soal: "Soal nomor 1",
-                pilihan: ["A.", "B.", "C.", "D."],
+                soal: "Node.js merupakan runtime programming yang bersifat?",
+                pilihan: ["Blocking", "Non-Blocking", "Single-threaded", "Multi-threaded"],
                 benar: 1,
-                penjelasan: ""
+                penjelasan: "merupakan sistem pemrograman yang ada pada Node.js"
             },
             {
-                soal: "Soal nomor 2",
-                pilihan: ["A.", "B.", "C.", "D."],
-                benar: 3,
-                penjelasan: ""
-            },
-            {
-                soal: "Soal nomor 3",
-                pilihan: ["A.", "B.", "C.", "D."],
+                soal: "Apa mesin yang digunakan Node.js?",
+                pilihan: ["V8", "SpiderMonkey", "Chakra", "Nitro"],
                 benar: 0,
-                penjelasan: ""
+                penjelasan: "Merupakan mesin yang digunakan oleh Node.js"
             },
             {
-                soal: "Soal nomor 4",
-                pilihan: ["A.", "B.", "C.", "D."],
-                benar: 2,
-                penjelasan: ""
-            },
-            {
-                soal: "Soal nomor 5",
-                pilihan: ["A.", "B.", "C.", "D."],
+                soal: "Tahun berapa Node.js diciptakan?",
+                pilihan: ["2005", "2009", "2013", "2017"],
                 benar: 1,
-                penjelasan: ""
+                penjelasan: "Merupakan tahun Node.js diciptakan"
+            },
+            {
+                soal: "Siapa yang menciptakan Node.js?",
+                pilihan: ["Brenden Eich", "Ryan Dahl", "Linus Torvalds", "James Gosling"],
+                benar: 1,
+                penjelasan: "merupakan orang yang menciptakan Node.js"
+            },
+            {
+                soal: "Bahasa apa yang digunakan dalam Node.js?",
+                pilihan: ["JavaScript", "Python", "Ruby", "PHP"],
+                benar: 0,
+                penjelasan: "merupakan bahasa yang digunakan dalam Node.js"
             }
         ]
-
-
-        let currentSoal = 0;
-
-        const noSoal = document.getElementById("noSoal");
-        const totalSoal = document.getElementById("totalSoal");
-        const soal = document.getElementById("soal");
-        const pilihanContainer = document.getElementById("pilihanContainer");
-        const penjelasan = document.getElementById("penjelasan");
-        const btnNext = document.getElementById("btnNext");
-
-        // Penjelasan
-        const alertPenjelasan = document.getElementById("alertPenjelasan");
-        const iconPenjelasan = document.getElementById("iconPenjelasan");
-        const ketHasil = document.getElementById("ketHasil");
-        const ketPenjelasan = document.getElementById("ketPenjelasan");
-
-        totalSoal.textContent = bankSoal.length;
-
-        function loadSoal() {
-            btnNext.disabled = true;
-            pilihanContainer.innerHTML = "";
-
-            const bank = bankSoal[currentSoal];
-            noSoal.textContent = currentSoal + 1;
-            soal.textContent = bank.soal;
-
-            bank.pilihan.forEach((pilihan, index) => {
-                const pilihanDiv = document.createElement("div");
-                pilihanDiv.className = "fade mb-2 p-2 ps-3 bg-light false alert alert-dark show pilihan";
-                pilihanDiv.dataset.index = index;
-
-                const pilihanText = document.createElement("p");
-                pilihanText.className = "card-text";
-                pilihanText.innerHTML = `<span class="me-2">${String.fromCharCode(65 + index)}.</span> ${pilihan}`;
-
-                pilihanDiv.appendChild(pilihanText);
-                pilihanContainer.appendChild(pilihanDiv);
-
-                pilihanDiv.addEventListener("click", () => pilihJawaban(index, pilihanDiv));
-            })
-        }
-
-        function pilihJawaban(index, pilihanDiv) {
-            const soal = bankSoal[currentSoal];
-            const semuaPilihan = document.querySelectorAll(".pilihan");
-
-            penjelasan.hidden = false;
-
-            semuaPilihan.forEach(div => {
-                div.classList.add("bg-light");
-                div.classList.add("alert-dark");
-            });
-
-            if (index === soal.benar) {
-                console.log('Pilihan benar');
-                pilihanDiv.classList.remove("bg-light");
-                pilihanDiv.classList.remove("alert-dark");
-                pilihanDiv.classList.add("alert-primary");
-                btnNext.disabled = false;
-                // Disable all other options
-                semuaPilihan.forEach(div => {
-                    if (div !== pilihanDiv) {
-                        div.style.pointerEvents = "none"; // Disable clicking
-                        div.style.opacity = "0.5"; // Dim other options
-                    }
-                });
-
-                // Penjelasan
-                alertPenjelasan.classList.add("alert-success");
-                iconPenjelasan.classList.add("bi-check-circle");
-                ketHasil.innerHTML = "BENAR";
-                ketPenjelasan = "Penjelasan"
-
-
-            } else {
-                console.log('Pilihan salah');
-                pilihanDiv.classList.remove("bg-light");
-                pilihanDiv.classList.remove("alert-dark");
-                pilihanDiv.classList.add("alert-danger");
-
-                // Penjelasan
-                alertPenjelasan.classList.add("alert-danger");
-                iconPenjelasan.classList.add("bi-x-circle");
-                ketHasil.innerHTML = "BELUM BENAR";
-                ketPenjelasan = "Penjelasan"
-
-                setTimeout(() => {
-                    pilihanDiv.classList.remove("alert-danger");
-                    pilihanDiv.classList.add("bg-light");
-                    pilihanDiv.classList.add("alert-dark");
-                }, 500);
-            }
-        }
-
-        btnNext.addEventListener("click", () => {
-            currentSoal++;
-            if (currentSoal < bankSoal.length) {
-                loadSoal();
-            } else {
-                alert("Anda telah menyelesaikan semua soal!");
-                btnNext.disabled = true;
-            }
-        });
-
-        loadSoal();
     </script>
 @endsection

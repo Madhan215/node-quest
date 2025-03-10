@@ -8,14 +8,20 @@ class ContentBab4Controller extends Controller
 {
     public function modulEvent()
     {
-        return view('content.bab-4.modul-event');
+        $prevUrl = null;
+        $nextUrl = '/modul-event/fungsi-dan-manfaat-modul-event';
+        return view('content.bab-4.modul-event',compact('prevUrl','nextUrl'));
     }
     public function fungsiDanManfaatModulEvent()
     {
-        return view('content.bab-4.fungsi-dan-manfaat-modul-event');
+        $prevUrl = '/modul-event/modul-event';
+        $nextUrl = '/modul-event/contoh-kode-modul-event';
+        return view('content.bab-4.fungsi-dan-manfaat-modul-event',compact('prevUrl','nextUrl'));
     }
     public function contohKodeModulEvent()
     {
-        return view('content.bab-4.contoh-kode-modul-event');
+        $prevUrl = '/modul-event/fungsi-dan-manfaat-modul-event';
+        $nextUrl = null;
+        return view('content.bab-4.contoh-kode-modul-event',compact('prevUrl','nextUrl'));
     }
 }

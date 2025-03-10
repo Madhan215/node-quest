@@ -11,6 +11,7 @@
   "description": "",
   "dependencies": {
     "bootstrap": "^5.3.3",
-    "highlight.js": "^11.10.0"
+    "highlight.js": "^11.10.0",
+    "sweetalert2": "^11.15.10"
   }
 }

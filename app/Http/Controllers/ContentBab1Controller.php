@@ -8,34 +8,59 @@ class ContentBab1Controller extends Controller
 {
     public function javascriptRuntimeNodejs()
     {
-        return view('content.bab-1.javascript-runtime-nodejs');
+        $prevUrl = null;
+        $nextUrl = '/pengenalan/persiapan-belajar-nodejs';
+        return view('content.bab-1.javascript-runtime-nodejs',compact('prevUrl','nextUrl'));
     }
     public function persiapanBelajarNodejs()
     {
-        return view('content.bab-1.persiapan-belajar-nodejs');
+        $prevUrl = '/pengenalan/javascript-runtime-nodejs';
+        $nextUrl = '/pengenalan/pemrograman-sisi-klien-dan-sisi-server';
+        return view('content.bab-1.persiapan-belajar-nodejs',compact('prevUrl','nextUrl'));
+    }
+    public function pemrogramanSisiKlienDanSisiServer()
+    {
+        $prevUrl = '/pengenalan/persiapan-belajar-nodejs';
+        $nextUrl = '/pengenalan/pemrograman-sinkronus-dan-asinkronus';
+        return view('content.bab-1.pemrograman-sisi-klien-dan-sisi-server',compact('prevUrl','nextUrl'));
     }
     public function pemrogramanSinkronusDanAsinkronus()
     {
-        return view('content.bab-1.pemrograman-sinkronus-dan-asinkronus');
+        $prevUrl = '/pengenalan/pemrograman-sisi-klien-dan-sisi-server';
+        $nextUrl = '/pengenalan/hubungan-nodejs-dengan-browser';
+        return view('content.bab-1.pemrograman-sinkronus-dan-asinkronus',compact('prevUrl','nextUrl'));
     }
     public function hubunganNodejsDenganBrowser()
     {
-        return view('content.bab-1.hubungan-nodejs-dengan-browser');
+        $prevUrl = '/pengenalan/pemrograman-sinkronus-dan-asinkronus';
+        $nextUrl = '/pengenalan/engine-v8';
+        return view('content.bab-1.hubungan-nodejs-dengan-browser',compact('prevUrl','nextUrl'));
     }
     public function engineV8()
     {
-        return view('content.bab-1.engine-v8');
+        $prevUrl = '/pengenalan/hubungan-nodejs-dengan-browser';
+        $nextUrl = '/pengenalan/installasi-nodejs';
+        return view('content.bab-1.engine-v8',compact('prevUrl','nextUrl'));
     }
     public function installasiNodejs()
     {
-        return view('content.bab-1.installasi-nodejs');
+        $prevUrl = '/pengenalan/engine-v8';
+        $nextUrl = '/pengenalan/repl-read-evaluate-print-loop';
+        return view('content.bab-1.installasi-nodejs',compact('prevUrl','nextUrl'));
     }
     public function replReadEvaluatePrintLoop()
     {
-        return view('content.bab-1.repl-read-evaluate-print-loop');
+        $prevUrl = '/pengenalan/installasi-nodejs';
+        $nextUrl = '/pengenalan/membuat-projek-nodejs';
+        return view('content.bab-1.repl-read-evaluate-print-loop',compact('prevUrl','nextUrl'));
     }
     public function membuatProjekNodejs()
     {
-        return view('content.bab-1.membuat-projek-nodejs');
+        $prevUrl = '/pengenalan/repl-read-evaluate-print-loop';
+        $nextUrl = null;
+        return view('content.bab-1.membuat-projek-nodejs',compact('prevUrl','nextUrl'));
+    }
+    public function kuis(){
+        return view('content.bab-1.kuis-1');
     }
 }

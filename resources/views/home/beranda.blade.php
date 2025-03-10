@@ -10,8 +10,11 @@
         </div>
         <p class="text-muted lead">Pelajari JavaScript Server Side Programming dengan mudah dan penuh tantangan. Materi pada media pembelajaran ini dibuat khusus bagi yang ingin mempelajari bagaimana JavaScript dapat berjalan pada sisi server dengan menggunakan Node.js. </p> 
         <div class="d-flex flex-column flex-md-row gap-3">
-            <a role="button" tabindex="0" class="btn btn-primary btn-lg" href="/start">MULAI BELAJAR</a>
-            <a role="button" tabindex="0" class="btn btn-outline-dark btn-lg" href="/dosen/masuk">HALAMAN DOSEN <i class="bi bi-chevron-double-right"></i></a>
+            {{-- Catatan
+            Kalau belum login, arahkan ke halaman login,
+            Kalau sudah login, arahkan ke materi terakhir yang di akses (Membuat riwayat akses halaman) --}}
+            <a role="button" tabindex="0" class="btn btn-primary btn-lg" href="/pengenalan/javascript-runtime-nodejs">MULAI BELAJAR</a>
+            {{-- <a role="button" tabindex="0" class="btn btn-outline-dark btn-lg" href="/dosen/masuk">HALAMAN DOSEN <i class="bi bi-chevron-double-right"></i></a> --}}
         </div>
     </div>
 </div>
