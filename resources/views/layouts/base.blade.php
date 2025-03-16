@@ -8,10 +8,10 @@
                 <h5 class="fw-semibold text-primary text-center p-3 mb-0">MENU</h5>
                 <div class="border list-group list-group-flush">
                     <a href="#"
-                        class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('dashboard') ? 'active' : '' }}">
+                        class="py-3 d-flex align-items-center justify-content-between bg-primary-light text-primary-dark false list-group-item {{ Route::is('dashboard') ? 'active' : '' }}">
                         <span><i class="bi bi-speedometer"></i> Dashboard</span></a>
                     <a href="#"
-                        class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('dashboard') ? 'active' : '' }}">
+                        class="py-3 d-flex align-items-center justify-content-between bg-primary-light text-primary-dark false list-group-item {{ Route::is('dashboard') ? 'active' : '' }}">
                         <span><i class="bi bi-journal-check"></i> Data Nilai</span></a>
                 </div>
                 <h5 class="fw-semibold text-primary text-center p-3 mb-0">DAFTAR MATERI</h5>
@@ -89,8 +89,8 @@
                                 <a href="/modul/local-moduls"
                                     class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab2-4') ? 'active' : '' }}">
                                     <span><i class="bi bi-dot"></i> Local Moduls</span></a>
-                                <a href="#"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab2-5') ? 'active' : '' }}">
+                                <a href="/modul/kuis"
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('kuis-2') ? 'active' : '' }}">
                                     <span><i class="bi bi-dot"></i> Kuis 2</span></a>
                             </div>
                         </div>
@@ -118,8 +118,8 @@
                                 <a href="/npm/mempublikasikan-paket-ke-npm"
                                     class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab3-3') ? 'active' : '' }}">
                                     <span><i class="bi bi-dot"></i> Mempublikasiskan Paket ke NPM</span></a>
-                                <a href="#"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab3-4') ? 'active' : '' }}">
+                                <a href="/npm/kuis"
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('kuis-3') ? 'active' : '' }}">
                                     <span><i class="bi bi-dot"></i> Kuis 3</span></a>
                             </div>
                         </div>
@@ -147,8 +147,8 @@
                                 <a href="/modul-event/contoh-kode-modul-event"
                                     class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab4-3') ? 'active' : '' }}">
                                     <span><i class="bi bi-dot"></i> Contoh Kode Modul Event</span></a>
-                                <a href="#"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab4-4') ? 'active' : '' }}">
+                                <a href="/modul-event/kuis"
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('kuis-4') ? 'active' : '' }}">
                                     <span><i class="bi bi-dot"></i> Kuis 4</span></a>
                             </div>
                         </div>
@@ -176,8 +176,8 @@
                                 <a href="/modul-file-system/contoh-kode-modul-file-system"
                                     class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab5-3') ? 'active' : '' }}">
                                     <span><i class="bi bi-dot"></i> Contoh Kode Module File System</span></a>
-                                <a href="#"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab5-4') ? 'active' : '' }}">
+                                <a href="/modul-file-system/kuis"
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('kuis-5') ? 'active' : '' }}">
                                     <span><i class="bi bi-dot"></i> Kuis 5</span></a>
                             </div>
                         </div>
@@ -205,11 +205,17 @@
                                 <a href="/modul-http/contoh-kode-penggunaan-modul-http"
                                     class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab6-3') ? 'active' : '' }}">
                                     <span><i class="bi bi-dot"></i> Contoh kode Penggunaan Modul HTTP</span></a>
-                                <a href="#"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab6-4') ? 'active' : '' }}">
+                                <a href="/modul-http/kuis"
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('kuis-6') ? 'active' : '' }}">
                                     <span><i class="bi bi-dot"></i> Kuis 6</span></a>
                             </div>
                         </div>
+                    </div>
+                    <h5 class="fw-semibold text-primary text-center p-3 mb-0">EVALUASI</h5>
+                    <div class="border list-group list-group-flush">
+                        <a href="/evaluasi"
+                            class="py-3 d-flex align-items-center justify-content-between bg-primary-light text-primary-dark false list-group-item {{ Route::is('dashboard') ? 'active' : '' }}">
+                            <span><i class="bi bi-journal-check"></i></i> EVALUASI</span></a>
                     </div>
                 </div>
             </div>

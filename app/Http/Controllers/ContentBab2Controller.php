@@ -27,7 +27,10 @@ class ContentBab2Controller extends Controller
     public function localModuls()
     {
         $prevUrl = '/modul/core-moduls';
-        $nextUrl = null;
+        $nextUrl = '/modul/kuis';
         return view('content.bab-2.local-moduls',compact('prevUrl','nextUrl'));
+    }
+    public function kuis(){
+        return view('content.bab-2.kuis-2');
     }
 }

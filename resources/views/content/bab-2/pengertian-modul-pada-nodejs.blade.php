@@ -97,7 +97,7 @@
 </div>
 
 <script>
-    const penjelasanSalah = "Bukan merupakan jawaban, ayo cari dong jawaban yang benar. Kamu pasti bisa kamu hebat jangan menyerah sampai titik ini";
+    const penjelasanSalah = "Jawaban ini belum benar. Ayo, coba lagi dan temukan jawaban yang tepat!";
     const bankSoal = [
     {
         soal: "Modul pada Node.js merupakan kumpulan dari …",

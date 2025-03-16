@@ -42,7 +42,7 @@ class CodeController extends Controller
         }
 
         // Amankan command untuk mencegah perintah berbahaya (opsional)
-        $safeCommands = ['node','node -v', 'npm -v', 'echo', 'whoami', 'dir','cls','type'];
+        $safeCommands = ['node','node -v', 'npm -v', 'echo', 'whoami', 'dir','cls','type', 'npm init'];
         $isSafe = false;
         foreach ($safeCommands as $allowed) {
             if (strpos($command, $allowed) === 0) {

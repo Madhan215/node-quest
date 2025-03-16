@@ -143,7 +143,7 @@
                     <p class="mb-1">Scope</p>
                     Merupakan suatu area dimana variabel atau fungsi dapat diakses. Javascript memiliki beberapa tipe scope,
                     diantaranya:
-                    <table class="table table-borderless">
+                    <table class="table table-borderless mb-0">
                         <tr>
                             <td class="text-dark">
                                 <p class="me-6">Scope Global</p>
@@ -200,9 +200,67 @@
                 <div class="mb-0 h6 fw-semibold card-title">Aktivitas 1.3</div>
             </div>
             <div class="card-body">
-                <p class="small mb-3 card-text">Ceklis</p>
-                <p class="fw-semibold bg-primary text-white p-2 rounded card-text">Pertanyaan 1 dari <span id="noSoal">1</span></p>
+                <p class="mb-3 card-text">
+                    Untuk menguji pemahaman kamu pada materi diatas, tentukan topik mana saja yang perlu dipelajari dalam melanjutkan pembelajaran Node.js. Beri centang (<i class="bi bi-check"></i>) pada topik yang sesuai.
+                </p>
+                <form id="quizForm">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="tipeData">
+                        <label class="form-check-label" for="tipeData">Tipe Data</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="array">
+                        <label class="form-check-label" for="array">Array</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="dom">
+                        <label class="form-check-label" for="dom">DOM</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="variabel">
+                        <label class="form-check-label" for="variabel">Variabel</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="json">
+                        <label class="form-check-label" for="json">JSON</label>
+                    </div>
+            
+                    <button type="button" class="btn btn-success mt-3" id="checkBtn">Periksa</button>
+            
+                    <div class="alert mt-3" id="feedbackBox"></div>
+                </form>
             </div>
         </div>
     </div>
+    <script>
+        document.getElementById('checkBtn').addEventListener('click', () => {
+            // Topik yang benar dalam Node.js
+            const correctTopics = ["tipeData", "array", "variabel", "json"];
+
+            let selectedTopics = [];
+            document.querySelectorAll('.form-check-input:checked').forEach((checkbox) => {
+                selectedTopics.push(checkbox.id);
+            });
+
+            let feedbackBox = document.getElementById('feedbackBox');
+
+            if (JSON.stringify(selectedTopics.sort()) === JSON.stringify(correctTopics.sort())) {
+                feedbackBox.className = "alert alert-success mt-3";
+                feedbackBox.innerHTML = "✅ Jawaban benar! Topik yang dipilih sesuai untuk melanjutkan pembelajaran Node.js.";
+            } else {
+                feedbackBox.className = "alert alert-danger mt-3";
+                feedbackBox.innerHTML = "❌ Jawaban kurang tepat. Topik yang sesuai: Tipe Data, Array, Variabel, JSON.";
+                setTimeout(() => {
+                    feedbackBox.classList.add('fade'); // Tambahkan fade agar efek hilangnya smooth
+                    feedbackBox.classList.remove('show'); // Hilangkan elemen
+                }, 3000); // 5000ms = 5 detik
+            }
+
+            feedbackBox.classList.add('show');
+            feedbackBox.classList.remove('fade'); // Hapus 
+
+            // Sembunyikan feedback setelah 5 detik
+            
+        });
+    </script>
 @endsection

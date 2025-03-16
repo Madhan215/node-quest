@@ -50,7 +50,7 @@
                
                     <div class="d-flex align-items-center justify-content-center">
                         <div class="d-block fw-semibold"><i class="bi bi-terminal"></i> Node.js REPL Terminal</div>
-                    </div> <button class="border text-white btn btn-outline-dark" onclick="clearOutput()"><i
+                    </div> <button class="border text-white btn btn-outline-danger" onclick="clearOutput()"><i
                             class="bi bi-trash"></i></button>
                 
             </div>

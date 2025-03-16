@@ -54,36 +54,63 @@
 
 <script>
     const penjelasanSalah = "Bukan merupakan jawaban, ayo cari dong jawaban yang benar. Kamu pasti bisa kamu hebat jangan menyerah sampai titik ini";
-    const bankSoal = [{
-            soal: "Hewan berbulu yang sering dipelihara Manusia adalah",
-            pilihan: ["Rusa", "Kucing", "Komodo", "Gajah"],
-            benar: 1,
-            penjelasan: "Betul sekali, apakah kamu suka kucying :D"
-        },
-        {
-            soal: "Manakah dibawah ini yang termasuk ikan",
-            pilihan: ["Belalang", "Kumbang", "Garuda", "Koi"],
-            benar: 3,
-            penjelasan: "Kok tau jawabannya sih, kan Koi-daman ku :v "
-        },
-        {
-            soal: "1 tambah 1 sama dengan",
-            pilihan: ["Jendela", "Dua", "Kita", "Keknya dua"],
-            benar: 0,
-            penjelasan: "Hahay Ketauan kamu anak jaman dulu"
-        },
-        {
-            soal: "Kendaraan bermotor yang dipakai mahasiswa menggunakan bahan bakar",
-            pilihan: ["Avtur", "Batu Bara", "Pertalite", "Nuklir"],
-            benar: 2,
-            penjelasan: "Belinya pun juga eceran wkwk"
-        },
-        {
-            soal: "Ngoding kepanjangan dari",
-            pilihan: ["Ngomong Dingin", "Ngoprek Koding", "Ngomel Mending", "Ngosongin Mading"],
-            benar: 1,
-            penjelasan: "Pasti kamu programmer handal murah senyum dan tidak sombong"
-        }
-    ]
+    const bankSoal = [
+    {
+        soal: "Javascript Engine apa yang digunakan dalam browser Google Chrome?",
+        pilihan: [
+            "V8",
+            "SpiderMonkey",
+            "JavaScriptCore",
+            "Chakra"
+        ],
+        benar: 0, // V8
+        penjelasan: "Google Chrome menggunakan mesin JavaScript V8 yang dikembangkan oleh Google."
+    },
+    {
+        soal: "Javascript Engine apa yang digunakan dalam browser FireFox?",
+        pilihan: [
+            "V8",
+            "SpiderMonkey",
+            "JavaScriptCore",
+            "Chakra"
+        ],
+        benar: 1, // SpiderMonkey
+        penjelasan: "Mozilla Firefox menggunakan SpiderMonkey sebagai mesin JavaScript-nya."
+    },
+    {
+        soal: "Javascript Engine apa yang digunakan dalam browser Safari?",
+        pilihan: [
+            "V8",
+            "SpiderMonkey",
+            "JavaScriptCore",
+            "Chakra"
+        ],
+        benar: 2, // JavaScriptCore
+        penjelasan: "Safari menggunakan mesin JavaScriptCore yang juga dikenal sebagai Nitro."
+    },
+    {
+        soal: "Javascript Engine apa yang digunakan dalam browser Edge awal?",
+        pilihan: [
+            "V8",
+            "SpiderMonkey",
+            "JavaScriptCore",
+            "Chakra"
+        ],
+        benar: 3, // Chakra
+        penjelasan: "Microsoft Edge versi awal menggunakan mesin JavaScript Chakra sebelum beralih ke Chromium (V8)."
+    },
+    {
+        soal: "Standar Javascript apa yang digunakan oleh semua mesin JavaScript?",
+        pilihan: [
+            "HTML5",
+            "CSS3",
+            "ECMAScript",
+            "Node.js"
+        ],
+        benar: 2, // ECMAScript
+        penjelasan: "Semua mesin JavaScript mengikuti standar ECMAScript yang dikembangkan oleh ECMA International."
+    }
+];
+
 </script>
 @endsection

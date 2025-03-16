@@ -21,7 +21,10 @@ class ContentBab3Controller extends Controller
     public function mempublikasikanPaketKeNpm()
     {
         $prevUrl = '/npm/mengelola-projek-dengan-npm';
-        $nextUrl = null;
+        $nextUrl = '/npm/kuis';
         return view('content.bab-3.mempublikasikan-paket-ke-npm',compact('prevUrl','nextUrl'));
+    }
+    public function kuis(){
+        return view('content.bab-3.kuis-3');
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\CodeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\ContentController;
+use App\Http\Controllers\EvaluasiController;
 use App\Http\Controllers\TerminalController;
 use App\Http\Controllers\ContentBab1Controller;
 use App\Http\Controllers\ContentBab2Controller;
@@ -47,6 +48,7 @@ Route::controller(ContentBab2Controller::class)->group(function(){
     Route::get('/modul/fungsi-require','fungsiRequire')->name('bab2-2');
     Route::get('/modul/core-moduls','coreModuls')->name('bab2-3');
     Route::get('/modul/local-moduls','localModuls')->name('bab2-4');
+    Route::get('/modul/kuis','kuis')->name('kuis-2');
 });
 
 // Materi BAB 3
@@ -54,6 +56,7 @@ Route::controller(ContentBab3Controller::class)->group(function(){
     Route::get('/npm/npm','npm')->name('bab3-1');
     Route::get('/npm/mengelola-projek-dengan-npm','mengelolaProjekDenganNpm')->name('bab3-2');
     Route::get('/npm/mempublikasikan-paket-ke-npm','mempublikasikanPaketKeNpm')->name('bab3-3');
+    Route::get('/npm/kuis','kuis')->name('kuis-3');
 });
 
 // Materi BAB 4
@@ -61,6 +64,7 @@ Route::controller(ContentBab4Controller::class)->group(function(){
     Route::get('/modul-event/modul-event','modulEvent')->name('bab4-1');
     Route::get('/modul-event/fungsi-dan-manfaat-modul-event','fungsiDanManfaatModulEvent')->name('bab4-2');
     Route::get('/modul-event/contoh-kode-modul-event','contohKodeModulEvent')->name('bab4-3');
+    Route::get('/modul-event/kuis','kuis')->name('kuis-4');
 });
 
 // Materi BAB 5
@@ -68,6 +72,7 @@ Route::controller(ContentBab5Controller::class)->group(function(){
     Route::get('/modul-file-system/modul-file-system','moduleFileSystem')->name('bab5-1');
     Route::get('/modul-file-system/fungsi-dan-operasi-dasar-modul-file-system','fungsiDanOperasiDasarModulFileSystem')->name('bab5-2');
     Route::get('/modul-file-system/contoh-kode-modul-file-system','contohKodeModuleFileSystem')->name('bab5-3');
+    Route::get('/modul-file-system/kuis','kuis')->name('kuis-5');
 });
 
 // Materi BAB 6
@@ -75,6 +80,13 @@ Route::controller(ContentBab6Controller::class)->group(function(){
     Route::get('/modul-http/modul-http','modulHttp')->name('bab6-1');
     Route::get('/modul-http/fungsi-utama-modul-http','fungsiUtamaModulHttp')->name('bab6-2');
     Route::get('/modul-http/contoh-kode-penggunaan-modul-http','contohKodePenggunaanModulHttp')->name('bab6-3');
+    Route::get('/modul-http/kuis','kuis')->name('kuis-6');
+});
+
+// Evaluasi
+
+Route::controller(EvaluasiController::class)->group(function(){
+    Route::get('/evaluasi','index')->name('evaluasi');
 });
 
 // ChatBot

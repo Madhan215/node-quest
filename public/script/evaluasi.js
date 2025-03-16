@@ -26,7 +26,7 @@ function hideElement(elementId) {
 }
 
 let timer; // Simpan interval timer sebagai variabel global
-let count = 30 * 60; // Durasi awal 30 menit
+let count = 45 * 60; // Durasi awal 45 menit
 
 function startQuiz() {
     
@@ -39,7 +39,7 @@ clearInterval(timer);
 }
 
 // Atur ulang waktu ke 45 menit saat restart
-count = 30 * 60;
+count = 45 * 60;
 console.log('Timer dimulai...');
 
 timer = setInterval(() => {
@@ -171,7 +171,7 @@ function updateNavigationButton() {
     prevButton.disabled = currentQuestionIndex === 0;
 
     // Disable tombol "Berikutnya" jika di soal terakhir
-    nextButton.disabled = currentQuestionIndex === 9;
+    nextButton.disabled = currentQuestionIndex === 19;
 
     // Debugging log
     console.log("Tombol Sebelumnya:", prevButton.disabled ? "Disabled" : "Enabled");
@@ -226,7 +226,7 @@ function checkAnswers() {
     });
 
     // Hitung nilai
-    let score = correctAnswers * 10;
+    let score = correctAnswers * 5;
     let incorrectAnswers = totalQuestions - correctAnswers;
     let isPassed = score >= 70;
 

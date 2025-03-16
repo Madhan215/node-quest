@@ -40,7 +40,7 @@
 </head>
 
 <body>
-    @if (request()->routeIs('kuis-*'))
+    @if (request()->routeIs('kuis-*') || request()->routeIs('evaluasi') )
         @yield('container-kuis')
     @else
         <div class="min-vh-100 d-flex flex-column" style="position: relative; z-index: 1">

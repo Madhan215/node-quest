@@ -2,7 +2,16 @@
     "intents": [
         {
             "tag": "greeting",
-            "patterns": ["Hai", "Halo", "Hallo", "Hi", "Selamat pagi", "Selamat siang", "Selamat sore", "Selamat malam"],
+            "patterns": [
+                "Hai",
+                "Halo",
+                "Hallo",
+                "Hi",
+                "Selamat pagi",
+                "Selamat siang",
+                "Selamat sore",
+                "Selamat malam"
+            ],
             "responses": [
                 "Halo! Saya Rotel, ada yang bisa saya bantu?",
                 "Hai! Saya Rotel, bagaimana saya dapat membantu Anda?",

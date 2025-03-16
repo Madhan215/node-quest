@@ -21,7 +21,10 @@ class ContentBab5Controller extends Controller
     public function contohKodeModuleFileSystem()
     {
         $prevUrl = '/modul-file-system/fungsi-dan-operasi-dasar-modul-file-system';
-        $nextUrl = null;
+        $nextUrl = '/modul-file-system/kuis';
         return view('content.bab-5.contoh-kode-modul-file-system',compact('prevUrl','nextUrl'));
+    }
+    public function kuis(){
+        return view('content.bab-5.kuis-5');
     }
 }

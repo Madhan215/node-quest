@@ -74,8 +74,8 @@
                     class="d-flex align-items-center justify-content-between bg-white rounded-0 border-top border-bottom border-end card-header">
                     <div class="d-flex align-items-center justify-content-center text-primary">
                         <div class="d-block fw-semibold"><i class="bi bi-terminal"></i> TERMINAL</div>
-                    </div> <button class="border btn btn-outline-dark" onclick="clearOutput()"><i
-                            class="bi bi-trash"></i></button>
+                    </div>
+                    <button class="border btn btn-outline-danger"  onclick="clearOutput()"><i class="bi bi-trash"></i></button>
                 </div>
                 <div class="bg-light p-0 card-body">
                     <div class="m-0 h-100 text-muted overflow-auto">

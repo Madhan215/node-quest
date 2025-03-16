@@ -2,6 +2,43 @@
 
 @section('container-base-content')
 
+<style>
+    .sortable-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .dropzone {
+        width: 45%;
+        min-height: 250px;
+        padding: 15px;
+        border: 2px dashed #ccc;
+        border-radius: 5px;
+        background-color: #f8f9fa;
+    }
+
+    .drag-item {
+        background: #ffffff;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        cursor: grab;
+    }
+
+    @media (max-width: 768px) {
+        .sortable-container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .dropzone {
+            width: 90%;
+        }
+    }
+</style>
+
 <h2>5.3 Contoh Kode Modul Event</h2>
 <p class="lh-lg">
     Pada bagian ini akan memaparkan bagaimana module File System digunakan untuk melakukan berbagai operasi. Contoh ini mencakup program untuk membaca file, menulis file, menghapus file, dan mengubah nama file.
@@ -93,9 +130,53 @@ fs.unlink('output.txt', (err) => {
             <div class="mb-0 h6 fw-semibold card-title">Aktivitas 5.3</div>
         </div>
         <div class="card-body">
-            <p class="small mb-3 card-text">Untuk menguji pemahaman kamu pada materi diatas, kerjakanlah kuis-kuis berikut ini dengan baik dan benar!</p>
-            <p class="fw-semibold bg-primary text-white p-2 rounded card-text">Pertanyaan 1 dari <span id="noSoal">1</span></p>
+            <p class="small mb-3 card-text">Untuk menguji pemahaman kamu pada materi di atas, urutkanlah baris-baris
+                kode JavaScript berikut agar menjadi kode Node.js yang valid!</p>
+            <div class="sortable-container mt-4">
+                <div class="dropzone" id="leftBox">
+                    <p class="text-center fw-bold">Kode Acak</p>
+                </div>
+                <div class="dropzone" id="rightBox">
+                    <p class="text-center fw-bold">Susun Kode di Sini</p>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <button id="checkBtn" class="btn btn-success">Periksa</button>
+                <button id="resetBtn" class="btn btn-danger ms-2">Reset</button>
+            </div>
+            <div class=" mt-4">
+                <div class="fade alert mt-3" id="alertPenjelasan">
+                    <div class="d-flex justify-content-center">
+                        <i class="me-2 bi fs-5" id="iconPenjelasan"></i>
+                        <h6 class="fw-bold mb-0 mt-1" id="ketHasil"></h6>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+<script>
+    const kodeUrutan = [{
+        "order": 1,
+        "text": "const fs = require('fs');"
+    }, // Mengimpor modul File System (fs)
+    {
+        "order": 2,
+        "text": "fs.readFile('data.txt', 'utf8', (err, data) => {"
+    }, // Membaca file 'data.txt' secara asinkron
+    {
+        "order": 3,
+        "text": "    if (err) { console.error('Error membaca file:', err); return; }"
+    }, // Menangani error jika terjadi kesalahan saat membaca file
+    {
+        "order": 4,
+        "text": "    console.log('Isi file:', data);"
+    }, // Menampilkan isi file ke konsol
+    {
+        "order": 5,
+        "text": "});"
+    } // Menutup callback fungsi readFile
+    ];
+</script>
+<script src="{{asset('script/urutkode.js')}}"></script>
 @endsection

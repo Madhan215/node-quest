@@ -21,7 +21,10 @@ class ContentBab4Controller extends Controller
     public function contohKodeModulEvent()
     {
         $prevUrl = '/modul-event/fungsi-dan-manfaat-modul-event';
-        $nextUrl = null;
+        $nextUrl = '/modul-event/kuis';
         return view('content.bab-4.contoh-kode-modul-event',compact('prevUrl','nextUrl'));
+    }
+    public function kuis(){
+        return view('content.bab-4.kuis-4');
     }
 }

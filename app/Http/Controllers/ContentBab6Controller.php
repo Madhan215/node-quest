@@ -21,7 +21,10 @@ class ContentBab6Controller extends Controller
     public function contohKodePenggunaanModulHttp()
     {
         $prevUrl = '/modul-http/fungsi-utama-modul-http';
-        $nextUrl = null;
+        $nextUrl = '/modul-http/kuis';
         return view('content.bab-6.contoh-kode-penggunaan-modul-http',compact('prevUrl','nextUrl'));
+    }
+    public function kuis(){
+        return view('content.bab-6.kuis-6');
     }
 }

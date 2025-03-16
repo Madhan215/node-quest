@@ -9,24 +9,25 @@ class ContentBab1Controller extends Controller
     public function javascriptRuntimeNodejs()
     {
         $prevUrl = null;
-        $nextUrl = '/pengenalan/persiapan-belajar-nodejs';
+        $nextUrl = '/pengenalan/pemrograman-sisi-klien-dan-sisi-server';
         return view('content.bab-1.javascript-runtime-nodejs',compact('prevUrl','nextUrl'));
+    } 
+    public function pemrogramanSisiKlienDanSisiServer()
+    {
+        $prevUrl = '/pengenalan/javascript-runtime-nodejs';
+        $nextUrl = '/pengenalan/persiapan-belajar-nodejs';
+        return view('content.bab-1.pemrograman-sisi-klien-dan-sisi-server',compact('prevUrl','nextUrl'));
     }
     public function persiapanBelajarNodejs()
     {
-        $prevUrl = '/pengenalan/javascript-runtime-nodejs';
-        $nextUrl = '/pengenalan/pemrograman-sisi-klien-dan-sisi-server';
+        $prevUrl = '/pengenalan/pemrograman-sisi-klien-dan-sisi-server';
+        $nextUrl = '/pengenalan/pemrograman-sinkronus-dan-asinkronus';
         return view('content.bab-1.persiapan-belajar-nodejs',compact('prevUrl','nextUrl'));
     }
-    public function pemrogramanSisiKlienDanSisiServer()
-    {
-        $prevUrl = '/pengenalan/persiapan-belajar-nodejs';
-        $nextUrl = '/pengenalan/pemrograman-sinkronus-dan-asinkronus';
-        return view('content.bab-1.pemrograman-sisi-klien-dan-sisi-server',compact('prevUrl','nextUrl'));
-    }
+   
     public function pemrogramanSinkronusDanAsinkronus()
     {
-        $prevUrl = '/pengenalan/pemrograman-sisi-klien-dan-sisi-server';
+        $prevUrl = '/pengenalan/persiapan-belajar-nodejs';
         $nextUrl = '/pengenalan/hubungan-nodejs-dengan-browser';
         return view('content.bab-1.pemrograman-sinkronus-dan-asinkronus',compact('prevUrl','nextUrl'));
     }
@@ -57,7 +58,7 @@ class ContentBab1Controller extends Controller
     public function membuatProjekNodejs()
     {
         $prevUrl = '/pengenalan/repl-read-evaluate-print-loop';
-        $nextUrl = null;
+        $nextUrl = '/pengenalan/kuis';
         return view('content.bab-1.membuat-projek-nodejs',compact('prevUrl','nextUrl'));
     }
     public function kuis(){

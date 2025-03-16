@@ -20,15 +20,4 @@
         </div>
     </li>
 </ol>
-<div class="p-0 p-md-3 my-4 my-md-2">
-    <div class="card">
-        <div class="p-3 d-flex align-items-center card-header">
-            <div class="mb-0 h6 fw-semibold card-title">Aktivitas 1.9</div>
-        </div>
-        <div class="card-body">
-            <p class="small mb-3 card-text">Untuk menguji pemahaman kamu pada materi diatas, kerjakanlah kuis-kuis berikut ini dengan baik dan benar!</p>
-            <p class="fw-semibold bg-primary text-white p-2 rounded card-text">Pertanyaan 1 dari <span id="noSoal">1</span></p>
-        </div>
-    </div>
-</div>
 @endsection

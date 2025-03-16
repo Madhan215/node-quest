@@ -172,8 +172,8 @@ btnNext.addEventListener("click", () => {
     } else {
         Swal.fire({
             title: "Selamat!",
-            text: "Anda telah menyelesaikan semua soal!",
-            icon: "success"
+            text: "Anda telah menyelesaikan semua soal aktivitas!",
+            icon: "success",
         });
     }
 });
