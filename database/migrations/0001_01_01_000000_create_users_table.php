@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('role', ['admin' ,'dosen', 'mahasiswa'])->default('mahasiswa'); // Tambah kolom peran
+            $table->string('class_token')->nullable(); // Tambahkan class_token khusus mahasiswa
             $table->rememberToken();
             $table->timestamps();
         });

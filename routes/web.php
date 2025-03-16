@@ -16,8 +16,18 @@ use App\Http\Controllers\ContentBab5Controller;
 use App\Http\Controllers\ContentBab6Controller;
 
 // Auth Controller
-Route::get('/masuk',[AuthController::class, 'masuk'])->name('masuk');
-Route::get('/daftar',[AuthController::class, 'daftar'])->name('daftar');
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register');
+
+Route::post('/register', [AuthController::class, 'register'])->name('register.store');
+Route::post('/login', [AuthController::class, 'login'])->name('login.auth');
+
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Home Controller
 Route::get('/', [HomeController::class, 'beranda'])->name('beranda');

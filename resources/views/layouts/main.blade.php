@@ -35,12 +35,28 @@
             transform: scale(0.99);
             /* Mengubah ukuran elemen sedikit saat ditekan */
         }
+
+        /* Floating Alert */
+        .floating-alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1050;
+    width: auto;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 12px 20px;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
-    @if (request()->routeIs('kuis-*') || request()->routeIs('evaluasi') )
+    @if (request()->routeIs('kuis-*') || request()->routeIs('evaluasi'))
         @yield('container-kuis')
     @else
         <div class="min-vh-100 d-flex flex-column" style="position: relative; z-index: 1">
@@ -66,8 +82,27 @@
                                 href="/perihal">Perihal</a>
                         </div>
                         <div class="gap-2 navbar-nav">
-                            <a role="button" tabindex="0" class="btn btn-outline-primary" href="/daftar">DAFTAR</a>
-                            <a role="button" tabindex="0" class="btn btn-primary" href="/masuk">MASUK</a>
+                            @guest
+                                <a role="button" tabindex="0" class="btn btn-outline-primary" href="/register">DAFTAR</a>
+                                <a role="button" tabindex="0" class="btn btn-primary" href="/login">MASUK</a>
+                            @else
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Selamat datang, {{ auth()->user()->name }}
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                    <li>
+                                        <form action="{{route('logout')}}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="dropdown-item">
+                                                <i class="bi bi-box-arrow-right"></i> Logout
+                                            </button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                            @endguest
                         </div>
                     </div>
                 </div>
@@ -82,7 +117,9 @@
                     request()->routeIs('materi') ||
                     request()->routeIs('livenode') ||
                     request()->routeIs('perihal') ||
-                    request()->routeIs('chatbot'))
+                    request()->routeIs('chatbot') ||
+                    request()->routeIs('login') ||
+                    request()->routeIs('register'))
                 <section class="bg-white text-dark p-3 p-sm-5 mb-5 mb-sm-0 flex-grow-1">
                     <div class="container">
                         @yield('container')
@@ -107,7 +144,7 @@
                     <input type="text" id="chatbot-input" placeholder="Ketik pesan...">
                     <button id="chatbot-send" onclick="sendMessage()"><i class="bi bi-send"></i></button>
                 </div>
-                
+
             </div>
         </div>
         <script>
@@ -297,6 +334,22 @@
     </script>
     {{-- Script untuk Script Latihan --}}
     <script src="{{ asset('script/latihan.js') }}"></script>
+
+    <script>
+        // Hilangkan Alert Otomatis
+        document.addEventListener("DOMContentLoaded", function() {
+            const alert = document.querySelector(".floating-alert");
+            if (alert) {
+                setTimeout(() => {
+                    alert.style.opacity = "0"; // Fade out effect
+                    setTimeout(() => {
+                        alert.remove(); // Hapus elemen setelah animasi selesai
+                    }, 500);
+                }, 3000); // 3 detik sebelum hilang
+            }
+        });
+    </script>
+    
 
 </body>
 

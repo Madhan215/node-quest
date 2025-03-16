@@ -8,6 +8,7 @@
         "php": "^8.2",
         "guzzlehttp/guzzle": "^7.9",
         "illuminate/console": "*",
+        "kreait/firebase-php": "^5.26",
         "laravel/framework": "^12.1",
         "laravel/tinker": "^2.9"
     },

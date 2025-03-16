@@ -1,6 +1,16 @@
 @extends('layouts.main')
 
 @section('container')
+
+@if (session('success'))
+    <div class="alert alert-success floating-alert fade show" role="alert">
+        {{ session('success') }}
+    </div>
+@endif
+
+
+
+
 <div class="d-md-flex flex-md-row-reverse text-center text-md-start align-items-center justify-content-between">
     <img src="{{asset('img/Hero.gif')}}" alt="Landing Page Ilustration" width="500" height="500" decoding="async" class="img-fluid p-3">
     <div class="d-flex flex-column gap-3">

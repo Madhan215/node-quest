@@ -1,1 +1,1 @@
-console.log("Nur Haliza")
+console.log("Hari ini tanggal 16 Maret 2025, alhamdulillah media sudah selesai masuk semua materi, hari ini harus sudah bisa login dan register, login dulu sebagai dosen dan generate kode kelas, lalu mahasiswa dapat memasuki kelas tersebut")
