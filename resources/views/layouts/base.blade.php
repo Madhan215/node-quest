@@ -2,17 +2,39 @@
 @extends('layouts.main')
 
 @section('container-base')
+
+@php
+    use App\Models\Progress;
+
+    $userId = auth()->id();
+    $completedStep = Progress::where('user_id', $userId)
+        ->where('completed', true)
+        ->max('step_id'); // Step terakhir yang selesai
+
+    // dd($completedStep);
+@endphp
+
     <div class="g-0 row">
         <div class="border-end border-top col-lg-3">
             <div class="bg-white sticky-top accordion">
                 <h5 class="fw-semibold text-primary text-center p-3 mb-0">MENU</h5>
+                @if(auth()->user()->role == 'dosen')
                 <div class="border list-group list-group-flush">
-                    <a href="#"
-                        class="py-3 d-flex align-items-center justify-content-between bg-primary-light text-primary-dark false list-group-item {{ Route::is('dashboard') ? 'active' : '' }}">
+                    <a href="/dosen/dashboard"
+                        class="py-3 d-flex align-items-center justify-content-between bg-primary-light text-primary-dark false list-group-item {{ Route::is('dosen.dashboard') ? 'active' : '' }}">
+                        <span><i class="bi bi-speedometer"></i> Dashboard Dosen</span></a>
+                    <a href="/dosen/data-mahasiswa"
+                        class="py-3 d-flex align-items-center justify-content-between bg-primary-light text-primary-dark false list-group-item {{ Route::is('dosen.data-mahasiswa') ? 'active' : '' }}">
+                        <span><i class="bi bi-journal-check"></i> Data Mahasiswa</span></a>
+                </div>
+                @elseif(auth()->user()->role == 'mahasiswa')
+                <div class="border list-group list-group-flush">
+                    <a href="/mahasiswa/dashboard"
+                        class="py-3 d-flex align-items-center justify-content-between bg-primary-light text-primary-dark false list-group-item {{ Route::is('mahasiswa.dashboard') ? 'active' : '' }}">
                         <span><i class="bi bi-speedometer"></i> Dashboard</span></a>
-                    <a href="#"
+                    {{-- <a href="#"
                         class="py-3 d-flex align-items-center justify-content-between bg-primary-light text-primary-dark false list-group-item {{ Route::is('dashboard') ? 'active' : '' }}">
-                        <span><i class="bi bi-journal-check"></i> Data Nilai</span></a>
+                        <span><i class="bi bi-journal-check"></i> Data Nilai</span></a> --}}
                 </div>
                 <h5 class="fw-semibold text-primary text-center p-3 mb-0">DAFTAR MATERI</h5>
                 <div class="accordion vh-100 overflow-auto" id="sidebarAccordion">
@@ -31,35 +53,89 @@
                             aria-labelledby="menuHeading1" data-bs-parent="#sidebarAccordion">
                             <div class="list-group list-group-flush">
                                 <a href="/pengenalan/javascript-runtime-nodejs"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-1') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Javascript Runtime Node.js</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-1') ? 'active' : '' }} {{ $completedStep >= 1 ? '' : 'disabled text-muted' }}">
+                                    <span>
+                                        @if ($completedStep >= 1)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                        Javascript Runtime Node.js
+                                    </span></a>
                                 <a href="/pengenalan/pemrograman-sisi-klien-dan-sisi-server"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-2') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Pemrograman Sisi Klien dan Sisi Server</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-2') ? 'active' : '' }} {{ $completedStep >= 2 ? '' : 'disabled text-muted' }}">
+                                    <span>
+                                        @if ($completedStep >= 2)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         Pemrograman Sisi Klien dan Sisi Server</span></a>
                                 <a href="/pengenalan/persiapan-belajar-nodejs"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-3') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Persiapan belajar Node.js</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-3') ? 'active' : '' }} {{ $completedStep >= 3 ? '' : 'disabled text-muted' }}">
+                                    <span>
+                                        @if ($completedStep >= 3)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                        Persiapan belajar Node.js</span></a>
                                 <a href="/pengenalan/pemrograman-sinkronus-dan-asinkronus"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-4') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Pemrograman Sinkronous dan Asinkronous</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-4') ? 'active' : '' }} {{ $completedStep >= 4 ? '' : 'disabled text-muted' }}">
+                                    <span>
+                                        @if ($completedStep >= 4)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                        Pemrograman Sinkronous dan Asinkronous</span></a>
                                 <a href="/pengenalan/hubungan-nodejs-dengan-browser"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-5') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Hubungan Node.js dengan Browser</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-5') ? 'active' : '' }} {{ $completedStep >= 5 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 5)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif Hubungan Node.js dengan Browser</span></a>
                                 <a href="/pengenalan/engine-v8"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-6') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Engine V8</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-6') ? 'active' : '' }} {{ $completedStep >= 6 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 6)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         Engine V8</span></a>
                                 <a href="/pengenalan/installasi-nodejs"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-7') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Installasi Node.js</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-7') ? 'active' : '' }} {{ $completedStep >= 7 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 7)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         Installasi Node.js</span></a>
                                 <a href="/pengenalan/repl-read-evaluate-print-loop"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-8') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> REPL (Read - Evaluate - Print - Loop)</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-8') ? 'active' : '' }} {{ $completedStep >= 8 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 8)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         REPL (Read - Evaluate - Print - Loop)</span></a>
                                 <a href="/pengenalan/membuat-projek-nodejs"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-9') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Membuat Projek Node.js</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab1-9') ? 'active' : '' }} {{ $completedStep >= 9 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 9)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         Membuat Projek Node.js</span></a>
                                 <a href="/pengenalan/kuis"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('kuis-1') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Kuis 1</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('kuis-1') ? 'active' : '' }} {{ $completedStep >= 10 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 10)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         Kuis 1</span></a>
                             </div>
                         </div>
                     </div>
@@ -78,20 +154,45 @@
                             aria-labelledby="menuHeading2" data-bs-parent="#sidebarAccordion">
                             <div class="list-group list-group-flush">
                                 <a href="/modul/pengertian-modul-pada-nodejs"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab2-1') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Pengertian Modul pada Node.js</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab2-1') ? 'active' : '' }} {{ $completedStep >= 11 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 11)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         Pengertian Modul pada Node.js</span></a>
                                 <a href="/modul/fungsi-require"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab2-2') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Fungsi Require()</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab2-2') ? 'active' : '' }} {{ $completedStep >= 12 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 12)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         Fungsi Require()</span></a>
                                 <a href="/modul/core-moduls"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab2-3') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Core Moduls</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab2-3') ? 'active' : '' }} {{ $completedStep >= 13 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 13)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         Core Moduls</span></a>
                                 <a href="/modul/local-moduls"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab2-4') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Local Moduls</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab2-4') ? 'active' : '' }} {{ $completedStep >= 14 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 14)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         Local Moduls</span></a>
                                 <a href="/modul/kuis"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('kuis-2') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Kuis 2</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('kuis-2') ? 'active' : '' }} {{ $completedStep >= 15 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 15)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         Kuis 2</span></a>
                             </div>
                         </div>
                     </div>
@@ -110,17 +211,37 @@
                             aria-labelledby="menuHeading3" data-bs-parent="#sidebarAccordion">
                             <div class="list-group list-group-flush">
                                 <a href="/npm/npm"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab3-1') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> NPM</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab3-1') ? 'active' : '' }} {{ $completedStep >= 16 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 16)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         NPM</span></a>
                                 <a href="/npm/mengelola-projek-dengan-npm"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab3-2') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Mengelola Projek dengan NPM</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab3-2') ? 'active' : '' }} {{ $completedStep >= 17 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 17)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         Mengelola Projek dengan NPM</span></a>
                                 <a href="/npm/mempublikasikan-paket-ke-npm"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab3-3') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Mempublikasiskan Paket ke NPM</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab3-3') ? 'active' : '' }} {{ $completedStep >= 18 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 18)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         Mempublikasiskan Paket ke NPM</span></a>
                                 <a href="/npm/kuis"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('kuis-3') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Kuis 3</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('kuis-3') ? 'active' : '' }} {{ $completedStep >= 19 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 19)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         Kuis 3</span></a>
                             </div>
                         </div>
                     </div>
@@ -139,17 +260,37 @@
                             aria-labelledby="menuHeading4" data-bs-parent="#sidebarAccordion">
                             <div class="list-group list-group-flush">
                                 <a href="/modul-event/modul-event"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab4-1') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Modul Event</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab4-1') ? 'active' : '' }} {{ $completedStep >= 20 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 20)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         Modul Event</span></a>
                                 <a href="/modul-event/fungsi-dan-manfaat-modul-event"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab4-2') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Fungsi dan Manfaat Modul Event</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab4-2') ? 'active' : '' }} {{ $completedStep >= 21 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 21)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         Fungsi dan Manfaat Modul Event</span></a>
                                 <a href="/modul-event/contoh-kode-modul-event"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab4-3') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Contoh Kode Modul Event</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab4-3') ? 'active' : '' }} {{ $completedStep >= 22 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 22)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         Contoh Kode Modul Event</span></a>
                                 <a href="/modul-event/kuis"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('kuis-4') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Kuis 4</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('kuis-4') ? 'active' : '' }} {{ $completedStep >= 23 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 23)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         Kuis 4</span></a>
                             </div>
                         </div>
                     </div>
@@ -168,17 +309,37 @@
                             aria-labelledby="menuHeading5" data-bs-parent="#sidebarAccordion">
                             <div class="list-group list-group-flush">
                                 <a href="/modul-file-system/modul-file-system"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab5-1') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Module File System</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab5-1') ? 'active' : '' }} {{ $completedStep >= 24 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 24)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         Module File System</span></a>
                                 <a href="/modul-file-system/fungsi-dan-operasi-dasar-modul-file-system"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab5-2') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Fungsi dan Operasi Dasar Modul File System</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab5-2') ? 'active' : '' }} {{ $completedStep >= 25 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 25)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         Fungsi dan Operasi Dasar Modul File System</span></a>
                                 <a href="/modul-file-system/contoh-kode-modul-file-system"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab5-3') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Contoh Kode Module File System</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab5-3') ? 'active' : '' }} {{ $completedStep >= 26 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 26)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         Contoh Kode Module File System</span></a>
                                 <a href="/modul-file-system/kuis"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('kuis-5') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Kuis 5</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('kuis-5') ? 'active' : '' }} {{ $completedStep >= 27 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 27)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         Kuis 5</span></a>
                             </div>
                         </div>
                     </div>
@@ -197,39 +358,68 @@
                             aria-labelledby="menuHeading6" data-bs-parent="#sidebarAccordion">
                             <div class="list-group list-group-flush">
                                 <a href="/modul-http/modul-http"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab6-1') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Modul HTTP</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab6-1') ? 'active' : '' }} {{ $completedStep >= 28 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 28)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         Modul HTTP</span></a>
                                 <a href="/modul-http/fungsi-utama-modul-http"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab6-2') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Fungsi Utama Modul HTTP</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab6-2') ? 'active' : '' }} {{ $completedStep >= 29 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 29)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         Fungsi Utama Modul HTTP</span></a>
                                 <a href="/modul-http/contoh-kode-penggunaan-modul-http"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab6-3') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Contoh kode Penggunaan Modul HTTP</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('bab6-3') ? 'active' : '' }} {{ $completedStep >= 30 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 30)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         Contoh kode Penggunaan Modul HTTP</span></a>
                                 <a href="/modul-http/kuis"
-                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('kuis-6') ? 'active' : '' }}">
-                                    <span><i class="bi bi-dot"></i> Kuis 6</span></a>
+                                    class="py-3 d-flex align-items-center justify-content-between small bg-primary-light text-primary-dark false list-group-item {{ Route::is('kuis-6') ? 'active' : '' }} {{ $completedStep >= 31 ? '' : 'disabled text-muted' }}">
+                                    <span>@if ($completedStep >= 31)
+                                        <i class="bi bi-dot"></i> 
+                                        @else
+                                        <i class="bi bi-lock-fill"></i>
+                                        @endif
+                                         Kuis 6</span></a>
                             </div>
                         </div>
                     </div>
                     <h5 class="fw-semibold text-primary text-center p-3 mb-0">EVALUASI</h5>
                     <div class="border list-group list-group-flush">
                         <a href="/evaluasi"
-                            class="py-3 d-flex align-items-center justify-content-between bg-primary-light text-primary-dark false list-group-item {{ Route::is('dashboard') ? 'active' : '' }}">
-                            <span><i class="bi bi-journal-check"></i></i> EVALUASI</span></a>
+                            class="py-3 d-flex align-items-center justify-content-between bg-primary-light text-primary-dark false list-group-item {{ Route::is('dashboard') ? 'active' : '' }} {{ $completedStep >= 32 ? '' : 'disabled text-muted' }}">
+                            <span>@if ($completedStep >= 32)
+                                <i class="bi bi-dot"></i> 
+                                @else
+                                <i class="bi bi-lock-fill"></i>
+                                @endif
+                                 EVALUASI</span></a>
                     </div>
                 </div>
+                @endif
             </div>
 
         </div>
         <div class="bg-white text-dark border-top col-lg-9">
+            @if (!request()->is('dosen/*') && !request()->is('mahasiswa/*'))
             <div class="p-3 bg-white border-bottom">
                 <div class="progress">
                     <div role="progressbar" class="progress-bar bg-primary progress-bar-striped" aria-valuenow="22"
                         aria-valuemin="0" aria-valuemax="100" style="width: 22%">22%</div>
                 </div>
             </div>
+            @endif
             <div class="p-4 p-lg-5">
                 @yield('container-base-content')
+                @if (!request()->is('dosen/*') && !request()->is('mahasiswa/*'))
                 <div class="w-100 py-5 d-flex align-items-center justify-content-between bottom-0  ">
                     {{-- Tombol Sebelumnya --}}
                     @if ($prevUrl)
@@ -255,6 +445,7 @@
                         </span>
                     @endif
                 </div>
+                @endif
             </div>
         </div>
     </div>

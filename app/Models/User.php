@@ -47,4 +47,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function mahasiswa()
+{
+    return $this->hasMany(User::class, 'class_token', 'class_token');
+}
 }

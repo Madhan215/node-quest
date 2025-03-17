@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -19,24 +20,25 @@ class AuthController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6',
             'role' => 'required|in:dosen,mahasiswa',
-            'class_token' => 'required_if:role,mahasiswa|string|max:255', // class_token wajib untuk mahasiswa
+            'class_token' => 'required_if:role,mahasiswa|string|max:255|exists:users,class_token', 
         ]);
-
-        // dd($request);
-
+        
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
-                ->withInput(); // Supaya data input tidak hilang
+                ->withInput();
         }
-
+        
+        // Jika user adalah dosen, buat class_token random
+        $classToken = $request->role === 'dosen' ? strtoupper(Str::random(6)) : $request->class_token;
+        
         // Simpan user ke database
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => $request->role,
-            'class_token' => $request->role === 'mahasiswa' ? $request->class_token : null, // class_token hanya untuk mahasiswa
+            'class_token' => $classToken,
         ]);
 
         return redirect()->route('login')->with('success', 'Registrasi berhasil! Silakan login.');
@@ -51,7 +53,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/')->with('success', 'Login berhasil!');
+            return redirect()->route('beranda')->with('success', 'Login berhasil!');
         }
 
         return back()->withErrors(['email' => 'Email atau password salah.']);

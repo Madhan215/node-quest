@@ -1,7 +1,6 @@
 @extends('layouts.main')
 
 @section('container')
-
     <div class="p-5 p-sm-5 mb-5 mb-sm-0 flex-grow-1 container">
         <div class="d-md-flex gap-5 align-items-center">
             <img src="{{ asset('img/register.png') }}" alt="Ilustrasi Register" class="img-fluid p-3 d-none d-sm-block"
@@ -17,7 +16,7 @@
                     <div class="mb-3">
                         <label for="name" class="form-label">{{ __('Nama') }}</label>
                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                            name="name" value="{{ old('name') }}" required autofocus>
+                            name="name" value="{{ old('name') }}" required autofocus autocomplete>
                         @error('name')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -37,13 +36,14 @@
                 <div class="mb-3">
                     {{-- Password --}}
                     <div class="mb-3">
-                        <label for="Password" class="form-label fw-semibold">Password</label>
-                <div class="input-group">
-                    <input type="password" name="password" placeholder="Password" class="form-control" id="password-input" required>
-                    <button type="button" class="btn btn-outline-primary" id="toggle-password">
-                        <i class="bi bi-eye-slash" id="toggle-icon"></i>
-                    </button>
-                </div>
+                        <label for="password" class="form-label fw-semibold">Password</label>
+                        <div class="input-group">
+                            <input type="password" name="password" placeholder="Password" class="form-control"
+                                id="password-input" required>
+                            <button type="button" class="btn btn-outline-primary" id="toggle-password">
+                                <i class="bi bi-eye-slash" id="toggle-icon"></i>
+                            </button>
+                        </div>
                         @error('password')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -70,7 +70,7 @@
                     @enderror
                 </div>
                 <div class="mb-3" id="class_token_div" style="display: none">
-                    <label for="token" class="form-label text-gray">
+                    <label for="class_token" class="form-label text-gray">
                         Token Kelas
                         <i class="bi bi-info-circle" data-bs-toggle="tooltip"
                             title="Hubungi dosen untuk meminta token kelas."></i>
@@ -95,13 +95,15 @@
 
     <script>
         function toggleToken() {
-            var siswaRadio = document.getElementById('flexRadioDefault2');
-            var class_token_div = document.getElementById('class_token_div');
+            var mahasiswaRadio = document.getElementById('flexRadioDefault2');
+            var classTokenInput = document.querySelector('input[name="class_token"]');
 
-            if (siswaRadio.checked) {
-                class_token_div.style.display = 'block';
+            if (mahasiswaRadio.checked) {
+                classTokenInput.removeAttribute('disabled');
+                document.getElementById('class_token_div').style.display = 'block';
             } else {
-                class_token_div.style.display = 'none';
+                classTokenInput.setAttribute('disabled', 'disabled');
+                document.getElementById('class_token_div').style.display = 'none';
             }
         }
     </script>
