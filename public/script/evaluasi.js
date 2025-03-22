@@ -258,6 +258,33 @@ function checkAnswers() {
         alertBox.classList.remove("alert-danger");
         document.getElementById("btn_materi_berikutnya").style.display = "block";
         document.getElementById("btn_coba_lagi").style.display = "none";
+
+        fetch('/poinEvaluasi', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrfToken
+            },
+            body: JSON.stringify({
+                step_id: stepId,
+                score: score
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            Swal.fire({
+                title: data.status === "success" ? "Selamat!" : "Oops!",
+                text: data.message,
+                icon: data.status === "success" ? "success" : "error",
+            });
+        })
+        .catch(error => {
+            Swal.fire({
+                title: "Oops!",
+                text: "Terjadi kesalahan, silakan coba lagi.",
+                icon: "error",
+            });
+        });
     } else {
         resultScore.classList.remove("text-success");
         resultScore.classList.add("text-danger");

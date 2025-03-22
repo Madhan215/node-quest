@@ -440,7 +440,7 @@
                     {{-- Tombol Selanjutnya --}}
                     @if ($nextUrl)
                         <a href="{{ $nextUrl }}"
-                            class="d-flex align-items-center py-2 px-3 text-white btn btn-success" id="nextButton">
+                            class="d-flex align-items-center py-2 px-3 text-white btn btn-success {{ $isCompleted ?? true ? '' : 'disabled' }}" id="nextButton">
                             Selanjutnya <i class="bi bi-chevron-double-right"></i>
                         </a>
                     @else

@@ -12,7 +12,7 @@
         }
     </style>
     {{-- <div class="fade text-dark p-3 flex-grow-1 d-flex show align-items-center justify-content-center min-vh-100"> --}}
-
+        @if (!$isCompleted)
     <div id="instructions" class="fade show d-flex align-items-center justify-content-center vh-100">
         <div class="container">
             <div class="g-0 my-auto row justify-content-center">
@@ -56,6 +56,45 @@
             </div>
         </div>
     </div>
+    @else
+        {{-- Disini Kalau sudah selesai --}}
+        <div id="completed" class="text-center show fade d-flex align-items-center justifiy-content-center vh-100">
+            <div class="container">
+                <div class="g-0 my-auto row justify-content-center">
+                    <div class="mx-auto col-lg-7">
+                        <div class="text-center">
+                            <h3 class="text-primary fw-semibold">EVALUASI</h3>
+                        <h5>Dasar-dasar Node.js</h5>
+                            <hr class="my-4">
+                        </div>
+                        <div class="w-100 card">
+                            <div class="p-3 text-center bg-white card-header">
+                                <h5 class="m-0 fw-semibold card-title">HASIL EVALUASI</h5>
+                            </div>
+                            <div class="d-flex flex-column gap-4 card-body">
+                                <div class="text-center">
+                                    <h5>WAKTU SELESAI</h5>
+                                    <p>{{ $dataKuis->completed_at }}</p>
+                                </div>
+                                <div class="text-center">
+                                    <h5>NILAI</h5>
+                                    <div id="completed-score" class="h1 text-success">
+                                        {{ $dataKuis->point_earned }}</div>
+                                </div>
+                                <div role="alert"
+                                class="fade text-center small alert alert-success show">
+                                Kamu telah selesai mengerjakan Evaluasi
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center p-3">
+                        <a href="/mahasiswa/dashboard" class="btn btn-primary">Dashboard</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="container mt-4 fade" id="quiz" style="display: none;">
         <!-- Progress Bar -->
         <div class="progress mb-3">
@@ -174,7 +213,7 @@
                     </div>
                     <div class="w-100 card">
                         <div class="p-3 text-center bg-white card-header">
-                            <h5 class="m-0 fw-semibold card-title">HASIL KUIS</h5>
+                            <h5 class="m-0 fw-semibold card-title">HASIL EVALUASI</h5>
                         </div>
                         <div class="d-flex flex-column gap-4 card-body">
                             <div class="text-center">
@@ -198,13 +237,14 @@
                 </div>
                 <div class="d-flex justify-content-center p-3">
                     <button class="btn btn-outline-primary" onclick="restartQuiz()" id="btn_coba_lagi" style="display: none">Coba Lagi</button>
-                    <a href="/modul-file-system/modul-file-system" class="btn btn-primary" id="btn_materi_berikutnya" style="display: none">KLAIM BADGE</a>
+                    <a href="#" class="btn btn-primary" id="btn_materi_berikutnya" style="display: none">KLAIM BADGE</a>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
+        let stepId = 32;
         // ID nya adalah nomor soal
         // Tipe itu kondisi nanti di container nya
         // question masuk ke dalam soal

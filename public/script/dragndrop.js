@@ -91,9 +91,11 @@ checkBtn.addEventListener("click", () => {
         iconPenjelasan.classList.add("bi-check-circle");
 
         var completeElement = document.getElementById("completeJS");
+        var nextButton = document.getElementById("nextButton");
 
         if (completeElement) {
             completeElement.style.display = "";
+            nextButton.classList.remove("disabled");
         }
 
         fetch("/poinKuis", {

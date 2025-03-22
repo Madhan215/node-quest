@@ -45,19 +45,19 @@
 
         /* Floating Alert */
         .floating-alert {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1050;
-    width: auto;
-    max-width: 400px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    padding: 12px 20px;
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
-}
-
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1050;
+            width: auto;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 12px 20px;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -93,22 +93,22 @@
                                 <a role="button" tabindex="0" class="btn btn-outline-primary" href="/register">DAFTAR</a>
                                 <a role="button" tabindex="0" class="btn btn-primary" href="/login">MASUK</a>
                             @else
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Selamat datang, {{ auth()->user()->name }}
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                                    <li>
-                                        <form action="{{route('logout')}}" method="POST">
-                                            @csrf
-                                            <button type="submit" class="dropdown-item">
-                                                <i class="bi bi-box-arrow-right"></i> Logout
-                                            </button>
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown"
+                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Selamat datang, {{ auth()->user()->name }}
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                        <li>
+                                            <form action="{{ route('logout') }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="dropdown-item">
+                                                    <i class="bi bi-box-arrow-right"></i> Logout
+                                                </button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </li>
                             @endguest
                         </div>
                     </div>
@@ -155,7 +155,6 @@
             </div>
         </div>
         <script>
-            
             document.getElementById("chatbot-toggle").addEventListener("click", function(event) {
                 let chatbox = document.getElementById("chatbot-box");
                 chatbox.style.display = (chatbox.style.display === "block") ? "none" : "block";
@@ -357,7 +356,7 @@
             }
         });
     </script>
-    
+
 
 </body>
 

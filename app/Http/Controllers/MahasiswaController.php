@@ -44,7 +44,9 @@ class MahasiswaController extends Controller
             }else(
                 $progressCompleted = 31
             );
-        }
+        }else(
+            $progressCompleted = $progressNow
+        );
         
 
         // dd($progressCompleted);

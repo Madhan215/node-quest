@@ -260,7 +260,11 @@
                 feedbackBox.innerHTML =
                     "✅ Jawaban benar! Topik yang dipilih sesuai untuk melanjutkan pembelajaran Node.js.";
 
-                    document.getElementById('completeJS').style.display = '';
+                    var completeElement = document.getElementById("completeJS");
+
+        if (completeElement) {
+            completeElement.style.display = "";
+        }
                     
                 fetch('/poinKuis', {
                         method: 'POST',

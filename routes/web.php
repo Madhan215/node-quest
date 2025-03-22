@@ -120,6 +120,7 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(PointController::class)->group(function () {
         Route::post('/poinKuis', 'poinKuis');
         Route::post('/poinKuisNode', 'poinKuisNode');
+        Route::post('/poinEvaluasi', 'poinEvaluasi');
     });
 
 });
