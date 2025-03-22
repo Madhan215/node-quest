@@ -27,52 +27,56 @@ function loadSoal() {
 
     if (bank.input) {
         // Jika soal membutuhkan input, buat input text dan tombol periksa dalam satu container
-const inputGroup = document.createElement("div");
-inputGroup.className = "input-group mt-2"; // Menggunakan Bootstrap untuk sejajarkan elemen
+        const inputGroup = document.createElement("div");
+        inputGroup.className = "input-group mt-2"; // Menggunakan Bootstrap untuk sejajarkan elemen
 
-const inputField = document.createElement("input");
-inputField.type = "text";
-inputField.className = "form-control";
-inputField.placeholder = "Ketik jawaban Anda...";
+        const inputField = document.createElement("input");
+        inputField.type = "text";
+        inputField.className = "form-control";
+        inputField.placeholder = "Ketik jawaban Anda...";
 
-// Tombol Periksa
-const btnPeriksa = document.createElement("button");
-btnPeriksa.textContent = "Periksa";
-btnPeriksa.className = "btn btn-primary";
-btnPeriksa.disabled = true; // Tombol nonaktif saat awal
+        // Tombol Periksa
+        const btnPeriksa = document.createElement("button");
+        btnPeriksa.textContent = "Periksa";
+        btnPeriksa.className = "btn btn-primary";
+        btnPeriksa.disabled = true; // Tombol nonaktif saat awal
 
-// Menambahkan input dan tombol ke dalam div
-inputGroup.appendChild(inputField);
-inputGroup.appendChild(btnPeriksa);
-pilihanContainer.appendChild(inputGroup);
+        // Menambahkan input dan tombol ke dalam div
+        inputGroup.appendChild(inputField);
+        inputGroup.appendChild(btnPeriksa);
+        pilihanContainer.appendChild(inputGroup);
 
-// Aktifkan tombol jika ada teks dalam input
-inputField.addEventListener("input", () => {
-    btnPeriksa.disabled = inputField.value.trim() === "";
-});
+        // Aktifkan tombol jika ada teks dalam input
+        inputField.addEventListener("input", () => {
+            btnPeriksa.disabled = inputField.value.trim() === "";
+        });
 
-// Event saat tombol Periksa ditekan
-btnPeriksa.addEventListener("click", () => {
-    cekJawabanInput(inputField, bank.jawabanBenar);
-    btnPeriksa.disabled = true; // Nonaktifkan tombol setelah ditekan
-});
-
+        // Event saat tombol Periksa ditekan
+        btnPeriksa.addEventListener("click", () => {
+            cekJawabanInput(inputField, bank.jawabanBenar);
+            btnPeriksa.disabled = true; // Nonaktifkan tombol setelah ditekan
+        });
     } else {
         // Jika soal pilihan ganda, tampilkan pilihan jawaban
         bank.pilihan.forEach((pilihan, index) => {
             const pilihanDiv = document.createElement("div");
-            pilihanDiv.className = "fade mb-2 p-2 ps-3 bg-light false alert alert-dark show pilihan";
+            pilihanDiv.className =
+                "fade mb-2 p-2 ps-3 bg-light false alert alert-dark show pilihan";
             pilihanDiv.dataset.index = index;
-            pilihanDiv.style.cursor = 'pointer';
+            pilihanDiv.style.cursor = "pointer";
 
             const pilihanText = document.createElement("p");
             pilihanText.className = "card-text";
-            pilihanText.innerHTML = `<span class="me-2">${String.fromCharCode(65 + index)}.</span> ${pilihan}`;
+            pilihanText.innerHTML = `<span class="me-2">${String.fromCharCode(
+                65 + index
+            )}.</span> ${pilihan}`;
 
             pilihanDiv.appendChild(pilihanText);
             pilihanContainer.appendChild(pilihanDiv);
 
-            pilihanDiv.addEventListener("click", () => pilihJawaban(index, pilihanDiv));
+            pilihanDiv.addEventListener("click", () =>
+                pilihJawaban(index, pilihanDiv)
+            );
         });
     }
 
@@ -89,13 +93,13 @@ function pilihJawaban(index, pilihanDiv) {
 
     penjelasan.hidden = false;
 
-    semuaPilihan.forEach(div => {
+    semuaPilihan.forEach((div) => {
         div.classList.add("bg-light");
         div.classList.add("alert-dark");
     });
 
     // Mengambil jawaban yang dipilih sesuai dengan index
-    jawabanDipilih = bankSoal[currentSoal]['pilihan'][index];
+    jawabanDipilih = bankSoal[currentSoal]["pilihan"][index];
 
     // Jika jawabannya benar maka akan dirubah warna menjadi hijau
     if (index === soal.benar) {
@@ -105,7 +109,7 @@ function pilihJawaban(index, pilihanDiv) {
         btnNext.disabled = false;
 
         // Disable all other options
-        semuaPilihan.forEach(div => {
+        semuaPilihan.forEach((div) => {
             if (div !== pilihanDiv) {
                 div.style.pointerEvents = "none"; // Disable clicking
                 div.style.opacity = "0.5"; // Dim other options
@@ -118,8 +122,7 @@ function pilihJawaban(index, pilihanDiv) {
         iconPenjelasan.classList.remove("bi-x-circle");
         iconPenjelasan.classList.add("bi-check-circle");
         ketHasil.innerHTML = "BENAR";
-        ketPenjelasan.innerHTML = bankSoal[currentSoal]['penjelasan'];
-
+        ketPenjelasan.innerHTML = bankSoal[currentSoal]["penjelasan"];
     } else {
         pilihanDiv.classList.remove("bg-light");
         pilihanDiv.classList.remove("alert-dark");
@@ -144,10 +147,10 @@ function pilihJawaban(index, pilihanDiv) {
 function cekJawabanInput(inputField, jawabanBenar) {
     penjelasan.hidden = false;
     const jawabanUser = inputField.value.trim().toLowerCase(); // Normalisasi input
-    if (jawabanBenar.some(jawaban => jawaban.toLowerCase() === jawabanUser)) {
+    if (jawabanBenar.some((jawaban) => jawaban.toLowerCase() === jawabanUser)) {
         btnNext.disabled = false;
         ketHasil.innerHTML = "BENAR";
-        ketPenjelasan.innerHTML = bankSoal[currentSoal]['penjelasan'];
+        ketPenjelasan.innerHTML = bankSoal[currentSoal]["penjelasan"];
 
         alertPenjelasan.classList.remove("alert-danger");
         alertPenjelasan.classList.add("alert-success");
@@ -170,11 +173,40 @@ btnNext.addEventListener("click", () => {
         penjelasan.hidden = true;
         loadSoal();
     } else {
-        Swal.fire({
-            title: "Selamat!",
-            text: "Anda telah menyelesaikan semua soal aktivitas!",
-            icon: "success",
-        });
+        var completeElement = document.getElementById("completeJS");
+
+        if (completeElement) {
+            completeElement.style.display = "";
+        }
+        
+        fetch("/poinKuis", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": csrfToken,
+            },
+            body: JSON.stringify({
+                step_id: stepId,
+            }),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                Swal.fire({
+                    title: data.status === "success" ? "Selamat!" : "Oops!",
+                    text: data.message,
+                    icon: data.status === "success" ? "success" : "error",
+                });
+            })
+            .catch((error) => {
+                Swal.fire({
+                    title: "Oops!",
+                    text: "Terjadi kesalahan, silakan coba lagi.",
+                    icon: "error",
+                });
+            });
+
+        // Dapat errornya karena ada table timestampe, yang seharunya tidak perlu diisi tapi mau diisi (BUKAN)
+        // KARENA DD, jadi ini kan hanya menerima respon JSON, jadi DD itu tidak bisa karena dia dalam bentuk HTML
     }
 });
 

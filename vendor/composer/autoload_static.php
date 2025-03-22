@@ -189,7 +189,6 @@ class ComposerStaticInitb31d52e0ef877f1149e22273da535fec
         'F' => 
         array (
             'Fruitcake\\Cors\\' => 15,
-            'Firebase\\JWT\\' => 13,
             'Firebase\\Auth\\Token\\' => 20,
             'Fig\\Http\\Message\\' => 17,
             'Faker\\' => 6,
@@ -637,10 +636,6 @@ class ComposerStaticInitb31d52e0ef877f1149e22273da535fec
         array (
             0 => __DIR__ . '/..' . '/fruitcake/php-cors/src',
         ),
-        'Firebase\\JWT\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
-        ),
         'Firebase\\Auth\\Token\\' => 
         array (
             0 => __DIR__ . '/..' . '/kreait/firebase-tokens/src/Firebase/Auth/Token',
@@ -728,9 +723,14 @@ class ComposerStaticInitb31d52e0ef877f1149e22273da535fec
         'App\\Http\\Controllers\\ContentBab6Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/ContentBab6Controller.php',
         'App\\Http\\Controllers\\ContentController' => __DIR__ . '/../..' . '/app/Http/Controllers/ContentController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\DosenController' => __DIR__ . '/../..' . '/app/Http/Controllers/DosenController.php',
         'App\\Http\\Controllers\\EvaluasiController' => __DIR__ . '/../..' . '/app/Http/Controllers/EvaluasiController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\MahasiswaController' => __DIR__ . '/../..' . '/app/Http/Controllers/MahasiswaController.php',
+        'App\\Http\\Controllers\\PointController' => __DIR__ . '/../..' . '/app/Http/Controllers/PointController.php',
         'App\\Http\\Controllers\\TerminalController' => __DIR__ . '/../..' . '/app/Http/Controllers/TerminalController.php',
+        'App\\Models\\Point' => __DIR__ . '/../..' . '/app/Models/Point.php',
+        'App\\Models\\Progress' => __DIR__ . '/../..' . '/app/Models/Progress.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\FirebaseServiceProvider' => __DIR__ . '/../..' . '/app/Providers/FirebaseServiceProvider.php',
@@ -853,6 +853,7 @@ class ComposerStaticInitb31d52e0ef877f1149e22273da535fec
         'Cron\\MinutesField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
+        'Database\\Seeders\\ChapterSeeder' => __DIR__ . '/../..' . '/database/seeders/ChapterSeeder.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
         'DateError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateError.php',
         'DateException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateException.php',
@@ -1590,14 +1591,6 @@ class ComposerStaticInitb31d52e0ef877f1149e22273da535fec
         'Firebase\\Auth\\Token\\TenantAwareGenerator' => __DIR__ . '/..' . '/kreait/firebase-tokens/src/Firebase/Auth/Token/TenantAwareGenerator.php',
         'Firebase\\Auth\\Token\\TenantAwareVerifier' => __DIR__ . '/..' . '/kreait/firebase-tokens/src/Firebase/Auth/Token/TenantAwareVerifier.php',
         'Firebase\\Auth\\Token\\Verifier' => __DIR__ . '/..' . '/kreait/firebase-tokens/src/Firebase/Auth/Token/Verifier.php',
-        'Firebase\\JWT\\BeforeValidException' => __DIR__ . '/..' . '/firebase/php-jwt/src/BeforeValidException.php',
-        'Firebase\\JWT\\CachedKeySet' => __DIR__ . '/..' . '/firebase/php-jwt/src/CachedKeySet.php',
-        'Firebase\\JWT\\ExpiredException' => __DIR__ . '/..' . '/firebase/php-jwt/src/ExpiredException.php',
-        'Firebase\\JWT\\JWK' => __DIR__ . '/..' . '/firebase/php-jwt/src/JWK.php',
-        'Firebase\\JWT\\JWT' => __DIR__ . '/..' . '/firebase/php-jwt/src/JWT.php',
-        'Firebase\\JWT\\JWTExceptionWithPayloadInterface' => __DIR__ . '/..' . '/firebase/php-jwt/src/JWTExceptionWithPayloadInterface.php',
-        'Firebase\\JWT\\Key' => __DIR__ . '/..' . '/firebase/php-jwt/src/Key.php',
-        'Firebase\\JWT\\SignatureInvalidException' => __DIR__ . '/..' . '/firebase/php-jwt/src/SignatureInvalidException.php',
         'Fruitcake\\Cors\\CorsService' => __DIR__ . '/..' . '/fruitcake/php-cors/src/CorsService.php',
         'Fruitcake\\Cors\\Exceptions\\InvalidOptionException' => __DIR__ . '/..' . '/fruitcake/php-cors/src/Exceptions/InvalidOptionException.php',
         'GPBMetadata\\ApiCore\\Testing\\Mocks' => __DIR__ . '/..' . '/google/gax/metadata/ApiCore/Testing/Mocks.php',

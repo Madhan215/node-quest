@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Point;
 use App\Models\Progress;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -18,6 +19,11 @@ class ContentBab5Controller extends Controller
         $userId = auth()->id();
         $stepId = 24;
 
+        // Cek Aktivitas yang Complete
+        $isCompleted = Point::where('user_id', $userId)
+                        ->where('step_id', $stepId)
+                        ->exists();
+
         // Cek apakah progress sudah ada atau buat baru
         $progress = Progress::firstOrNew([
             'user_id' => $userId,
@@ -31,7 +37,7 @@ class ContentBab5Controller extends Controller
             $progress->save();
         }
         
-        return view('content.bab-5.modul-file-system',compact('prevUrl','nextUrl'));
+        return view('content.bab-5.modul-file-system',compact('prevUrl','nextUrl', 'isCompleted'));
     }
     public function fungsiDanOperasiDasarModulFileSystem()
     {
@@ -42,6 +48,11 @@ class ContentBab5Controller extends Controller
         $userId = auth()->id();
         $stepId = 25;
 
+        // Cek Aktivitas yang Complete
+        $isCompleted = Point::where('user_id', $userId)
+                        ->where('step_id', $stepId)
+                        ->exists();
+
         // Cek apakah progress sudah ada atau buat baru
         $progress = Progress::firstOrNew([
             'user_id' => $userId,
@@ -55,7 +66,7 @@ class ContentBab5Controller extends Controller
             $progress->save();
         }
 
-        return view('content.bab-5.fungsi-dan-operasi-dasar-modul-file-system',compact('prevUrl','nextUrl'));
+        return view('content.bab-5.fungsi-dan-operasi-dasar-modul-file-system',compact('prevUrl','nextUrl', 'isCompleted'));
     }
     public function contohKodeModuleFileSystem()
     {
@@ -66,6 +77,11 @@ class ContentBab5Controller extends Controller
         $userId = auth()->id();
         $stepId = 26;
 
+        // Cek Aktivitas yang Complete
+        $isCompleted = Point::where('user_id', $userId)
+                        ->where('step_id', $stepId)
+                        ->exists();
+
         // Cek apakah progress sudah ada atau buat baru
         $progress = Progress::firstOrNew([
             'user_id' => $userId,
@@ -79,13 +95,22 @@ class ContentBab5Controller extends Controller
             $progress->save();
         }
 
-        return view('content.bab-5.contoh-kode-modul-file-system',compact('prevUrl','nextUrl'));
+        return view('content.bab-5.contoh-kode-modul-file-system',compact('prevUrl','nextUrl', 'isCompleted'));
     }
     public function kuis(){
 
         // Simpan progress otomatis
         $userId = auth()->id();
         $stepId = 27;
+
+        // Cek Aktivitas yang Complete
+        $isCompleted = Point::where('user_id', $userId)
+                        ->where('step_id', $stepId)
+                        ->exists();
+
+                        // Data Kuis
+        $dataKuis = Point::where('user_id', $userId)
+        ->where('step_id', $stepId)->first();
 
         // Cek apakah progress sudah ada atau buat baru
         $progress = Progress::firstOrNew([
@@ -100,6 +125,6 @@ class ContentBab5Controller extends Controller
             $progress->save();
         }
         
-        return view('content.bab-5.kuis-5');
+        return view('content.bab-5.kuis-5', compact('isCompleted', 'dataKuis'));
     }
 }

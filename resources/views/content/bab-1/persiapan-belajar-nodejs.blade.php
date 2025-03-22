@@ -193,15 +193,25 @@
     <p class="lh-lg mt-2">
         Dengan pemahaman terhadap konsep tersebut, Anda akan siap untuk mengembangkan kemampuan di Node.js.
     </p>
-    
+
     <div class="p-0 p-md-3 my-4 my-md-2">
         <div class="card">
-            <div class="p-3 d-flex align-items-center card-header">
+            <div class="p-3 d-flex align-items-center justify-content-between card-header">
                 <div class="mb-0 h6 fw-semibold card-title">Aktivitas 1.3</div>
+                @if ($isCompleted)
+                    <button class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Kamu telah menyelesaikan aktivitas ini, mengerjakannya tidak mempengaruhi perolehan poinmu">
+                        <i class="bi bi-check2"></i> Completed
+                    </button>
+                @else
+                    <button class="btn btn-success" style="display: none" id="completeJS"><i class="bi bi-check2"></i>
+                        Completed</button>
+                @endif
             </div>
             <div class="card-body">
                 <p class="mb-3 card-text">
-                    Untuk menguji pemahaman kamu pada materi diatas, tentukan topik mana saja yang perlu dipelajari dalam melanjutkan pembelajaran Node.js. Beri centang (<i class="bi bi-check"></i>) pada topik yang sesuai.
+                    Untuk menguji pemahaman kamu pada materi diatas, tentukan topik mana saja yang perlu dipelajari dalam
+                    melanjutkan pembelajaran Node.js. Beri centang (<i class="bi bi-check"></i>) pada topik yang sesuai.
                 </p>
                 <form id="quizForm">
                     <div class="form-check">
@@ -224,15 +234,16 @@
                         <input class="form-check-input" type="checkbox" id="json">
                         <label class="form-check-label" for="json">JSON</label>
                     </div>
-            
+
                     <button type="button" class="btn btn-success mt-3" id="checkBtn">Periksa</button>
-            
+
                     <div class="alert mt-3" id="feedbackBox"></div>
                 </form>
             </div>
         </div>
     </div>
     <script>
+        let stepId = 3;
         document.getElementById('checkBtn').addEventListener('click', () => {
             // Topik yang benar dalam Node.js
             const correctTopics = ["tipeData", "array", "variabel", "json"];
@@ -246,10 +257,40 @@
 
             if (JSON.stringify(selectedTopics.sort()) === JSON.stringify(correctTopics.sort())) {
                 feedbackBox.className = "alert alert-success mt-3";
-                feedbackBox.innerHTML = "✅ Jawaban benar! Topik yang dipilih sesuai untuk melanjutkan pembelajaran Node.js.";
+                feedbackBox.innerHTML =
+                    "✅ Jawaban benar! Topik yang dipilih sesuai untuk melanjutkan pembelajaran Node.js.";
+
+                    document.getElementById('completeJS').style.display = '';
+                    
+                fetch('/poinKuis', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': csrfToken
+                        },
+                        body: JSON.stringify({
+                            step_id: stepId
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        Swal.fire({
+                            title: data.status === "success" ? "Selamat!" : "Oops!",
+                            text: data.message,
+                            icon: data.status === "success" ? "success" : "error",
+                        });
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            title: "Oops!",
+                            text: "Terjadi kesalahan, silakan coba lagi.",
+                            icon: "error",
+                        });
+                    });
             } else {
                 feedbackBox.className = "alert alert-danger mt-3";
-                feedbackBox.innerHTML = "❌ Jawaban kurang tepat. Topik yang sesuai: Tipe Data, Array, Variabel, JSON.";
+                feedbackBox.innerHTML =
+                    "❌ Jawaban kurang tepat. Topik yang sesuai: Tipe Data, Array, Variabel, JSON.";
                 setTimeout(() => {
                     feedbackBox.classList.add('fade'); // Tambahkan fade agar efek hilangnya smooth
                     feedbackBox.classList.remove('show'); // Hilangkan elemen
@@ -260,7 +301,7 @@
             feedbackBox.classList.remove('fade'); // Hapus 
 
             // Sembunyikan feedback setelah 5 detik
-            
+
         });
     </script>
 @endsection

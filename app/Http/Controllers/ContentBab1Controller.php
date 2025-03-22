@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Point;
 use App\Models\Progress;
 use Illuminate\Http\Request;
 
@@ -17,6 +18,11 @@ class ContentBab1Controller extends Controller
         $userId = auth()->id();
         $stepId = 1;
 
+        // Cek Aktivitas yang Complete
+        $isCompleted = Point::where('user_id', $userId)
+                        ->where('step_id', $stepId)
+                        ->exists();
+
         // Cek apakah progress sudah ada atau buat baru
         $progress = Progress::firstOrNew([
             'user_id' => $userId,
@@ -30,7 +36,7 @@ class ContentBab1Controller extends Controller
             $progress->save();
         }
 
-        return view('content.bab-1.javascript-runtime-nodejs', compact('prevUrl', 'nextUrl'));
+        return view('content.bab-1.javascript-runtime-nodejs', compact('prevUrl', 'nextUrl', 'isCompleted'));
     }
     public function pemrogramanSisiKlienDanSisiServer()
     {
@@ -41,6 +47,11 @@ class ContentBab1Controller extends Controller
         $userId = auth()->id();
         $stepId = 2;
 
+        // Cek Aktivitas yang Complete
+        $isCompleted = Point::where('user_id', $userId)
+                        ->where('step_id', $stepId)
+                        ->exists();
+
         // Cek apakah progress sudah ada atau buat baru
         $progress = Progress::firstOrNew([
             'user_id' => $userId,
@@ -54,7 +65,7 @@ class ContentBab1Controller extends Controller
             $progress->save();
         }
 
-        return view('content.bab-1.pemrograman-sisi-klien-dan-sisi-server', compact('prevUrl', 'nextUrl'));
+        return view('content.bab-1.pemrograman-sisi-klien-dan-sisi-server', compact('prevUrl', 'nextUrl', 'isCompleted'));
     }
     public function persiapanBelajarNodejs()
     {
@@ -65,6 +76,11 @@ class ContentBab1Controller extends Controller
         $userId = auth()->id();
         $stepId = 3;
 
+        // Cek Aktivitas yang Complete
+        $isCompleted = Point::where('user_id', $userId)
+                        ->where('step_id', $stepId)
+                        ->exists();
+
         // Cek apakah progress sudah ada atau buat baru
         $progress = Progress::firstOrNew([
             'user_id' => $userId,
@@ -78,7 +94,7 @@ class ContentBab1Controller extends Controller
             $progress->save();
         }
 
-        return view('content.bab-1.persiapan-belajar-nodejs', compact('prevUrl', 'nextUrl'));
+        return view('content.bab-1.persiapan-belajar-nodejs', compact('prevUrl', 'nextUrl', 'isCompleted'));
     }
 
     public function pemrogramanSinkronusDanAsinkronus()
@@ -90,6 +106,11 @@ class ContentBab1Controller extends Controller
         $userId = auth()->id();
         $stepId = 4;
 
+        // Cek Aktivitas yang Complete
+        $isCompleted = Point::where('user_id', $userId)
+                        ->where('step_id', $stepId)
+                        ->exists();
+
         // Cek apakah progress sudah ada atau buat baru
         $progress = Progress::firstOrNew([
             'user_id' => $userId,
@@ -103,7 +124,7 @@ class ContentBab1Controller extends Controller
             $progress->save();
         }
 
-        return view('content.bab-1.pemrograman-sinkronus-dan-asinkronus', compact('prevUrl', 'nextUrl'));
+        return view('content.bab-1.pemrograman-sinkronus-dan-asinkronus', compact('prevUrl', 'nextUrl', 'isCompleted'));
     }
     public function hubunganNodejsDenganBrowser()
     {
@@ -114,6 +135,11 @@ class ContentBab1Controller extends Controller
         $userId = auth()->id();
         $stepId = 5;
 
+        // Cek Aktivitas yang Complete
+        $isCompleted = Point::where('user_id', $userId)
+                        ->where('step_id', $stepId)
+                        ->exists();
+
         // Cek apakah progress sudah ada atau buat baru
         $progress = Progress::firstOrNew([
             'user_id' => $userId,
@@ -127,7 +153,7 @@ class ContentBab1Controller extends Controller
             $progress->save();
         }
 
-        return view('content.bab-1.hubungan-nodejs-dengan-browser', compact('prevUrl', 'nextUrl'));
+        return view('content.bab-1.hubungan-nodejs-dengan-browser', compact('prevUrl', 'nextUrl', 'isCompleted'));
     }
     public function engineV8()
     {
@@ -138,6 +164,11 @@ class ContentBab1Controller extends Controller
         $userId = auth()->id();
         $stepId = 6;
 
+        // Cek Aktivitas yang Complete
+        $isCompleted = Point::where('user_id', $userId)
+                        ->where('step_id', $stepId)
+                        ->exists();
+
         // Cek apakah progress sudah ada atau buat baru
         $progress = Progress::firstOrNew([
             'user_id' => $userId,
@@ -151,7 +182,7 @@ class ContentBab1Controller extends Controller
             $progress->save();
         }
 
-        return view('content.bab-1.engine-v8', compact('prevUrl', 'nextUrl'));
+        return view('content.bab-1.engine-v8', compact('prevUrl', 'nextUrl', 'isCompleted'));
     }
     public function installasiNodejs()
     {
@@ -162,6 +193,11 @@ class ContentBab1Controller extends Controller
         $userId = auth()->id();
         $stepId = 7;
 
+        // Cek Aktivitas yang Complete
+        $isCompleted = Point::where('user_id', $userId)
+                        ->where('step_id', $stepId)
+                        ->exists();
+
         // Cek apakah progress sudah ada atau buat baru
         $progress = Progress::firstOrNew([
             'user_id' => $userId,
@@ -175,7 +211,7 @@ class ContentBab1Controller extends Controller
             $progress->save();
         }
 
-        return view('content.bab-1.installasi-nodejs', compact('prevUrl', 'nextUrl'));
+        return view('content.bab-1.installasi-nodejs', compact('prevUrl', 'nextUrl', 'isCompleted'));
     }
     public function replReadEvaluatePrintLoop()
     {
@@ -186,6 +222,11 @@ class ContentBab1Controller extends Controller
         $userId = auth()->id();
         $stepId = 8;
 
+        // Cek Aktivitas yang Complete
+        $isCompleted = Point::where('user_id', $userId)
+                        ->where('step_id', $stepId)
+                        ->exists();
+
         // Cek apakah progress sudah ada atau buat baru
         $progress = Progress::firstOrNew([
             'user_id' => $userId,
@@ -199,7 +240,7 @@ class ContentBab1Controller extends Controller
             $progress->save();
         }
 
-        return view('content.bab-1.repl-read-evaluate-print-loop', compact('prevUrl', 'nextUrl'));
+        return view('content.bab-1.repl-read-evaluate-print-loop', compact('prevUrl', 'nextUrl', 'isCompleted'));
     }
     public function membuatProjekNodejs()
     {
@@ -231,6 +272,17 @@ class ContentBab1Controller extends Controller
         $userId = auth()->id();
         $stepId = 10;
 
+        // Cek Aktivitas yang Complete
+        $isCompleted = Point::where('user_id', $userId)
+                        ->where('step_id', $stepId)
+                        ->exists();
+
+        // Data Kuis
+        $dataKuis = Point::where('user_id', $userId)
+        ->where('step_id', $stepId)->first();
+
+        // dd($dataKuis->point_earned);
+
         // Cek apakah progress sudah ada atau buat baru
         $progress = Progress::firstOrNew([
             'user_id' => $userId,
@@ -244,6 +296,6 @@ class ContentBab1Controller extends Controller
             $progress->save();
         }
         
-        return view('content.bab-1.kuis-1');
+        return view('content.bab-1.kuis-1',compact('isCompleted', 'dataKuis'));
     }
 }

@@ -27,7 +27,7 @@
             Kalau sudah login, arahkan ke materi terakhir yang di akses (Membuat riwayat akses halaman) --}}
                 @if (auth()->guest() || auth()->user()->role == 'mahasiswa')
                     <a role="button" tabindex="0" class="btn btn-primary btn-lg"
-                        href="/pengenalan/javascript-runtime-nodejs">
+                        href="/mahasiswa/dashboard">
                         MULAI BELAJAR
                     </a>
                 @endif

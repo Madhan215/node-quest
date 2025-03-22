@@ -12,57 +12,101 @@
         }
     </style>
     {{-- <div class="fade text-dark p-3 flex-grow-1 d-flex show align-items-center justify-content-center min-vh-100"> --}}
-
-    <div id="instructions" class="fade show d-flex align-items-center justify-content-center vh-100">
-        <div class="container">
-            <div class="g-0 my-auto row justify-content-center">
-                <div class="mx-auto col-lg-7">
-                    <div class="text-center">
-                        <h3 class="text-primary fw-semibold">KUIS 1</h3>
-                        <h5>Pengenalan Node.js</h5>
-                        <hr class="my-4">
-                    </div>
-                    <div class="w-100 card">
-                        <div class="p-3 text-center bg-white card-header">
-                            <h5 class="m-0 fw-semibold card-title">Petunjuk Pengerjaan Kuis</h5>
+    @if (!$isCompleted)
+        <div id="instructions" class="fade show d-flex align-items-center justify-content-center vh-100">
+            <div class="container">
+                <div class="g-0 my-auto row justify-content-center">
+                    <div class="mx-auto col-lg-7">
+                        <div class="text-center">
+                            <h3 class="text-primary fw-semibold">KUIS 1</h3>
+                            <h5>Pengenalan Node.js</h5>
+                            <hr class="my-4">
                         </div>
-                        <div class="small card-body">
-                            <ol class="mb-0">
-                                <li>
-                                    <p class="mb-2 card-text">Terdapat 10 soal pada kuis ini. Untuk memulai mengerjakan
-                                        kuis, tekan tombol "MULAI".
+                        <div class="w-100 card">
+                            <div class="p-3 text-center bg-white card-header">
+                                <h5 class="m-0 fw-semibold card-title">Petunjuk Pengerjaan Kuis</h5>
+                            </div>
+                            <div class="small card-body">
+                                <ol class="mb-0">
+                                    <li>
+                                        <p class="mb-2 card-text">Terdapat 10 soal pada kuis ini. Untuk memulai mengerjakan
+                                            kuis, tekan tombol "MULAI".
 
-                                    </p>
-                                </li>
-                                <li>
-                                    <p class="mb-2 card-text">Waktu pengerjaan soal adalah 30 menit, terdapat timer pada
-                                        bagian kanan atas.</p>
-                                </li>
-                                <li>
-                                    <p class="mb-2 card-text">Laman kuis terbagi menjadi dua sisi. Pada sisi bagian kiri
-                                        terdapat soal. Pada sisi bagian kanan terdapat nomor soal dan tombol "SELESAI".
-                                    </p>
-                                </li>
-                                <li>
-                                    <p class="mb-2 card-text">Jika sudah selesai tekan tombol "SELESAI". Jika waktu
-                                        pengerjaan soal habis maka laman soal akan otomatis
-                                        tertutup yang akan langsung diarahkan ke halaman hasil.</p>
-                                </li>
-                                <li>
-                                    <p class="mb-2 card-text">Jika keluar ketika sedang mengerjakan kuis, semua jawaban yang
-                                        sudah dikerjakan tidak akan disimpan dan harus menjawab ulang dari awal.</p>
-                                </li>
-                            </ol>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="mb-2 card-text">Waktu pengerjaan soal adalah 30 menit, terdapat timer pada
+                                            bagian kanan atas.</p>
+                                    </li>
+                                    <li>
+                                        <p class="mb-2 card-text">Laman kuis terbagi menjadi dua sisi. Pada sisi bagian kiri
+                                            terdapat soal. Pada sisi bagian kanan terdapat nomor soal dan tombol "SELESAI".
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="mb-2 card-text">Jika sudah selesai tekan tombol "SELESAI". Jika waktu
+                                            pengerjaan soal habis maka laman soal akan otomatis
+                                            tertutup yang akan langsung diarahkan ke halaman hasil.</p>
+                                    </li>
+                                    <li>
+                                        <p class="mb-2 card-text">Jika keluar ketika sedang mengerjakan kuis, semua jawaban
+                                            yang
+                                            sudah dikerjakan tidak akan disimpan dan harus menjawab ulang dari awal.</p>
+                                    </li>
+                                    <li>
+                                        <p class="mb-2 card-text">Jika kuis telah memenuhi KKM, maka kuis tidak dapat dikerjakan lagi.</p>
+                                    </li>
+                                </ol>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="text-center p-3">
-                    <button type="button" class="me-2 btn btn-primary" id="mulai-kuis" onclick="startQuiz()">MULAI</button>
-                    <a href="{{ url()->previous() }}" class="btn btn-outline-primary">KEMBALI</a>
+                    <div class="text-center p-3">
+                        <button type="button" class="me-2 btn btn-primary" id="mulai-kuis"
+                            onclick="startQuiz()">MULAI</button>
+                        <a href="{{ url()->previous() }}" class="btn btn-outline-primary">KEMBALI</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    @else
+        {{-- Disini Kalau sudah selesai --}}
+        <div id="completed" class="text-center show fade d-flex align-items-center justifiy-content-center vh-100">
+            <div class="container">
+                <div class="g-0 my-auto row justify-content-center">
+                    <div class="mx-auto col-lg-7">
+                        <div class="text-center">
+                            <h3 class="text-primary fw-semibold">KUIS 1</h3>
+                            <h5>Pengenalan Node.js</h5>
+                            <hr class="my-4">
+                        </div>
+                        <div class="w-100 card">
+                            <div class="p-3 text-center bg-white card-header">
+                                <h5 class="m-0 fw-semibold card-title">HASIL KUIS</h5>
+                            </div>
+                            <div class="d-flex flex-column gap-4 card-body">
+                                <div class="text-center">
+                                    <h5>WAKTU SELESAI</h5>
+                                    <p>{{ $dataKuis->completed_at }}</p>
+                                </div>
+                                <div class="text-center">
+                                    <h5>NILAI</h5>
+                                    <div id="completed-score" class="h1 text-success">
+                                        {{ ($dataKuis->point_earned / 2) * 10 }}</div>
+                                </div>
+                                <div role="alert"
+                                class="fade text-center small alert alert-success show">
+                                Kamu telah selesai mengerjakan Kuis ini, silahkan mempelajari materi berikutnya
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center p-3">
+                        <a href="/modul/pengertian-modul-pada-nodejs" class="btn btn-primary">Materi Berikutnya</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="container mt-4 fade" id="quiz" style="display: none;">
         <!-- Progress Bar -->
         <div class="progress mb-3">
@@ -181,14 +225,17 @@
 
                 </div>
                 <div class="d-flex justify-content-center p-3">
-                    <button class="btn btn-outline-primary" onclick="restartQuiz()" id="btn_coba_lagi" style="display: none">Coba Lagi</button>
-                    <a href="/modul/pengertian-modul-pada-nodejs" class="btn btn-primary" id="btn_materi_berikutnya" style="display: none">Materi Berikutnya</a>
+                    <button class="btn btn-outline-primary" onclick="restartQuiz()" id="btn_coba_lagi"
+                        style="display: none">Coba Lagi</button>
+                    <a href="/modul/pengertian-modul-pada-nodejs" class="btn btn-primary" id="btn_materi_berikutnya"
+                        style="display: none">Materi Berikutnya</a>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
+        let stepId = 10;
         // ID nya adalah nomor soal
         // Tipe itu kondisi nanti di container nya
         // question masuk ke dalam soal
@@ -319,5 +366,5 @@
 
         ];
     </script>
-    <script src="{{asset('script/kuis.js')}}"></script>
+    <script src="{{ asset('script/kuis.js') }}"></script>
 @endsection

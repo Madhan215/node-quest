@@ -12,7 +12,7 @@
         }
     </style>
     {{-- <div class="fade text-dark p-3 flex-grow-1 d-flex show align-items-center justify-content-center min-vh-100"> --}}
-
+        @if (!$isCompleted)
     <div id="instructions" class="fade show d-flex align-items-center justify-content-center vh-100">
         <div class="container">
             <div class="g-0 my-auto row justify-content-center">
@@ -52,6 +52,9 @@
                                     <p class="mb-2 card-text">Jika keluar ketika sedang mengerjakan kuis, semua jawaban yang
                                         sudah dikerjakan tidak akan disimpan dan harus menjawab ulang dari awal.</p>
                                 </li>
+                                <li>
+                                    <p class="mb-2 card-text">Jika kuis telah memenuhi KKM, maka kuis tidak dapat dikerjakan lagi.</p>
+                                </li>
                             </ol>
                         </div>
                     </div>
@@ -63,6 +66,45 @@
             </div>
         </div>
     </div>
+    @else
+        {{-- Disini Kalau sudah selesai --}}
+        <div id="completed" class="text-center show fade d-flex align-items-center justifiy-content-center vh-100">
+            <div class="container">
+                <div class="g-0 my-auto row justify-content-center">
+                    <div class="mx-auto col-lg-7">
+                        <div class="text-center">
+                            <h3 class="text-primary fw-semibold">KUIS 3</h3>
+                        <h5>NPM</h5>
+                            <hr class="my-4">
+                        </div>
+                        <div class="w-100 card">
+                            <div class="p-3 text-center bg-white card-header">
+                                <h5 class="m-0 fw-semibold card-title">HASIL KUIS</h5>
+                            </div>
+                            <div class="d-flex flex-column gap-4 card-body">
+                                <div class="text-center">
+                                    <h5>WAKTU SELESAI</h5>
+                                    <p>{{ $dataKuis->completed_at }}</p>
+                                </div>
+                                <div class="text-center">
+                                    <h5>NILAI</h5>
+                                    <div id="completed-score" class="h1 text-success">
+                                        {{ ($dataKuis->point_earned / 2) * 10 }}</div>
+                                </div>
+                                <div role="alert"
+                                class="fade text-center small alert alert-success show">
+                                Kamu telah selesai mengerjakan Kuis ini, silahkan mempelajari materi berikutnya
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center p-3">
+                        <a href="/modul-event/modul-event" class="btn btn-primary">Materi Berikutnya</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="container mt-4 fade" id="quiz" style="display: none;">
         <!-- Progress Bar -->
         <div class="progress mb-3">
@@ -74,7 +116,7 @@
             <div class="col-md-9 order-1 order-md-0 mb-3">
                 <div class="card">
                     <div class="d-flex justify-content-between card-header">
-                        <div class="fw-semibold">KUIS 2</div>
+                        <div class="fw-semibold">KUIS 3</div>
                         <div class="text-danger fw-semibold"><i class="bi bi-stopwatch"></i> <span
                                 id="timer">30:00</span></div>
                     </div>
@@ -189,6 +231,7 @@
     </div>
 
     <script>
+        let stepId = 19;
         // ID nya adalah nomor soal
         // Tipe itu kondisi nanti di container nya
         // question masuk ke dalam soal

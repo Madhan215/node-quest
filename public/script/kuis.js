@@ -1,4 +1,5 @@
 // Disini mulai script nya
+
 let currentQuestionIndex = 0;
 let score = 0;
 
@@ -258,6 +259,35 @@ function checkAnswers() {
         alertBox.classList.remove("alert-danger");
         document.getElementById("btn_materi_berikutnya").style.display = "block";
         document.getElementById("btn_coba_lagi").style.display = "none";
+
+        // Poin sesungguhnya untuk pengerjaan kuis
+    // document.getElementById('completeJS').style.display = '';
+    fetch('/poinKuisNode', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': csrfToken
+        },
+        body: JSON.stringify({
+            step_id: stepId,
+            score: correctAnswers * 2
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        Swal.fire({
+            title: data.status === "success" ? "Selamat!" : "Oops!",
+            text: data.message,
+            icon: data.status === "success" ? "success" : "error",
+        });
+    })
+    .catch(error => {
+        Swal.fire({
+            title: "Oops!",
+            text: "Terjadi kesalahan, silakan coba lagi.",
+            icon: "error",
+        });
+    });
     } else {
         resultScore.classList.remove("text-success");
         resultScore.classList.add("text-danger");
@@ -293,6 +323,8 @@ function finishQuiz() {
     hideElement("quiz");
     setTimeout(() => showElement("result"), 500);
     document.getElementById("score").innerText = score;
+
+    
 }
 
 function restartQuiz() {

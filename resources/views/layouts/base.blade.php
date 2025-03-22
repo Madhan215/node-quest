@@ -32,10 +32,14 @@
                     <a href="/mahasiswa/dashboard"
                         class="py-3 d-flex align-items-center justify-content-between bg-primary-light text-primary-dark false list-group-item {{ Route::is('mahasiswa.dashboard') ? 'active' : '' }}">
                         <span><i class="bi bi-speedometer"></i> Dashboard</span></a>
+                    <a href="/mahasiswa/leaderboard"
+                        class="py-3 d-flex align-items-center justify-content-between bg-primary-light text-primary-dark false list-group-item {{ Route::is('mahasiswa.leaderboard') ? 'active' : '' }}">
+                        <span><i class="bi bi-list-ol"></i> Leaderboard</span></a>
                     {{-- <a href="#"
                         class="py-3 d-flex align-items-center justify-content-between bg-primary-light text-primary-dark false list-group-item {{ Route::is('dashboard') ? 'active' : '' }}">
                         <span><i class="bi bi-journal-check"></i> Data Nilai</span></a> --}}
                 </div>
+
                 <h5 class="fw-semibold text-primary text-center p-3 mb-0">DAFTAR MATERI</h5>
                 <div class="accordion vh-100 overflow-auto" id="sidebarAccordion">
                     <div class="accordion-item" id="menuHeading1">
@@ -410,12 +414,12 @@
         </div>
         <div class="bg-white text-dark border-top col-lg-9">
             @if (!request()->is('dosen/*') && !request()->is('mahasiswa/*'))
-            <div class="p-3 bg-white border-bottom">
+            {{-- <div class="p-3 bg-white border-bottom">
                 <div class="progress">
                     <div role="progressbar" class="progress-bar bg-primary progress-bar-striped" aria-valuenow="22"
                         aria-valuemin="0" aria-valuemax="100" style="width: 22%">22%</div>
                 </div>
-            </div>
+            </div> --}}
             @endif
             <div class="p-4 p-lg-5">
                 @yield('container-base-content')

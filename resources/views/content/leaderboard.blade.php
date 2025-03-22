@@ -1,0 +1,27 @@
+@extends('layouts.base')
+
+@section('container-base-content')
+
+    <h1 class="mb-4">🏆 Leaderboard</h1>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead class="table-primary">
+                <tr>
+                    <th class="text-center" style="width: 10%;">Peringkat</th>
+                    <th>Nama</th>
+                    <th>Total Poin</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($leaderboard as $index => $user)
+                    <tr class="{{ auth()->id() == $user->id ? 'table-info' : '' }}">
+                        <td class="text-center">{{ $index + 1 }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->total_points }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+
+@endsection

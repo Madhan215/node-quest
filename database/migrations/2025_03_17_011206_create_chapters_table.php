@@ -13,7 +13,6 @@ return new class extends Migration
             $table->string('title'); // Judul subbab
             $table->string('url'); // URL materi subbab
             $table->integer('step'); // Urutan subbab
-            $table->integer('next_step')->nullable(); // Step selanjutnya
             $table->timestamps();
         });
     }

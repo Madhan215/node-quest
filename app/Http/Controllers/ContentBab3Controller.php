@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Point;
 use App\Models\Progress;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -18,6 +19,11 @@ class ContentBab3Controller extends Controller
         $userId = auth()->id();
         $stepId = 16;
 
+        // Cek Aktivitas yang Complete
+        $isCompleted = Point::where('user_id', $userId)
+                        ->where('step_id', $stepId)
+                        ->exists();
+
         // Cek apakah progress sudah ada atau buat baru
         $progress = Progress::firstOrNew([
             'user_id' => $userId,
@@ -31,7 +37,7 @@ class ContentBab3Controller extends Controller
             $progress->save();
         }
 
-        return view('content.bab-3.npm',compact('prevUrl','nextUrl'));
+        return view('content.bab-3.npm',compact('prevUrl','nextUrl', 'isCompleted'));
     }
     public function mengelolaProjekDenganNpm()
     {
@@ -87,6 +93,15 @@ class ContentBab3Controller extends Controller
         $userId = auth()->id();
         $stepId = 19;
 
+        // Cek Aktivitas yang Complete
+        $isCompleted = Point::where('user_id', $userId)
+                        ->where('step_id', $stepId)
+                        ->exists();
+
+                        // Data Kuis
+        $dataKuis = Point::where('user_id', $userId)
+        ->where('step_id', $stepId)->first();
+
         // Cek apakah progress sudah ada atau buat baru
         $progress = Progress::firstOrNew([
             'user_id' => $userId,
@@ -100,6 +115,6 @@ class ContentBab3Controller extends Controller
             $progress->save();
         }
         
-        return view('content.bab-3.kuis-3');
+        return view('content.bab-3.kuis-3',compact('isCompleted', 'dataKuis'));
     }
 }

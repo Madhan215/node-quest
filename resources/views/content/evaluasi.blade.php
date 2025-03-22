@@ -19,6 +19,7 @@
                 <div class="mx-auto col-lg-7">
                     <div class="text-center">
                         <h3 class="text-primary fw-semibold">EVALUASI</h3>
+                        <h5>Dasar-dasar Node.js</h5>
                         <hr class="my-4">
                     </div>
                     <div class="w-100 card">
@@ -50,7 +51,7 @@
                 </div>
                 <div class="text-center p-3">
                     <button type="button" class="me-2 btn btn-primary" id="mulai-kuis" onclick="startQuiz()">MULAI</button>
-                    <a href="{{ url()->previous() }}" class="btn btn-outline-primary">KEMBALI</a>
+                    <a href="/mahasiswa/dashboard" class="btn btn-outline-primary">KEMBALI</a>
                 </div>
             </div>
         </div>

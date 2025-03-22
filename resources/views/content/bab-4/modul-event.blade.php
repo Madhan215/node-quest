@@ -70,8 +70,17 @@
 </ul>
 <div class="p-0 p-md-3 my-4 my-md-2" id="aktivitas">
     <div class="card">
-        <div class="p-3 d-flex align-items-center card-header">
+        <div class="p-3 d-flex align-items-center justify-content-between card-header">
             <div class="mb-0 h6 fw-semibold card-title">Aktivitas 4.1</div>
+            @if ($isCompleted)
+                    <button class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Kamu telah menyelesaikan aktivitas ini, mengerjakannya tidak mempengaruhi perolehan poinmu">
+                        <i class="bi bi-check2"></i> Completed
+                    </button>
+                @else
+                    <button class="btn btn-success" style="display: none" id="completeJS"><i class="bi bi-check2"></i>
+                        Completed</button>
+                @endif
         </div>
         <div class="card-body">
             <p class="small mb-3 card-text">Untuk menguji pemahaman kamu pada materi diatas, kerjakanlah kuis-kuis
@@ -98,6 +107,7 @@
 </div>
 
 <script>
+    let stepId = 20;
     const penjelasanSalah = "Bukan merupakan jawaban, ayo cari dong jawaban yang benar. Kamu pasti bisa kamu hebat jangan menyerah sampai titik ini";
     const bankSoal = [
     {

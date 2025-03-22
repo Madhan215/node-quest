@@ -6,11 +6,12 @@
 
 <div class="container mt-4">
     <table class="table table-bordered">
-        <thead>
+        <thead class="table-primary">
             <tr>
-                <th>#</th>
+                <th class="text-center" style="width: 10%;">Peringkat</th>
                 <th>Nama</th>
                 <th>Email</th>
+                <th>Poin</th>
             </tr>
         </thead>
         <tbody>
@@ -19,6 +20,7 @@
                     <td>{{ $index + 1 }}</td>
                     <td>{{ $mhs->name }}</td>
                     <td>{{ $mhs->email }}</td>
+                    <td>{{ $mhs->total_poin }}</td>
                 </tr>
             @empty
                 <tr>

@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\MahasiswaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CodeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DosenController;
+use App\Http\Controllers\PointController;
 use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\EvaluasiController;
 use App\Http\Controllers\TerminalController;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ContentBab1Controller;
 use App\Http\Controllers\ContentBab2Controller;
 use App\Http\Controllers\ContentBab3Controller;
@@ -105,12 +106,20 @@ Route::middleware(['auth'])->group(function () {
     // Menu Mahasiswa
     Route::controller(MahasiswaController::class)->group(function () {
         Route::get('/mahasiswa/dashboard', 'index')->name('mahasiswa.dashboard');
+        Route::get('mahasiswa/leaderboard', [MahasiswaController::class, 'leaderboard'])->name('mahasiswa.leaderboard');
+
     });
 
     // Menu Dosen
     Route::controller(DosenController::class)->group(function () {
         Route::get('/dosen/dashboard', 'index')->name('dosen.dashboard');
         Route::get('/dosen/data-mahasiswa', 'dataMahasiswa')->name('dosen.data-mahasiswa');
+    });
+
+    // Point
+    Route::controller(PointController::class)->group(function () {
+        Route::post('/poinKuis', 'poinKuis');
+        Route::post('/poinKuisNode', 'poinKuisNode');
     });
 
 });
