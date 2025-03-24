@@ -271,12 +271,34 @@ function checkAnswers() {
             })
         })
         .then(response => response.json())
-        .then(data => {
-            Swal.fire({
+        .then(async (data) => {
+            await Swal.fire({
                 title: data.status === "success" ? "Selamat!" : "Oops!",
                 text: data.message,
                 icon: data.status === "success" ? "success" : "error",
             });
+            // Jika berhasil, tampilkan badge pertama
+            if (data.status === "success") {
+                await Swal.fire({
+                    title: `Kamu Mendapatkan Badge ${data.name}!`,
+                    text: data.info,
+                    imageUrl: `${data.url}`,
+                    imageHeight: 200,
+                    imageAlt: "Custom image",
+                    confirmButtonText: "Klaim!",
+                });
+            }
+            // Jika berhasil & mendapatkan "perfect" badge, tampilkan modal berikutnya
+            if (data.perfect === true) {
+                await Swal.fire({
+                    title: `Kamu Mendapatkan Badge ${data.perfectName}!`,
+                    text: data.perfectInfo,
+                    imageUrl: `${data.perfectUrl}`,
+                    imageHeight: 200,
+                    imageAlt: "Custom image",
+                    confirmButtonText: "Klaim!",
+                });
+            }
         })
         .catch(error => {
             Swal.fire({

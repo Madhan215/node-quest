@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CodeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BadgeController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\PointController;
 use App\Http\Controllers\ChatbotController;
@@ -121,6 +122,14 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/poinKuis', 'poinKuis');
         Route::post('/poinKuisNode', 'poinKuisNode');
         Route::post('/poinEvaluasi', 'poinEvaluasi');
+    });
+
+    // Badge
+    Route::controller(BadgeController::class)->group(function () {
+        Route::post('/badgeBab', 'poinKuis');
+        Route::post('/badgeComplete', 'poinKuis');
+        Route::post('/badgeTheFlash', 'poinKuis');
+        Route::post('/badgePerfect', 'poinKuis');
     });
 
 });

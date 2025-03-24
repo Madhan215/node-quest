@@ -261,9 +261,11 @@
                     "✅ Jawaban benar! Topik yang dipilih sesuai untuk melanjutkan pembelajaran Node.js.";
 
                     var completeElement = document.getElementById("completeJS");
+        var nextButton = document.getElementById("nextButton");
 
         if (completeElement) {
             completeElement.style.display = "";
+            nextButton.classList.remove("disabled");
         }
                     
                 fetch('/poinKuis', {

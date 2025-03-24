@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Badge;
 use App\Models\Point;
 use App\Models\Progress;
 use Illuminate\Http\Request;
@@ -38,20 +39,28 @@ class MahasiswaController extends Controller
         // Progress Completed (32 Step)
         $progressNow = Progress::where('user_id', $userId)->count();
 
-        if($progressNow == 32){
-            if($evaluasiExists){
+        if ($progressNow == 32) {
+            if ($evaluasiExists) {
                 $progressCompleted = 32;
-            }else(
-                $progressCompleted = 31
+            } else
+                (
+                    $progressCompleted = 31
+                );
+        } else
+            (
+                $progressCompleted = $progressNow
             );
-        }else(
-            $progressCompleted = $progressNow
-        );
-        
 
-        // dd($progressCompleted);
+        $badges = Badge::leftJoin('badge_earned', function ($join) use ($userId) {
+            $join->on('badges.id', '=', 'badge_earned.badge_id')
+                ->where('badge_earned.user_id', '=', $userId);
+        })
+            ->select('badges.*', 'badge_earned.earned_at')
+            ->get();
 
-        return view('content.dashboard', compact('totalPoints', 'progressCompleted'));
+        // dd($badges);
+
+        return view('content.dashboard', compact('totalPoints', 'progressCompleted','badges'));
     }
 
     public function leaderboard()

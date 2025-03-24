@@ -237,7 +237,7 @@
                 </div>
                 <div class="d-flex justify-content-center p-3">
                     <button class="btn btn-outline-primary" onclick="restartQuiz()" id="btn_coba_lagi" style="display: none">Coba Lagi</button>
-                    <a href="#" class="btn btn-primary" id="btn_materi_berikutnya" style="display: none">KLAIM BADGE</a>
+                    <a href="/mahasiswa/dashboard" class="btn btn-primary" id="btn_materi_berikutnya" style="display: none">Dashboard</a>
                 </div>
             </div>
         </div>

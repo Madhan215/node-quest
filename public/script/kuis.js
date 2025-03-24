@@ -5,66 +5,108 @@ let score = 0;
 
 function showElement(elementId) {
     document.getElementById(elementId).style.display = "block";
-    setTimeout(() => document.getElementById(elementId).classList.add("show"), 10);
-    if (elementId == 'result' || elementId == "instructions") {
-        setTimeout(() => document.getElementById(elementId).classList.add("d-flex"), 10);
-        setTimeout(() => document.getElementById(elementId).classList.add("align-items-center"), 10);
-        setTimeout(() => document.getElementById(elementId).classList.add("justifiy-content-center"), 10);
-        setTimeout(() => document.getElementById(elementId).classList.add("vh-100"), 10);
+    setTimeout(
+        () => document.getElementById(elementId).classList.add("show"),
+        10
+    );
+    if (elementId == "result" || elementId == "instructions") {
+        setTimeout(
+            () => document.getElementById(elementId).classList.add("d-flex"),
+            10
+        );
+        setTimeout(
+            () =>
+                document
+                    .getElementById(elementId)
+                    .classList.add("align-items-center"),
+            10
+        );
+        setTimeout(
+            () =>
+                document
+                    .getElementById(elementId)
+                    .classList.add("justifiy-content-center"),
+            10
+        );
+        setTimeout(
+            () => document.getElementById(elementId).classList.add("vh-100"),
+            10
+        );
     }
-
 }
 
 function hideElement(elementId) {
-    setTimeout(() => document.getElementById(elementId).style.display = "none", 100);
-    setTimeout(() => document.getElementById(elementId).classList.remove("show"), 100);
-    setTimeout(() => document.getElementById(elementId).classList.remove("d-flex"), 100);
-    setTimeout(() => document.getElementById(elementId).classList.remove("align-items-center"), 100);
-    setTimeout(() => document.getElementById(elementId).classList.remove("justify-content-center"), 100);
-    setTimeout(() => document.getElementById(elementId).classList.remove("vh-100"), 100);
-
-
+    setTimeout(
+        () => (document.getElementById(elementId).style.display = "none"),
+        100
+    );
+    setTimeout(
+        () => document.getElementById(elementId).classList.remove("show"),
+        100
+    );
+    setTimeout(
+        () => document.getElementById(elementId).classList.remove("d-flex"),
+        100
+    );
+    setTimeout(
+        () =>
+            document
+                .getElementById(elementId)
+                .classList.remove("align-items-center"),
+        100
+    );
+    setTimeout(
+        () =>
+            document
+                .getElementById(elementId)
+                .classList.remove("justify-content-center"),
+        100
+    );
+    setTimeout(
+        () => document.getElementById(elementId).classList.remove("vh-100"),
+        100
+    );
 }
 
 let timer; // Simpan interval timer sebagai variabel global
 let count = 30 * 60; // Durasi awal 30 menit
 
 function startQuiz() {
-    
-hideElement("instructions");
-setTimeout(() => showElement("quiz"), 500);
+    hideElement("instructions");
+    setTimeout(() => showElement("quiz"), 500);
 
-// Reset timer jika sudah berjalan sebelumnya
-if (timer) {
-clearInterval(timer);
-}
+    // Reset timer jika sudah berjalan sebelumnya
+    if (timer) {
+        clearInterval(timer);
+    }
 
-// Atur ulang waktu ke 45 menit saat restart
-count = 30 * 60;
-console.log('Timer dimulai...');
+    // Atur ulang waktu ke 45 menit saat restart
+    count = 30 * 60;
+    console.log("Timer dimulai...");
 
-timer = setInterval(() => {
-let minutes = String(Math.floor(count / 60)).padStart(2, '0');
-let seconds = String(count % 60).padStart(2, '0');
-timer_quiz.innerHTML = `${minutes}:${seconds}`;
+    timer = setInterval(() => {
+        let minutes = String(Math.floor(count / 60)).padStart(2, "0");
+        let seconds = String(count % 60).padStart(2, "0");
+        timer_quiz.innerHTML = `${minutes}:${seconds}`;
 
-count--;
-if (count < 0) {
-    clearInterval(timer);
-    console.log('Timer selesai!');
-    finishQuiz();
-}
-}, 1000);
+        count--;
+        if (count < 0) {
+            clearInterval(timer);
+            console.log("Timer selesai!");
+            finishQuiz();
+        }
+    }, 1000);
 
-question_type = questions[currentQuestionIndex].type;
-loadQuestion(question_type);
+    question_type = questions[currentQuestionIndex].type;
+    loadQuestion(question_type);
 }
 
 function loadQuestion(type) {
     const questionData = questions[currentQuestionIndex];
     const questionId = questionData.id;
 
-    document.getElementById("current-question").innerText = currentQuestionIndex + 1;
+    document.getElementById("current-question").innerText =
+        currentQuestionIndex + 1;
     document.getElementById("question-text").innerText = questionData.question;
 
     if (type === "multiple_choice") {
@@ -89,18 +131,25 @@ function loadQuestion(type) {
 }
 
 function saveAnswer(questionId) {
-    const question = questions.find(q => q.id === questionId);
+    const question = questions.find((q) => q.id === questionId);
     if (!question) return; // Jika pertanyaan tidak ditemukan, hentikan fungsi
 
     if (question.type === "multiple_choice") {
-        const selectedOption = document.querySelector(`input[name="answer-${questionId}"]:checked`);
+        const selectedOption = document.querySelector(
+            `input[name="answer-${questionId}"]:checked`
+        );
         question.userAnswer = selectedOption ? selectedOption.value : null;
     } else if (question.type === "coding") {
-        const codingAnswer = document.getElementById(`coding-answer-${questionId}`);
+        const codingAnswer = document.getElementById(
+            `coding-answer-${questionId}`
+        );
         question.userAnswer = codingAnswer ? codingAnswer.value : "";
     }
 
-    console.log(`Jawaban tersimpan untuk soal ${questionId}:`, question.userAnswer);
+    console.log(
+        `Jawaban tersimpan untuk soal ${questionId}:`,
+        question.userAnswer
+    );
 
     // Perbarui progress bar dan warna navigasi soal
     updateProgressBar();
@@ -114,7 +163,8 @@ function goToQuestion(questionId) {
     const questionDataGo = questions[questionId];
 
     document.getElementById("current-question").innerText = questionId + 1;
-    document.getElementById("question-text").innerText = questionDataGo.question;
+    document.getElementById("question-text").innerText =
+        questionDataGo.question;
 
     let optionsHtml = "";
     questionDataGo.options.forEach((option, index) => {
@@ -130,13 +180,16 @@ function goToQuestion(questionId) {
     document.getElementById("options-list").innerHTML = optionsHtml;
 }
 
-
 function updateNavigationColor(questionId) {
     const navItem = document.getElementById(`nav-question-${questionId + 1}`); // Sesuaikan ID tombol
 
     if (navItem) {
         const question = questions[questionId]; // Sesuaikan indeks array
-        if (question && question.userAnswer !== null && question.userAnswer !== "") {
+        if (
+            question &&
+            question.userAnswer !== null &&
+            question.userAnswer !== ""
+        ) {
             navItem.classList.remove("btn-outline-primary");
             navItem.classList.add("btn-success"); // Warna hijau jika sudah dijawab
         } else {
@@ -144,14 +197,13 @@ function updateNavigationColor(questionId) {
             navItem.classList.add("btn-outline-primary"); // Warna biru jika belum dijawab
         }
     }
-
 }
-
-
 
 function updateProgressBar() {
     const totalQuestions = questions.length; // Total jumlah soal
-    const answeredQuestions = questions.filter(q => q.userAnswer !== null && q.userAnswer !== "").length;
+    const answeredQuestions = questions.filter(
+        (q) => q.userAnswer !== null && q.userAnswer !== ""
+    ).length;
 
     // Hitung persentase progress
     const progressPercentage = (answeredQuestions / totalQuestions) * 100;
@@ -175,8 +227,14 @@ function updateNavigationButton() {
     nextButton.disabled = currentQuestionIndex === 9;
 
     // Debugging log
-    console.log("Tombol Sebelumnya:", prevButton.disabled ? "Disabled" : "Enabled");
-    console.log("Tombol Berikutnya:", nextButton.disabled ? "Disabled" : "Enabled");
+    console.log(
+        "Tombol Sebelumnya:",
+        prevButton.disabled ? "Disabled" : "Enabled"
+    );
+    console.log(
+        "Tombol Berikutnya:",
+        nextButton.disabled ? "Disabled" : "Enabled"
+    );
 }
 
 function nextQuestion() {
@@ -184,12 +242,11 @@ function nextQuestion() {
     saveAnswer(currentQuestionIndex);
     if (currentQuestionIndex < questions.length - 1) {
         currentQuestionIndex++;
-        console.log(currentQuestionIndex)
+        console.log(currentQuestionIndex);
         updateNavigationButton();
         question_type = questions[currentQuestionIndex].type;
         loadQuestion(question_type);
     }
-
 }
 
 function prevQuestion() {
@@ -208,17 +265,18 @@ function checkAnswers() {
     let totalQuestions = questions.length;
 
     // Cek jawaban
-    questions.forEach(question => {
+    questions.forEach((question) => {
         if (question.type === "multiple_choice") {
             const selectedIndex = parseInt(question.userAnswer);
             if (selectedIndex == question.answer) {
                 correctAnswers++;
                 console.log("Index jawaban pengguna", selectedIndex);
-                console.log("question.options[selectedIndex]", question.options[selectedIndex])
-                console.log("question.answer", question.answer)
+                console.log(
+                    "question.options[selectedIndex]",
+                    question.options[selectedIndex]
+                );
+                console.log("question.answer", question.answer);
             }
-
-
         } else if (question.type === "coding") {
             if (question.answer.includes(question.userAnswer.trim())) {
                 correctAnswers++;
@@ -234,60 +292,91 @@ function checkAnswers() {
     // Ambil waktu selesai
     let finishTime = new Date();
     let hariTanggal = finishTime.toLocaleDateString("id-ID", {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
     });
     let jamSelesai = finishTime.toLocaleTimeString("id-ID");
 
     // Update tampilan hasil
-    document.getElementById("result-date").innerText = `Hari & Tanggal: ${hariTanggal}`;
+    document.getElementById(
+        "result-date"
+    ).innerText = `Hari & Tanggal: ${hariTanggal}`;
     document.getElementById("result-time").innerText = `Waktu: ${jamSelesai}`;
     let resultScore = document.getElementById("result-score");
     resultScore.innerText = score;
-    document.getElementById("correct-answers").innerText = `Jawaban benar: ${correctAnswers}`;
-    document.getElementById("incorrect-answers").innerText = `Jawaban salah: ${incorrectAnswers}`;
+    document.getElementById(
+        "correct-answers"
+    ).innerText = `Jawaban benar: ${correctAnswers}`;
+    document.getElementById(
+        "incorrect-answers"
+    ).innerText = `Jawaban salah: ${incorrectAnswers}`;
 
     // Tampilkan alert berdasarkan hasil
     let alertBox = document.getElementById("result-alert");
     if (isPassed) {
         resultScore.classList.remove("text-danger");
         resultScore.classList.add("text-success");
-        alertBox.innerText = "Selamat, skor kamu memenuhi untuk dapat lanjut ke materi berikutnya";
+        alertBox.innerText =
+            "Selamat, skor kamu memenuhi untuk dapat lanjut ke materi berikutnya";
         alertBox.classList.add("alert-success");
         alertBox.classList.remove("alert-danger");
-        document.getElementById("btn_materi_berikutnya").style.display = "block";
+        document.getElementById("btn_materi_berikutnya").style.display =
+            "block";
         document.getElementById("btn_coba_lagi").style.display = "none";
 
         // Poin sesungguhnya untuk pengerjaan kuis
-    // document.getElementById('completeJS').style.display = '';
-    fetch('/poinKuisNode', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': csrfToken
-        },
-        body: JSON.stringify({
-            step_id: stepId,
-            score: correctAnswers * 2
+        // document.getElementById('completeJS').style.display = '';
+        fetch("/poinKuisNode", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": csrfToken,
+            },
+            body: JSON.stringify({
+                step_id: stepId,
+                score: correctAnswers * 2,
+                timer: count,
+            }),
         })
-    })
-    .then(response => response.json())
-    .then(data => {
-        Swal.fire({
-            title: data.status === "success" ? "Selamat!" : "Oops!",
-            text: data.message,
-            icon: data.status === "success" ? "success" : "error",
-        });
-    })
-    .catch(error => {
-        Swal.fire({
-            title: "Oops!",
-            text: "Terjadi kesalahan, silakan coba lagi.",
-            icon: "error",
-        });
-    });
+            .then((response) => response.json())
+            .then(async (data) => {
+                await Swal.fire({
+                    title: data.status === "success" ? "Selamat!" : "Oops!",
+                    text: data.message,
+                    icon: data.status === "success" ? "success" : "error",
+                });
+                // Jika berhasil, tampilkan badge pertama
+                if (data.status === "success") {
+                    await Swal.fire({
+                        title: `Kamu Mendapatkan Badge ${data.name}!`,
+                        text: data.info,
+                        imageUrl: `${data.url}`,
+                        imageHeight: 200,
+                        imageAlt: "Custom image",
+                        confirmButtonText: "Klaim!",
+                    });
+                }
+                // Jika berhasil & mendapatkan "Flash" badge, tampilkan modal berikutnya
+                if (data.flash === true) {
+                    await Swal.fire({
+                        title: `Kamu Mendapatkan Badge ${data.flashName}!`,
+                        text: data.flashInfo,
+                        imageUrl: `${data.flashUrl}`,
+                        imageHeight: 200,
+                        imageAlt: "Custom image",
+                        confirmButtonText: "Klaim!",
+                    });
+                }
+            })
+            .catch((error) => {
+                Swal.fire({
+                    title: "Oops!",
+                    text: "Terjadi kesalahan, silakan coba lagi.",
+                    icon: "error",
+                });
+            });
     } else {
         resultScore.classList.remove("text-success");
         resultScore.classList.add("text-danger");
@@ -299,7 +388,6 @@ function checkAnswers() {
     }
 }
 
-
 function confirmFinishQuiz() {
     Swal.fire({
         title: "Apakah Anda yakin ingin menyelesaikan kuis?",
@@ -309,7 +397,7 @@ function confirmFinishQuiz() {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Ya, Selesai!",
-        cancelButtonText: "Batal"
+        cancelButtonText: "Batal",
     }).then((result) => {
         if (result.isConfirmed) {
             finishQuiz();
@@ -319,12 +407,10 @@ function confirmFinishQuiz() {
 
 function finishQuiz() {
     saveAnswer(currentQuestionIndex);
-    checkAnswers()
+    checkAnswers();
     hideElement("quiz");
     setTimeout(() => showElement("result"), 500);
     document.getElementById("score").innerText = score;
-
-    
 }
 
 function restartQuiz() {
@@ -334,7 +420,7 @@ function restartQuiz() {
     updateNavigationButton();
 
     // Reset semua jawaban user
-    questions.forEach(q => q.userAnswer = null);
+    questions.forEach((q) => (q.userAnswer = null));
 
     // Reset progress bar
     document.getElementById("progress-bar").style.width = "0%";
@@ -350,12 +436,14 @@ function restartQuiz() {
     }
 
     // Uncheck semua pilihan jawaban
-    document.querySelectorAll('input[type="radio"]').forEach(input => input.checked = false);
+    document
+        .querySelectorAll('input[type="radio"]')
+        .forEach((input) => (input.checked = false));
 
-     // Reset timer saat restart
-if (timer) {
-clearInterval(timer);
-}
+    // Reset timer saat restart
+    if (timer) {
+        clearInterval(timer);
+    }
 
     // Sembunyikan hasil dan tampilkan instruksi
     hideElement("result");
