@@ -1,19 +1,19 @@
 @extends('layouts.main')
 
 @section('container')
-@if (session('success'))
-<div class="alert alert-success floating-alert fade show" role="alert">
-    {{ session('success') }}
-</div>
-@endif
+    @if (session('success'))
+        <div class="alert alert-success floating-alert fade show" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
 
 
 
 
     <div class="p-5 p-sm-5 mb-5 mb-sm-0 flex-grow-1 container">
         <div class="d-md-flex gap-5 align-items-center">
-            <img src="{{ asset('img/login.png') }}" alt="Ilustrasi Login" class="img-fluid p-3 d-none d-sm-block"
-                width="360" height="360">
+            <img src="{{ asset('img/login.png') }}" alt="Ilustrasi Login" class="img-fluid p-3 d-none d-sm-block" width="360"
+                height="360">
             <form class="w-100" method="POST" action="{{ route('login.auth') }}">
                 @csrf
                 <div class="mb-5">
@@ -45,10 +45,10 @@
                     @enderror
                     <div class="text-end mt-2">
                         <small class="small form-text">
-                            <span class="text-primary text-decoration-underline" data-bs-toggle='tooltip'
+                            <a class="text-primary text-decoration-underline" data-bs-toggle='tooltip'
                                 title="Silahkan hubungi dosen pengajar untuk me-reset password!">
                                 Lupa Password?
-                            </span>
+                            </a>
                         </small>
                     </div>
                 </div>

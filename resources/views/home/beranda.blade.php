@@ -28,13 +28,19 @@
                 @if (auth()->guest() || auth()->user()->role == 'mahasiswa')
                     <a role="button" tabindex="0" class="btn btn-primary btn-lg"
                         href="/mahasiswa/dashboard">
-                        MULAI BELAJAR
+                        MULAI BELAJAR <i class="bi bi-play-fill"></i>
                     </a>
                 @endif
 
                 @if (auth()->check() && auth()->user()->role == 'dosen')
                     <a role="button" tabindex="0" class="btn btn-outline-dark btn-lg" href="/dosen/dashboard">
                         HALAMAN DOSEN <i class="bi bi-chevron-double-right"></i>
+                    </a>
+                @endif
+
+                @if (auth()->check() && auth()->user()->role == 'admin')
+                    <a role="button" tabindex="0" class="btn btn-outline-primary btn-lg" href="/admin/dashboard">
+                        HALAMAN ADMIN <i class="bi bi-chevron-double-right"></i>
                     </a>
                 @endif
             </div>

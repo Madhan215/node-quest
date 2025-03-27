@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\PasswordResetsLog;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -56,7 +57,7 @@ class AuthController extends Controller
             return redirect()->route('beranda')->with('success', 'Login berhasil!');
         }
 
-        return back()->withErrors(['email' => 'Email atau password salah.']);
+        return back()->withErrors(['email' => 'Email atau password salah.'])->withInput();
     }
     public function logout(Request $request)
     {
@@ -64,6 +65,35 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/login')->with('success', 'Logout berhasil!');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'password' => 'required|min:6|confirmed',
+        ], [
+            'password.required' => 'Password baru harus diisi!',
+            'password.min' => 'Password minimal 6 karakter!',
+            'password.confirmed' => 'Konfirmasi password tidak cocok!',
+        ]);
+
+        $user = Auth::user(); // Ambil user yang sedang login
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'User tidak ditemukan!');
+        }
+
+        // Update password di tabel users
+        $user->update([
+            'password' => Hash::make($request->password),
+        ]);
+
+        // Update log reset password
+        PasswordResetsLog::where('user_id', $user->id)->update([
+            'user_changed_password' => true,
+        ]);
+
+        return redirect()->route('login')->with('success', 'Password berhasil diperbarui! Silakan login kembali.');
     }
 
 }

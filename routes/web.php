@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CodeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BadgeController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\PointController;
@@ -12,12 +13,15 @@ use App\Http\Controllers\ContentController;
 use App\Http\Controllers\EvaluasiController;
 use App\Http\Controllers\TerminalController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\ContentBab1Controller;
 use App\Http\Controllers\ContentBab2Controller;
 use App\Http\Controllers\ContentBab3Controller;
 use App\Http\Controllers\ContentBab4Controller;
 use App\Http\Controllers\ContentBab5Controller;
 use App\Http\Controllers\ContentBab6Controller;
+use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 
 // Auth Controller
 Route::get('/login', function () {
@@ -30,8 +34,16 @@ Route::get('/register', function () {
 
 Route::post('/register', [AuthController::class, 'register'])->name('register.store');
 Route::post('/login', [AuthController::class, 'login'])->name('login.auth');
+Route::post('/update', [AuthController::class, 'updatePassword'])->name('update.auth');
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// UntukAdmin
+Route::get('/admin/register', function () {
+    return view('admin.register');
+})->name('admin.register');
+Route::post('/admin/register', [AdminController::class, 'register'])->name('register.admin.store');
+
 
 // Home Controller
 Route::get('/', [HomeController::class, 'beranda'])->name('beranda');
@@ -115,7 +127,24 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(DosenController::class)->group(function () {
         Route::get('/dosen/dashboard', 'index')->name('dosen.dashboard');
         Route::get('/dosen/data-mahasiswa', 'dataMahasiswa')->name('dosen.data-mahasiswa');
+        Route::delete('/mahasiswa/{id}', 'destroy')->name('mahasiswa.destroy');
     });
+
+    // Menu Admin
+
+    Route::controller(AdminController::class)->group(function () {
+        Route::get('/admin/dashboard', 'dashboard')->name('admin.dashboard');
+        Route::get('/admin/reset-password', 'showResetPassword')->name('admin.reset.password');
+        Route::post('/admin/reset-password/{id}', 'resetPassword');
+        Route::get('/admin/data-kelas', 'dataKelas')->name('admin.data.kelas');
+        Route::delete('/kelas/{id}', [AdminController::class, 'destroy'])->name('kelas.destroy');
+
+    });
+
+    // Halaman Reset Password
+    Route::get('/reset-password', function () {
+        return view('auth.reset-password');
+    })->name('reset.password');
 
     // Point
     Route::controller(PointController::class)->group(function () {
@@ -130,6 +159,13 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/badgeComplete', 'poinKuis');
         Route::post('/badgeTheFlash', 'poinKuis');
         Route::post('/badgePerfect', 'poinKuis');
+    });
+
+    // Sertifikat
+    Route::controller(CertificateController::class)->group(function () {
+        Route::get('/certificate/generate', 'generateCertificate')->name('certificate.generate');
+        Route::get('/mahasiswa/certificate', 'showCertificate')->name('certificate.show');
+        Route::get('/certificate/template', 'showTemplate')->name('certificate.template.show');
     });
 
 });

@@ -3,9 +3,10 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\PasswordResetsLog;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -21,7 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role', 
+        'role',
         'class_token'
     ];
 
@@ -49,7 +50,20 @@ class User extends Authenticatable
     }
 
     public function mahasiswa()
-{
-    return $this->hasMany(User::class, 'class_token', 'class_token');
-}
+    {
+        return $this->hasMany(User::class, 'class_token', 'class_token');
+    }
+
+    public function certificate()
+    {
+        return $this->hasOne(Certificate::class);
+    }
+
+    // app/Models/User.php
+    public function passwordResetsLog()
+    {
+        return $this->hasOne(PasswordResetsLog::class);
+    }
+
+
 }

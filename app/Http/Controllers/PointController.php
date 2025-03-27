@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Badge;
 use App\Models\Point;
 use App\Models\BadgeEarned;
+use App\Models\Certificate;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class PointController extends Controller
 {
@@ -211,16 +217,12 @@ class PointController extends Controller
 
         Log::info("Total Points : " . $totalPoints);
 
-        $HasilAkhir = $totalPoints + $request->score;
-
-        Log::info("Hasil Akhir : " . $HasilAkhir);
-
         $perfect = false;
         $perfectName = '';
         $perfectInfo = '';
         $perfectUrl = '';
 
-        if ($HasilAkhir == 440) {
+        if ($totalPoints == 440) {
             $badgePerfect = Badge::where('name', 'Perfect Max Point')->first();
 
             BadgeEarned::create([
@@ -237,6 +239,34 @@ class PointController extends Controller
             $perfectUrl = $badgePerfect->url;
 
         }
+
+        // Generate Sertifikat
+
+        $now = Carbon::now()->locale('id')->translatedFormat('d F Y');
+
+        $data = [
+            'name' => auth()->user()->name,
+            'score' => $totalPoints, // Simulasi nilai
+            'completion_date' => $now,
+        ];
+
+        // Buat PDF dengan mode Landscape
+        $pdf = Pdf::loadView('certificates.template', $data)
+            ->setPaper('a4', 'landscape'); // Atur ukuran kertas dan orientasi
+
+        // Simpan ke dalam folder storage/app/public/certificates
+        $fileName = 'Sertifikat Keahlian Dasar NodeJS_' . auth()->user()->name . '_' . $now . '.pdf';
+        $filePath = 'certificates/' . $fileName;
+        Storage::disk('public')->put($filePath, $pdf->output());
+
+        // Simpan ke database
+        Certificate::create([
+            'user_id' => $userId,
+            'file_path' => $filePath,
+            'score' => $data['score'],
+            'completion_date' => now(),
+        ]);
+
 
         return response()->json([
             'status' => 'success',

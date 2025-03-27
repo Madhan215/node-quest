@@ -100,6 +100,13 @@
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                                         <li>
+                                            <form action="{{ route('reset.password') }}" method="GET">
+                                                <button type="submit" class="dropdown-item">
+                                                    <i class="bi bi-key"></i> Ubah Password
+                                                </button>
+                                            </form>
+                                        </li>
+                                        <li>
                                             <form action="{{ route('logout') }}" method="POST">
                                                 @csrf
                                                 <button type="submit" class="dropdown-item">
@@ -126,7 +133,9 @@
                     request()->routeIs('perihal') ||
                     request()->routeIs('chatbot') ||
                     request()->routeIs('login') ||
-                    request()->routeIs('register'))
+                    request()->routeIs('register') ||
+                    request()->routeIs('admin.register')||
+                    request()->routeIs('reset.password'))
                 <section class="bg-white text-dark p-3 p-sm-5 mb-5 mb-sm-0 flex-grow-1">
                     <div class="container">
                         @yield('container')
