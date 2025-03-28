@@ -25,6 +25,9 @@
                         <a href="/dosen/data-mahasiswa"
                             class="py-3 d-flex align-items-center justify-content-between bg-primary-light text-primary-dark false list-group-item {{ Route::is('dosen.data-mahasiswa') ? 'active' : '' }}">
                             <span><i class="bi bi-journal-check"></i> Data Mahasiswa</span></a>
+                        <a href="/dosen/data-nilai"
+                            class="py-3 d-flex align-items-center justify-content-between bg-primary-light text-primary-dark false list-group-item {{ Route::is('dosen.data-nilai') ? 'active' : '' }}">
+                            <span><i class="bi bi-list-task"></i> Data Nilai</span></a>
                     </div>
                 @elseif(auth()->user()->role == 'admin')
                     <div class="border list-group list-group-flush">
@@ -46,6 +49,9 @@
                         <a href="/mahasiswa/leaderboard"
                             class="py-3 d-flex align-items-center justify-content-between bg-primary-light text-primary-dark false list-group-item {{ Route::is('mahasiswa.leaderboard') ? 'active' : '' }}">
                             <span><i class="bi bi-list-ol"></i> Leaderboard</span></a>
+                        <a href="/mahasiswa/data-nilai"
+                            class="py-3 d-flex align-items-center justify-content-between bg-primary-light text-primary-dark false list-group-item {{ Route::is('mahasiswa.data-nilai') ? 'active' : '' }}">
+                            <span><i class="bi bi-list-task"></i> Data Nilai</span></a>
                         <a href="/mahasiswa/certificate"
                             class="py-3 d-flex align-items-center justify-content-between bg-primary-light text-primary-dark false list-group-item {{ Route::is('certificate.show') ? 'active' : '' }}">
                             <span><i class="bi bi-patch-check"></i> Sertifikat</span></a>

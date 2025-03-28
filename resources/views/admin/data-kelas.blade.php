@@ -4,7 +4,7 @@
 
 <h1>Data Kelas</h1>
 
-<table class="table table-bordered">
+<table class="table table-bordered" id="tableNilai">
     <thead class="table-primary">
         <tr>
             <th>No</th>
@@ -66,4 +66,34 @@
     }
 </script>
 
+{{-- Data Tables --}}
+<link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" />
+<script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#tableNilai').DataTable({
+            scrollX: true,    // Tambahkan horizontal scrolling
+            
+            pageLength: 10,   // Jumlah data per halaman
+            language: {
+                search: "Cari:", // Label input pencarian
+            lengthMenu: "Tampilkan _MENU_ data per halaman",
+            info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+            infoEmpty: "Tidak ada data yang tersedia",
+            infoFiltered: "(disaring dari _MAX_ data keseluruhan)",
+            zeroRecords: "Tidak ditemukan data yang sesuai",
+            paginate: {
+                first: "Pertama",
+                last: "Terakhir",
+                next: "Berikutnya",
+                previous: "Sebelumnya"
+            }
+        },
+            emptyTable: "Tidak ada data yang tersedia",
+            columnDefs: [
+                { searchable: false, targets: [0, 3] }
+            ]
+    });
+    });
+</script>
 @endsection

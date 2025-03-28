@@ -34,7 +34,10 @@ Route::get('/register', function () {
 
 Route::post('/register', [AuthController::class, 'register'])->name('register.store');
 Route::post('/login', [AuthController::class, 'login'])->name('login.auth');
-Route::post('/update', [AuthController::class, 'updatePassword'])->name('update.auth');
+
+// Update Nama dan Password
+Route::post('/update-nama', [AuthController::class, 'updateName'])->name('update.nama');
+Route::post('/update-password', [AuthController::class, 'updatePassword'])->name('update.auth');
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
@@ -120,6 +123,7 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(MahasiswaController::class)->group(function () {
         Route::get('/mahasiswa/dashboard', 'index')->name('mahasiswa.dashboard');
         Route::get('mahasiswa/leaderboard', [MahasiswaController::class, 'leaderboard'])->name('mahasiswa.leaderboard');
+        Route::get('mahasiswa/data-nilai', [MahasiswaController::class, 'dataNilai'])->name('mahasiswa.data-nilai');
 
     });
 
@@ -127,6 +131,8 @@ Route::middleware(['auth'])->group(function () {
     Route::controller(DosenController::class)->group(function () {
         Route::get('/dosen/dashboard', 'index')->name('dosen.dashboard');
         Route::get('/dosen/data-mahasiswa', 'dataMahasiswa')->name('dosen.data-mahasiswa');
+        Route::get('/dosen/data-nilai', 'dataNilai')->name('dosen.data-nilai');
+        Route::get('/dosen/export-nilai', 'exportNilai');
         Route::delete('/mahasiswa/{id}', 'destroy')->name('mahasiswa.destroy');
     });
 
@@ -145,6 +151,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/reset-password', function () {
         return view('auth.reset-password');
     })->name('reset.password');
+
+    // Halaman Rubah Nama
+    Route::get('/change-name', function () {
+        return view('auth.change-name');
+    })->name('change.name');
 
     // Point
     Route::controller(PointController::class)->group(function () {

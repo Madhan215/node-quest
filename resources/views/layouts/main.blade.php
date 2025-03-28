@@ -57,7 +57,6 @@
             opacity: 1;
             transition: opacity 0.5s ease-in-out;
         }
-        
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -100,6 +99,13 @@
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                                         <li>
+                                            <form action="{{ route('change.name') }}" method="GET">
+                                                <button type="submit" class="dropdown-item">
+                                                    <i class="bi bi-tag"></i> Ubah Nama
+                                                </button>
+                                            </form>
+                                        </li>
+                                        <li>
                                             <form action="{{ route('reset.password') }}" method="GET">
                                                 <button type="submit" class="dropdown-item">
                                                     <i class="bi bi-key"></i> Ubah Password
@@ -134,8 +140,9 @@
                     request()->routeIs('chatbot') ||
                     request()->routeIs('login') ||
                     request()->routeIs('register') ||
-                    request()->routeIs('admin.register')||
-                    request()->routeIs('reset.password'))
+                    request()->routeIs('admin.register') ||
+                    request()->routeIs('reset.password') ||
+                    request()->routeIs('change.name'))
                 <section class="bg-white text-dark p-3 p-sm-5 mb-5 mb-sm-0 flex-grow-1">
                     <div class="container">
                         @yield('container')
@@ -366,13 +373,13 @@
         });
     </script>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl);
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
         });
-    });
     </script>
 </body>
 

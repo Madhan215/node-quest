@@ -18,4 +18,9 @@ class Point extends Model
     {
         return $this->belongsTo(User::class);
     }
+    // Fungsi untuk mengambil nilai berdasarkan step kuis
+    public function scopeByStepKuis($query, array $steps)
+    {
+        return $query->whereIn('step_id', $steps);
+    }
 }

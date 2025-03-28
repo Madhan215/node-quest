@@ -3,11 +3,8 @@
 @section('container-base-content')
     <h1>Reset Password</h1>
 
-    <!-- Input Search -->
-    <input type="text" id="search-input" class="form-control mb-3" placeholder="Cari nama atau email...">
-
-    <table class="table-primary" id="user-table">
-        <thead>
+    <table class="table table-bordered" id="tableNilai">
+        <thead class="table-primary">
             <tr>
                 <th>Nama</th>
                 <th>Email</th>
@@ -92,21 +89,36 @@
             });
         }
 
-        // Fitur Searching
-        document.getElementById('search-input').addEventListener('keyup', function() {
-            let searchValue = this.value.toLowerCase();
-            let rows = document.querySelectorAll("#user-table tbody tr");
-
-            rows.forEach(row => {
-                let name = row.children[0].textContent.toLowerCase();
-                let email = row.children[1].textContent.toLowerCase();
-
-                if (name.includes(searchValue) || email.includes(searchValue)) {
-                    row.style.display = "";
-                } else {
-                    row.style.display = "none";
-                }
-            });
-        });
     </script>
+
+    {{-- Data Tables --}}
+<link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" />
+<script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#tableNilai').DataTable({
+            scrollX: true,    // Tambahkan horizontal scrolling
+            
+            pageLength: 10,   // Jumlah data per halaman
+            language: {
+                search: "Cari:", // Label input pencarian
+            lengthMenu: "Tampilkan _MENU_ data per halaman",
+            info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+            infoEmpty: "Tidak ada data yang tersedia",
+            infoFiltered: "(disaring dari _MAX_ data keseluruhan)",
+            zeroRecords: "Tidak ditemukan data yang sesuai",
+            paginate: {
+                first: "Pertama",
+                last: "Terakhir",
+                next: "Berikutnya",
+                previous: "Sebelumnya"
+            }
+        },
+            emptyTable: "Tidak ada data yang tersedia",
+            columnDefs: [
+                { searchable: false, targets: [2, 3, 4] } // Matikan pencarian untuk kolom Peringkat (0), Poin (3), dan Tindakan (4)
+            ]
+    });
+    });
+</script>
 @endsection

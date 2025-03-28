@@ -21,18 +21,18 @@ class AuthController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6',
             'role' => 'required|in:dosen,mahasiswa',
-            'class_token' => 'required_if:role,mahasiswa|string|max:255|exists:users,class_token', 
+            'class_token' => 'required_if:role,mahasiswa|string|max:255|exists:users,class_token',
         ]);
-        
+
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
         }
-        
+
         // Jika user adalah dosen, buat class_token random
         $classToken = $request->role === 'dosen' ? strtoupper(Str::random(6)) : $request->class_token;
-        
+
         // Simpan user ke database
         $user = User::create([
             'name' => $request->name,
@@ -66,7 +66,18 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
         return redirect('/login')->with('success', 'Logout berhasil!');
     }
+    public function updateName(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255'
+        ]);
 
+        $user = Auth::user();
+        $user->name = $request->name;
+        $user->save();
+
+        return redirect()->route('beranda')->with('success', 'Nama berhasil diperbarui.');
+    }
     public function updatePassword(Request $request)
     {
         $request->validate([

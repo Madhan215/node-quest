@@ -8,6 +8,7 @@ use App\Models\Badge;
 use App\Models\Point;
 use App\Models\Progress;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MahasiswaController extends Controller
 {
@@ -75,5 +76,70 @@ class MahasiswaController extends Controller
             ->get();
 
         return view('content.leaderboard', compact('leaderboard'));
+    }
+    public function dataNilai(){
+        $classToken = auth()->user()->class_token; // Ambil class_token dari dosen yang login
+        $userId = auth()->user()->id; // Ambil class_token dari dosen yang login
+
+        // Ambil data mahasiswa dan nilai kuis
+         // Query dengan JOIN
+         $mahasiswa = DB::table('users')
+    ->where('users.role', 'mahasiswa')
+    ->where('users.class_token', $classToken) // Hanya mahasiswa di kelas dosen
+    ->where('users.id', $userId) // Hanya mahasiswa di kelas dosen
+    ->leftJoin('points as kuis1', function($join) {
+        $join->on('users.id', '=', 'kuis1.user_id')
+             ->where('kuis1.step_id', '=', 10);
+    })
+    ->leftJoin('points as kuis2', function($join) {
+        $join->on('users.id', '=', 'kuis2.user_id')
+             ->where('kuis2.step_id', '=', 15);
+    })
+    ->leftJoin('points as kuis3', function($join) {
+        $join->on('users.id', '=', 'kuis3.user_id')
+             ->where('kuis3.step_id', '=', 19);
+    })
+    ->leftJoin('points as kuis4', function($join) {
+        $join->on('users.id', '=', 'kuis4.user_id')
+             ->where('kuis4.step_id', '=', 23);
+    })
+    ->leftJoin('points as kuis5', function($join) {
+        $join->on('users.id', '=', 'kuis5.user_id')
+             ->where('kuis5.step_id', '=', 27);
+    })
+    ->leftJoin('points as kuis6', function($join) {
+        $join->on('users.id', '=', 'kuis6.user_id')
+             ->where('kuis6.step_id', '=', 31);
+    })
+    ->leftJoin('points as evaluasi', function($join) {
+        $join->on('users.id', '=', 'evaluasi.user_id')
+             ->where('evaluasi.step_id', '=', 32);
+    })
+    ->select(
+        'users.id',
+        DB::raw('COALESCE(kuis1.point_earned * 5, "-") as kuis1'),
+        DB::raw('COALESCE(kuis2.point_earned * 5, "-") as kuis2'),
+        DB::raw('COALESCE(kuis3.point_earned * 5, "-") as kuis3'),
+        DB::raw('COALESCE(kuis4.point_earned * 5, "-") as kuis4'),
+        DB::raw('COALESCE(kuis5.point_earned * 5, "-") as kuis5'),
+        DB::raw('COALESCE(kuis6.point_earned * 5, "-") as kuis6'),
+        DB::raw('COALESCE(evaluasi.point_earned, "-") as evaluasi'),
+        DB::raw('
+            COALESCE(kuis1.point_earned * 5, 0) + 
+            COALESCE(kuis2.point_earned * 5, 0) + 
+            COALESCE(kuis3.point_earned * 5, 0) + 
+            COALESCE(kuis4.point_earned * 5, 0) + 
+            COALESCE(kuis5.point_earned * 5, 0) + 
+            COALESCE(kuis6.point_earned * 5, 0) + 
+            COALESCE(evaluasi.point_earned, 0) 
+            AS total_earned
+        ')
+    )
+    ->get();
+
+        // dd($mahasiswa);
+
+        
+        return view('content.data-nilai', compact('mahasiswa'));
     }
 }
