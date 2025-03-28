@@ -1,7 +1,6 @@
 @extends('layouts.base')
 
 @section('container-base-content')
-
     <h1 class="mb-4">🏆 Leaderboard</h1>
     <div class="table-responsive">
         <table class="table table-bordered">
@@ -16,12 +15,14 @@
                 @foreach ($leaderboard as $index => $user)
                     <tr class="{{ auth()->id() == $user->id ? 'table-info' : '' }}">
                         <td class="text-center">{{ $index + 1 }}</td>
-                        <td>{{ $user->name }}</td>
+
+                        <td><img src="{{ $user->profilePhotoUrl }}" alt="Profile Photo"
+                                class="rounded-circle border border-primary ms-1" style="width: 25px; height: 25px;">
+                            {{ $user->name }}</td>
                         <td>{{ $user->total_points }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-
 @endsection

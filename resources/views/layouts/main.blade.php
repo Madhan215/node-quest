@@ -93,11 +93,23 @@
                                 <a role="button" tabindex="0" class="btn btn-primary" href="/login">MASUK</a>
                             @else
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown"
-                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
+                                        id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
                                         Selamat datang, {{ auth()->user()->name }}
+                                        <img src="{{ auth()->user()->profilePhotoUrl }}" alt="Profile Photo"
+                                            class="rounded-circle border border-primary ms-1"
+                                            style="width: 25px; height: 25px;">
                                     </a>
+
                                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                        <li>
+                                            <form action="{{ route('change.profile') }}" method="GET">
+                                                <button type="submit" class="dropdown-item">
+                                                    <i class="bi bi-person-circle"></i> Ubah Foto Profil
+                                                </button>
+                                            </form>
+                                        </li>
                                         <li>
                                             <form action="{{ route('change.name') }}" method="GET">
                                                 <button type="submit" class="dropdown-item">
@@ -142,7 +154,8 @@
                     request()->routeIs('register') ||
                     request()->routeIs('admin.register') ||
                     request()->routeIs('reset.password') ||
-                    request()->routeIs('change.name'))
+                    request()->routeIs('change.name') ||
+                    request()->routeIs('change.profile'))
                 <section class="bg-white text-dark p-3 p-sm-5 mb-5 mb-sm-0 flex-grow-1">
                     <div class="container">
                         @yield('container')

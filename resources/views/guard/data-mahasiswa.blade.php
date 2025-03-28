@@ -3,50 +3,56 @@
 @section('container-base-content')
     <h1>Data Mahasiswa</h1>
 
-
-    <div class="container mt-4">
-        <table class="table table-bordered" id="tableNilai">
-            <thead class="table-primary">
-                <tr>
-                    <th class="text-center">Peringkat</th>
-                    <th>Nama</th>
-                    <th>Email</th>
-                    <th>Progress</th>
-                    <th>Poin</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse ($mahasiswa as $index => $mhs)
-                    <tr id="row-{{ $mhs->id }}">
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $mhs->name }}</td>
-                        <td>{{ $mhs->email }}</td>
-                        <td class="text-center align-middle">
-                            <div class="progress mx-auto" style="height: 15px">
-                                <div class="progress-bar bg-success d-flex align-items-center justify-content-center"
-                                    role="progressbar" style="width: {{ $mhs->progress }}%;"
-                                    aria-valuenow="{{ $mhs->progress }}" aria-valuemin="0" aria-valuemax="100">
-                                    {{ round($mhs->progress, 2) }}%
-                                </div>
-                            </div>
-                        </td>
-                        <td>{{ $mhs->total_poin }}</td>
-                        <td>
-                            <button class="btn btn-danger btn-sm" onclick="deleteMhs({{ $mhs->id }})">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
-                @empty
+    @if ($mahasiswa->isEmpty())
+        <div class="alert alert-warning text-center" role="alert">
+            ⚠️ Tidak ada mahasiswa yang tersedia.
+        </div>
+    @else
+        <div class="mt-4">
+            <table class="table table-bordered" id="tableNilai">
+                <thead class="table-primary">
                     <tr>
-                        <td colspan="4" class="text-center">Tidak ada data mahasiswa.</td>
+                        <th class="text-center">Peringkat</th>
+                        <th>Nama</th>
+                        <th>Email</th>
+                        <th>Progress</th>
+                        <th>Poin</th>
+                        <th>Aksi</th>
                     </tr>
-                @endforelse
-            </tbody>
-        </table>
-    </div>
-
+                </thead>
+                <tbody>
+                    @forelse ($mahasiswa as $index => $mhs)
+                        <tr id="row-{{ $mhs->id }}">
+                            <td>{{ $index + 1 }}</td>
+                            <td><img src="{{ $mhs->profilePhotoUrl }}" alt="Profile Photo"
+                                    class="rounded-circle border border-primary ms-1" style="width: 25px; height: 25px;">
+                                {{ $mhs->name }}</td>
+                            <td>{{ $mhs->email }}</td>
+                            <td class="text-center align-middle">
+                                <div class="progress mx-auto" style="height: 15px">
+                                    <div class="progress-bar bg-success d-flex align-items-center justify-content-center"
+                                        role="progressbar" style="width: {{ $mhs->progress }}%;"
+                                        aria-valuenow="{{ $mhs->progress }}" aria-valuemin="0" aria-valuemax="100">
+                                        {{ round($mhs->progress, 2) }}%
+                                    </div>
+                                </div>
+                            </td>
+                            <td>{{ $mhs->total_poin }}</td>
+                            <td>
+                                <button class="btn btn-danger btn-sm" onclick="deleteMhs({{ $mhs->id }})">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="6" class="text-center">Tidak ada data mahasiswa.</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+    @endif
     <script>
         function deleteMhs(mhsId) {
             Swal.fire({
@@ -124,7 +130,7 @@
                 emptyTable: "Tidak ada data yang tersedia",
                 columnDefs: [{
                         searchable: false,
-                        targets: [0, 3, 4]
+                        targets: [0, 3, 4, 5]
                     } // Matikan pencarian untuk kolom Peringkat (0), Poin (3), dan Tindakan (4)
                 ]
             });

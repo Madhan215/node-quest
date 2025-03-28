@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\PasswordResetsLog;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -23,7 +24,8 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
-        'class_token'
+        'class_token',
+        'profile_photo'
     ];
 
     /**
@@ -63,5 +65,14 @@ class User extends Authenticatable
     public function passwordResetsLog()
     {
         return $this->hasOne(PasswordResetsLog::class);
+    }
+    public function profilePhotoUrl(): Attribute
+    {
+        return Attribute::get(
+            fn() =>
+            $this->profile_photo
+            ? asset('storage/' . $this->profile_photo)
+            : asset('img/avatars/default-avatar.png')
+        );
     }
 }

@@ -42,7 +42,13 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('admin.dashboard');
+        // Hitung jumlah kelas unik berdasarkan class_token
+        $jumlahKelas = User::whereNotNull('class_token')->distinct('class_token')->count();
+
+        // Hitung jumlah user non-admin
+        $jumlahUser = User::where('role', '!=', 'admin')->count();
+
+        return view('admin.dashboard', compact('jumlahKelas', 'jumlahUser'));
     }
 
     public function showResetPassword()
@@ -89,10 +95,10 @@ class AdminController extends Controller
     {
         // Ambil hanya user dengan role 'dosen' yang memiliki class_token
         $classes = User::select('id', 'name', 'class_token')
-                        ->where('role', 'dosen') // Hanya user dengan role dosen
-                        ->whereNotNull('class_token') // Pastikan class_token tidak null
-                        ->get();
-                        // dd($classes);
+            ->where('role', 'dosen') // Hanya user dengan role dosen
+            ->whereNotNull('class_token') // Pastikan class_token tidak null
+            ->get();
+        // dd($classes);
         return view('admin.data-kelas', compact('classes'));
     }
 

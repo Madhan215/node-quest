@@ -9,6 +9,7 @@ use App\Models\PasswordResetsLog;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -105,6 +106,34 @@ class AuthController extends Controller
         ]);
 
         return redirect()->route('login')->with('success', 'Password berhasil diperbarui! Silakan login kembali.');
+    }
+
+    public function updateProfilePhoto(Request $request)
+    {
+        $request->validate([
+            'cropped_image' => 'required'
+        ]);
+
+        $user = Auth::user();
+
+        // Hapus foto lama jika ada
+        if ($user->profile_photo) {
+            Storage::delete('public/' . $user->profile_photo);
+        }
+
+        // Konversi base64 ke file
+        $imageData = $request->cropped_image;
+        $image = str_replace('data:image/jpeg;base64,', '', $imageData);
+        $image = str_replace(' ', '+', $image);
+        $imageName = 'avatars/' . uniqid() . '.jpg';
+
+        // Simpan ke storage
+        Storage::disk('public')->put($imageName, base64_decode($image));
+
+        // Simpan ke database
+        $user->update(['profile_photo' => $imageName]);
+
+        return redirect()->route('beranda')->with('success', 'Foto profil berhasil diperbarui!');
     }
 
 }

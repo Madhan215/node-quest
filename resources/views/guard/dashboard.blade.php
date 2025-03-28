@@ -10,9 +10,19 @@
                 <div class="card shadow-sm">
                     <div class="card-body">
                         <h5 class="card-title">Profil</h5>
-                        <p class="mb-1"><strong>Role:</strong> {{ auth()->user()->role }}</p>
-                        <p class="mb-1"><strong>Nama:</strong> {{ auth()->user()->name }}</p>
-                        <p class="mb-1"><strong>Email:</strong> {{ auth()->user()->email }}</p>
+                        <div class=" d-flex align-items-center">
+                            <!-- Foto Profil di Kiri -->
+                            <img src="{{ auth()->user()->profilePhotoUrl }}" alt="Profile Photo"
+                                class="rounded-circle border border-primary me-3"
+                                style="width: 80px; height: 80px; object-fit: cover;">
+
+                            <!-- Informasi Profil di Kanan -->
+                            <div>
+                                <p class="mb-1"><strong>Role:</strong> {{ auth()->user()->role }}</p>
+                                <p class="mb-1"><strong>Nama:</strong> {{ auth()->user()->name }}</p>
+                                <p class="mb-1"><strong>Email:</strong> {{ auth()->user()->email }}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

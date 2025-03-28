@@ -39,9 +39,12 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.auth');
 Route::post('/update-nama', [AuthController::class, 'updateName'])->name('update.nama');
 Route::post('/update-password', [AuthController::class, 'updatePassword'])->name('update.auth');
 
+// Update Foto Profil
+Route::post('/update-profile-photo', [AuthController::class, 'updateProfilePhoto'])->name('profile.photo.update');
+
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// UntukAdmin
+// Untuk Admin
 Route::get('/admin/register', function () {
     return view('admin.register');
 })->name('admin.register');
@@ -156,6 +159,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/change-name', function () {
         return view('auth.change-name');
     })->name('change.name');
+
+    // Halaman Rubah foto Profil
+    Route::get('/change-profil-photo', function () {
+        return view('auth.change-profile');
+    })->name('change.profile');
 
     // Point
     Route::controller(PointController::class)->group(function () {

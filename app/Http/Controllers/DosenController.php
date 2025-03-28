@@ -67,6 +67,7 @@ class DosenController extends Controller
                 'users.id',
                 'users.name',
                 'users.email',
+                'users.profile_photo',
                 DB::raw('COALESCE(points.total_poin, 0) as total_poin'), // Total poin mahasiswa
                 DB::raw("COALESCE((progress.steps_done / 29) * 100, 0) as progress") // Hitung progress
             )
@@ -118,6 +119,7 @@ class DosenController extends Controller
                 'users.id',
                 'users.name',
                 'users.email',
+                'users.profile_photo',
                 DB::raw('COALESCE(kuis1.point_earned * 5, "-") as kuis1'),
                 DB::raw('COALESCE(kuis2.point_earned * 5, "-") as kuis2'),
                 DB::raw('COALESCE(kuis3.point_earned * 5, "-") as kuis3'),

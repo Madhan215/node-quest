@@ -16,7 +16,9 @@
         <tbody>
             @foreach ($users as $user)
                 <tr>
-                    <td>{{ $user->name }}</td>
+                    <td><img src="{{ $user->profilePhotoUrl }}" alt="Profile Photo"
+                            class="rounded-circle border border-primary ms-1" style="width: 25px; height: 25px;">
+                        {{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->class_token }}</td>
                     <td>
@@ -39,7 +41,8 @@
                         @endif
                     </td>
                     <td>
-                        <button onclick="confirmReset({{ $user->id }})" class="btn btn-warning"><i class="bi bi-arrow-counterclockwise"></i> Reset Password</button>
+                        <button onclick="confirmReset({{ $user->id }})" class="btn btn-warning"><i
+                                class="bi bi-arrow-counterclockwise"></i> Reset Password</button>
                     </td>
                 </tr>
             @endforeach
@@ -88,37 +91,38 @@
                 }
             });
         }
-
     </script>
 
     {{-- Data Tables --}}
-<link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" />
-<script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#tableNilai').DataTable({
-            scrollX: true,    // Tambahkan horizontal scrolling
-            
-            pageLength: 10,   // Jumlah data per halaman
-            language: {
-                search: "Cari:", // Label input pencarian
-            lengthMenu: "Tampilkan _MENU_ data per halaman",
-            info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
-            infoEmpty: "Tidak ada data yang tersedia",
-            infoFiltered: "(disaring dari _MAX_ data keseluruhan)",
-            zeroRecords: "Tidak ditemukan data yang sesuai",
-            paginate: {
-                first: "Pertama",
-                last: "Terakhir",
-                next: "Berikutnya",
-                previous: "Sebelumnya"
-            }
-        },
-            emptyTable: "Tidak ada data yang tersedia",
-            columnDefs: [
-                { searchable: false, targets: [2, 3, 4] } // Matikan pencarian untuk kolom Peringkat (0), Poin (3), dan Tindakan (4)
-            ]
-    });
-    });
-</script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" />
+    <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#tableNilai').DataTable({
+                scrollX: true, // Tambahkan horizontal scrolling
+
+                pageLength: 10, // Jumlah data per halaman
+                language: {
+                    search: "Cari:", // Label input pencarian
+                    lengthMenu: "Tampilkan _MENU_ data per halaman",
+                    info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+                    infoEmpty: "Tidak ada data yang tersedia",
+                    infoFiltered: "(disaring dari _MAX_ data keseluruhan)",
+                    zeroRecords: "Tidak ditemukan data yang sesuai",
+                    paginate: {
+                        first: "Pertama",
+                        last: "Terakhir",
+                        next: "Berikutnya",
+                        previous: "Sebelumnya"
+                    }
+                },
+                emptyTable: "Tidak ada data yang tersedia",
+                columnDefs: [{
+                        searchable: false,
+                        targets: [2, 3, 4]
+                    } // Matikan pencarian untuk kolom Peringkat (0), Poin (3), dan Tindakan (4)
+                ]
+            });
+        });
+    </script>
 @endsection
