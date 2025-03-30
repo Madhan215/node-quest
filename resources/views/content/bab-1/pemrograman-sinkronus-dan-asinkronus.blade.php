@@ -6,9 +6,18 @@
         Dalam pemrograman, model eksekusi dalam kode dibagi menjadi dua jenis yang disebut syncronous (sinkronus) dan
         asyncronous (asinkronus). Dua mode eksekusi pemrograman tersebut menentukan bagaimana program dalam menangani
         tugas-tugas yang memakan waktu, seperti operasi I/O (input/output), pengambilan data, atau operasi lainnya.
+        Ilustrasi dari proses pemrograman sinkronus dan asinkronus dapat dilihat pada gambar 3.
     </p>
+    <figure class="text-center">
+        <img class="img-fluid d-block mx-auto"
+            src="{{ asset('img/bab1-6/Ilustrasi Proses Pemrograman Sinkronus dan Asinkronus.png') }}"
+            alt="Ilustrasi Proses Pemrograman Sinkronus dan Asinkronus" style="max-height: 400px;">
+        <figcaption class="figure-caption text-center">
+            Gambar 3. Ilustrasi Proses Pemrograman Sinkronus dan Asinkronus
+        </figcaption>
+    </figure>
     <p class="text-primary fw-semibold">
-        Pemrograman Sinkronus
+        1.4.1 Pemrograman Sinkronus
     </p>
     <p class="lh-lg">
         Pemrograman sinkronus adalah model dimana setiap baris kode dieksekusi satu persatu secara berurutan, umumnya dari
@@ -18,7 +27,7 @@
         program akan berhenti sampai operasi tersebut selesai.
     </p>
     <p class="text-primary fw-semibold">
-        Pemrograman Asinkronus
+        1.4.2 Pemrograman Asinkronus
     </p>
     <p class="lh-lg">
         Pemrograman Asinkronus adalah suatu model pemrograman yang memungkinkan suatu program untuk melakukan banyak tugas
@@ -92,59 +101,44 @@
         </li>
     </ul>
     <p class="text-primary fw-semibold mt-2">
-        Perbandingan Pemrograman Sinkoronus dan Asinkronus
+        1.4.3 Perbandingan Pemrograman Sinkoronus dan Asinkronus
     </p>
-    <table class="table table-striped">
+    <p class="lh-lg">
+        Berikut perbandingan dari pemrograman sinkronus dan asinkronus, dapat dilihat pada tabel 1.
+    </p>
+    <table class="table table-striped mx-auto" style="max-width: 800px;">
+        <caption class="text-center">Tabel 1. Perbandingan Pemrograman Sinkronus dan Asinkronus</caption>
         <thead class="fw-semibold">
-            <td>Karakteristik</td>
-            <td>Sinkronus</td>
-            <td>Asinkronus</td>
+            <tr>
+                <th>Karakteristik</th>
+                <th>Sinkronus</th>
+                <th>Asinkronus</th>
+            </tr>
         </thead>
-        <tr>
-            <td>
-                <p class="fw-semibold">Eksekusi</p>
-            </td>
-            <td>
-                <p>Blocking, menunggu proses sebelumnya selesai</p>
-            </td>
-            <td>
-                <p>Non-blocking, melanjutkan semua proses tanpa menunggu proses lain selesai</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <p class="fw-semibold">Alur Kode</p>
-            </td>
-            <td>
-                <p>Linear, umumnya baris kode dieksekusi dari atas ke bawah</p>
-            </td>
-            <td>
-                <p>Non-linear, eksekusi dapat dilakukan secara menyimpang tergantung lama proses yang dilakukan</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <p class="fw-semibold">Kompleksitas</p>
-            </td>
-            <td>
-                <p>Cenderung lebih mudah dipahami</p>
-            </td>
-            <td>
-                <p>Lebih sulit dipahami karena merupakan pembelajaran lebih lanjut</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <p class="fw-semibold">Penggunaan</p>
-            </td>
-            <td>
-                <p>Cocok digunakan untuk operasi yang cepat</p>
-            </td>
-            <td>
-                <p>Cocok untuk operasi yang memakan waktu lama</p>
-            </td>
-        </tr>
+        <tbody>
+            <tr>
+                <td class="fw-semibold">Eksekusi</td>
+                <td>Blocking, menunggu proses sebelumnya selesai</td>
+                <td>Non-blocking, melanjutkan semua proses tanpa menunggu proses lain selesai</td>
+            </tr>
+            <tr>
+                <td class="fw-semibold">Alur Kode</td>
+                <td>Linear, umumnya baris kode dieksekusi dari atas ke bawah</td>
+                <td>Non-linear, eksekusi dapat dilakukan secara menyimpang tergantung lama proses yang dilakukan</td>
+            </tr>
+            <tr>
+                <td class="fw-semibold">Kompleksitas</td>
+                <td>Cenderung lebih mudah dipahami</td>
+                <td>Lebih sulit dipahami karena merupakan pembelajaran lebih lanjut</td>
+            </tr>
+            <tr>
+                <td class="fw-semibold">Penggunaan</td>
+                <td>Cocok digunakan untuk operasi yang cepat</td>
+                <td>Cocok untuk operasi yang memakan waktu lama</td>
+            </tr>
+        </tbody>
     </table>
+
     <p class="lh-lg">
         Dengan memahami perbedaan dari dua modul pemrograman tersebut, diharapkan dapat mengembangkan aplikasi yang modern,
         terutama pada saat mengerjakan operasi yang melibatkan interaksi dengan server atau sistem eksternal.
@@ -187,7 +181,7 @@
         </div>
     </div>
 
-    
+
     <script>
         let stepId = 4;
         const penjelasanSalah = "bukan merupakan jawaban, ayo ulangi dan cari jawaban yang benar!";

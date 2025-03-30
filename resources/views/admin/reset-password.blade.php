@@ -34,7 +34,14 @@
                             @if ($resetLog->user_changed_password)
                                 <span class="text-success">Password Telah Diubah Oleh User</span>
                             @else
-                                <span class="text-primary">{{ $resetLog->new_password_hash }}</span>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-primary"
+                                        id="pass-{{ $user->id }}">{{ $resetLog->new_password_hash }}</span>
+                                    <button class="btn btn-sm btn-outline-primary ms-2"
+                                        onclick="copyToClipboard({{ $user->id }})">
+                                        <i class="bi bi-clipboard"></i> Copy
+                                    </button>
+                                </div>
                             @endif
                         @else
                             <span class="text-danger">Belum Reset</span>
@@ -124,5 +131,27 @@
                 ]
             });
         });
+    </script>
+    <script>
+        function copyToClipboard(id) {
+            var text = document.getElementById("pass-" + id).innerText;
+            navigator.clipboard.writeText(text).then(function() {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    text: 'Password ' + text + ' berhasil disalin ke clipboard.',
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+            }).catch(function(err) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops!',
+                    text: 'Gagal menyalin Password ' + text + '.',
+                });
+                console.error("Gagal menyalin teks", err);
+            });
+        }
+    </script>
     </script>
 @endsection

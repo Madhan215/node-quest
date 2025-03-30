@@ -46,38 +46,37 @@
     </p>
     <ol class="list-group list-group-numbered">
         <li class="text-dark m-0 p-0 border-0 ms-3 mt-2 list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
+            <div class="ms-2 me-auto w-100">
                 <p class="m-0">Buat file JavaScript yang menampung paket yang nantinya akan berisi fungsi, buat file
                     dengan nama say.js</p>
-                <pre class="border rounded"><code class="javascript m-0 pt-1 pb-1">// Fungsi untuk menampilkan pesan "Hello, World!"
+                <textarea class="code-editor">// Fungsi untuk menampilkan pesan "Hello, World!"
 function sayHello() {
     return "Hello, World!";
-}</code></pre>
+}</textarea>
             </div>
         </li>
         <li class="text-dark m-0 p-0 border-0 ms-3 mt-2 list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
+            <div class="ms-2 me-auto w-100">
                 <p class="m-0">Export fungsi yang ingin digunakan pada program lain, untuk mengekspor fungsi yang
                     diinginkan gunakan perintah module.exports = nama_fungsi;</p>
-                <pre class="border rounded"><code class="javascript m-0 pt-1 pb-1">// Ekspor fungsi agar dapat digunakan di file lain
-module.exports = sayHello;</code></pre>
+                <textarea class="code-editor">// Ekspor fungsi agar dapat digunakan di file lain
+module.exports = sayHello;</textarea>
             </div>
         </li>
         <li class="text-dark m-0 p-0 border-0 ms-3 mt-2 list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
+            <div class="ms-2 me-auto w-100">
                 <p class="m-0">Impor paket tersebut dengan menggunakan require(./nama_file) </p>
-                <pre class="border rounded"><code class="javascript m-0 pt-1 pb-1">// Mengimpor modul greeting
+                <textarea class="code-editor">// Mengimpor modul greeting
 const sayHello = require('./say');
 
 // Menggunakan fungsi dari modul greeting
-console.log(sayHello()); // Output: Hello, World!</code></pre>
+console.log(sayHello()); // Output: Hello, World!</textarea>
             </div>
         </li>
         <li class="text-dark m-0 p-0 border-0 ms-3 mt-2 list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
+            <div class="ms-2 me-auto w-100">
                 <p class="m-0">Jalankan dengan dengan node </p>
-                <img class="d-block mx-auto img-fluid my-2 p-4 shadow" src="{{ asset('img/bab2-4/no-25.png') }}"
-                    alt="">
+                <img class="d-block mx-auto my-2 p-4 " src="{{ asset('img/bab2-4/no-25.png') }}" alt="">
             </div>
         </li>
     </ol>
@@ -149,5 +148,5 @@ console.log(sayHello()); // Output: Hello, World!</code></pre>
             } // Panggil fungsi
         ];
     </script>
-    <script src="{{asset('script/urutkode.js')}}"></script>
+    <script src="{{ asset('script/urutkode.js') }}"></script>
 @endsection

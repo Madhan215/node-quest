@@ -23,13 +23,13 @@
                     <li class="text-dark m-0 p-0 border-0 ms-3 mt-2 list-group-item">
                         <div class="d-flex align-items-start">
                             <span class="h5 me-2 mb-0 p-0">•</span>
-                            Membuat project dengan NPM
+                            Membuat projek dengan NPM
                         </div>
                     </li>
                     <li class="text-dark m-0 p-0 border-0 ms-3 mt-2 list-group-item">
                         <div class="d-flex align-items-start">
                             <span class="h5 me-2 mb-0 p-0">•</span>
-                            Menjalankan Script dengan NPM
+                            Mempublikasikan projek NPM
                         </div>
                     </li>
                 </ul>
@@ -44,7 +44,9 @@
         dibuat. Program tersebut dapat ditemukan di https://www.npmjs.com/. Fitur NPM didapat ketika sudah menginstal
         Node.js.
     </p>
-    <h3>3.1.1 Third Party Module</h3>
+    <p class="text-primary fw-semibold">
+        3.1.1 Third Party Module
+    </p>
     <p class="lh-lg">
         Node.js memiliki banyak modul yang berada di dalam NPM, berikut modul NPM yang populer digunakan dalam pengembangan
         projek dalam Node.js diantaranya:
@@ -112,8 +114,8 @@
         <li class="text-dark m-0 p-0 border-0 ms-3 mt-2 list-group-item d-flex justify-content-between align-items-start">
             <div class="ms-2 me-auto">
                 <p class="m-0">
-                    Kita akan mencoba untuk menginstall moment, ketikkan kode berikut
-                    npm install moment
+                    Kita akan mencoba untuk menginstall moment, ketikkan kode berikut<br>
+                    <code>npm install moment</code>
                 </p>
             </div>
         </li>
@@ -122,7 +124,12 @@
                 <p class="m-0">
                     Jalankan kode berikut, dan tuliskan ke dalam file app.js
                 </p>
-                <pre class="border rounded"><code class="javascript m-0 pt-1 pb-1">// Import modul moment
+                <div class="d-flex justify-content-end align-items-end">
+                    <button class="btn btn-sm btn-outline-primary ms-2" onclick="copyToClipboard()">
+                        <i class="bi bi-clipboard"></i> Copy
+                    </button>
+                </div>
+                <textarea class="code-editor" id="code-moment">// Import modul moment
 const moment = require('moment');
 
 // Menampilkan waktu saat ini dalam format default
@@ -145,7 +152,7 @@ console.log("1 bulan yang lalu:", lastMonth.format('YYYY-MM-DD'));
 // Menghitung selisih hari dari tanggal tertentu
 const birthdate = moment("2000-01-01", "YYYY-MM-DD");
 const daysSinceBirth = moment().diff(birthdate, 'days');
-console.log("Jumlah hari sejak 1 Januari 2000:", daysSinceBirth);</code></pre>
+console.log("Jumlah hari sejak 1 Januari 2000:", daysSinceBirth);</textarea>
             </div>
         </li>
         <li class="text-dark m-0 p-0 border-0 ms-3 mt-2 list-group-item d-flex justify-content-between align-items-start">
@@ -158,7 +165,7 @@ console.log("Jumlah hari sejak 1 Januari 2000:", daysSinceBirth);</code></pre>
         <li class="text-dark m-0 p-0 border-0 ms-3 mt-2 list-group-item d-flex justify-content-between align-items-start">
             <div class="ms-2 me-auto">
                 <p class="m-0">
-                    Untuk menghapus paket NPM gunakan perintah “npm uninstall nama_paket”
+                    Untuk menghapus paket NPM gunakan perintah <br> <code>npm uninstall nama_paket</code>
                 </p>
             </div>
         </li>
@@ -259,5 +266,27 @@ console.log("Jumlah hari sejak 1 Januari 2000:", daysSinceBirth);</code></pre>
                 penjelasan: "Perintah yang benar untuk menghapus modul NPM adalah `npm uninstall nama_paket`."
             }
         ];
+    </script>
+
+    <script>
+        function copyToClipboard() {
+            var text = document.getElementById("code-moment").innerText;
+            navigator.clipboard.writeText(text).then(function() {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    text: 'Code berhasil disalin ke clipboard.',
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+            }).catch(function(err) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops!',
+                    text: 'Gagal menyalin Code.',
+                });
+                console.error("Gagal menyalin teks", err);
+            });
+        }
     </script>
 @endsection

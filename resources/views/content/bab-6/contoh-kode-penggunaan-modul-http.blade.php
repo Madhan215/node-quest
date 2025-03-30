@@ -1,50 +1,49 @@
 @extends('layouts.base')
 
 @section('container-base-content')
-
-<style>
-    .sortable-container {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-    }
-
-    .dropzone {
-        width: 45%;
-        min-height: 250px;
-        padding: 15px;
-        border: 2px dashed #ccc;
-        border-radius: 5px;
-        background-color: #f8f9fa;
-    }
-
-    .drag-item {
-        background: #ffffff;
-        padding: 10px;
-        margin-bottom: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        cursor: grab;
-    }
-
-    @media (max-width: 768px) {
+    <style>
         .sortable-container {
-            flex-direction: column;
-            align-items: center;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
 
         .dropzone {
-            width: 90%;
+            width: 45%;
+            min-height: 250px;
+            padding: 15px;
+            border: 2px dashed #ccc;
+            border-radius: 5px;
+            background-color: #f8f9fa;
         }
-    }
-</style>
+
+        .drag-item {
+            background: #ffffff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: grab;
+        }
+
+        @media (max-width: 768px) {
+            .sortable-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .dropzone {
+                width: 90%;
+            }
+        }
+    </style>
 
     <h2>6.3 Contoh kode penggunaan modul HTTP</h2>
     <p class="lh-lg">
         Pada bagian ini akan memaparkan bagaimana module HTTP digunakan untuk membuat server. Contoh ini akan menunjukkan
         server yang akan menerima permintaan HTTP dari klien, dan memberikan respon sederhana dalam bentuk teks.
     </p>
-    <pre class="border rounded mt-2"><code class="javascript m-0 pt-1 pb-1">// Memuat modul HTTP
+    <textarea class="code-editor">// Memuat modul HTTP
 const http = require('http');
 
 // Membuat server HTTP
@@ -71,8 +70,10 @@ const PORT = 3000;
 // Menjalankan server
 server.listen(PORT, () => {
     console.log(`Server berjalan pada http://localhost:${PORT}`);
-});</code></pre>
-    <h3>6.3.1 Menjalankan Server HTTP</h3>
+});</textarea>
+    <p class="text-primary fw-semibold">
+        6.3.1 Menjalankan Server HTTP
+    </p>
     <p class="lh-lg">
         Untuk menjalankan kode diatas, ikuti langkah berikut:
     </p>

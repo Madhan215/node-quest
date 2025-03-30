@@ -29,6 +29,16 @@
 
     <link rel="stylesheet" href="{{ asset('css/chatbot.css') }}">
 
+    {{-- CDN Code Mirror --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+
+    <!-- Fancybox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
+    <!-- Fancybox JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
+
 
     {{-- Style Latihan --}}
     <style>
@@ -56,6 +66,36 @@
             padding: 12px 20px;
             opacity: 1;
             transition: opacity 0.5s ease-in-out;
+        }
+
+        /* Code Mirror */
+        .CodeMirror {
+            height: auto;
+            /* Sesuaikan dengan konten */
+            border: 2px solid #ddd;
+            /* Warna border abu-abu */
+            border-radius: 5px;
+            /* Membuat sudut melengkung */
+            padding: 5px;
+            /* Ruang di dalam border */
+            background: #f9f9f9;
+            /* Warna latar belakang */
+            margin: 10px 0;
+            /* Margin atas & bawah 20px, kiri & kanan 0 */
+            width: 100%;
+            /* Lebar penuh */
+            max-width: 100%;
+            /* Hindari melebihi container */
+
+        }
+
+        @media (max-width: 768px) {
+            .CodeMirror {
+                font-size: 14px;
+                /* Kecilkan teks untuk layar kecil */
+                max-height: 300px;
+                /* Batasi tinggi agar tidak terlalu panjang */
+            }
         }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -392,6 +432,27 @@
             var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
                 return new bootstrap.Tooltip(tooltipTriggerEl);
             });
+        });
+    </script>
+
+    {{-- Script untuk Code Editor Menggunakan Code Mirror --}}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const elements = document.querySelectorAll(".code-editor");
+
+            // Cek apakah ada elemen dengan class .code-editor
+            if (elements.length > 0) {
+                elements.forEach(element => {
+                    CodeMirror.fromTextArea(element, {
+                        mode: "javascript",
+                        lineNumbers: true,
+                        theme: "default",
+                        readOnly: true,
+                        viewportMargin: Infinity, // Menghindari area kosong
+                        lineWrapping: true // Mencegah horizontal scroll
+                    });
+                });
+            }
         });
     </script>
 </body>

@@ -70,14 +70,14 @@
                     Merupakan template yang digunakan untuk membuat objek. Class umumnya digunakan dalam Pemrograman
                     Berbasis Objek (Object Oriented Programming). Class mendukung metode construct, method, getter, setter,
                     inheritence, dan lainnya. Berikut contoh kodenya:
-                    <pre class="border rounded"><code class="javascript m-0 pt-1 pb-1">class Person {
+                    <textarea class="code-editor">class Person {
     constructor(name) {
         this.name = name;
     }
     greet() {
         console.log(`Hallo, ${this.name}!`);
     }
-}</code></pre>
+}</textarea>
                 </div>
             </div>
         </li>
@@ -98,9 +98,9 @@
                     <p class="mb-1">Fungsi</p>
                     Fungsi merupakan blok kode yang dapat dijalankan kembali untuk mengerjakan instruksi tertentu. Dalam
                     JavaScript, fungsi dideklerasikan dengan kata kunci function atau menggunakan arrow function.
-                    <pre class="border rounded"><code class="javascript m-0 pt-1 pb-1">function sum(a, b) {
+                    <textarea class="code-editor">function sum(a, b) {
     return a + b;
-}</code></pre>
+}</textarea>
                 </div>
             </div>
         </li>
@@ -260,14 +260,14 @@
                 feedbackBox.innerHTML =
                     "✅ Jawaban benar! Topik yang dipilih sesuai untuk melanjutkan pembelajaran Node.js.";
 
-                    var completeElement = document.getElementById("completeJS");
-        var nextButton = document.getElementById("nextButton");
+                var completeElement = document.getElementById("completeJS");
+                var nextButton = document.getElementById("nextButton");
 
-        if (completeElement) {
-            completeElement.style.display = "";
-            nextButton.classList.remove("disabled");
-        }
-                    
+                if (completeElement) {
+                    completeElement.style.display = "";
+                    nextButton.classList.remove("disabled");
+                }
+
                 fetch('/poinKuis', {
                         method: 'POST',
                         headers: {
