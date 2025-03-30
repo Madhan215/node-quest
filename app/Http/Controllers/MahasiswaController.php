@@ -59,9 +59,13 @@ class MahasiswaController extends Controller
             ->select('badges.*', 'badge_earned.earned_at')
             ->get();
 
-        // dd($badges);
 
-        return view('content.dashboard', compact('totalPoints', 'progressCompleted', 'badges'));
+        // Data Dosen
+        $dosen = User::where('role', 'dosen')->where('class_token', auth()->user()->class_token)->first();
+
+        // dd($dosen);
+
+        return view('content.dashboard', compact('totalPoints', 'progressCompleted', 'badges', 'dosen'));
     }
 
     public function leaderboard()
