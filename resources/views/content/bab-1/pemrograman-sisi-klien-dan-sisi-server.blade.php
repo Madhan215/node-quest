@@ -37,8 +37,13 @@
         kode yang dijalankan di server. Mencakup pengolahan data, interaksi dengan database, dan sistem file. Perbedaan dari
         pemrograman pada sisi klien (Frontend) dan pada sisi server (Backend) dapat dilihat pada ilustrasi gambar 2.
     </p>
-    <img class="d-block mx-auto img-fluid my-2 p-4 shadow" src="{{ asset('img/ilustrasi Frontend dan Backend.png') }}"
-        alt="Ilustrasi Pemrograman sisi klien dan sisi server">
+    <figure class="text-center">
+        <img class="img-fluid d-block mx-auto" src="{{ asset('img/Ilustrasi Frontend dan Backend.png') }}"
+            alt="Perbandingan Frontend dan Backend" style="max-height: 400px;">
+        <figcaption class="figure-caption text-center">
+            Gambar 2. Perbandingan Frontend dan Backend
+        </figcaption>
+    </figure>
     <p class="lh-lg">
         JavaScript pada umumnya digunakan pada sisi klien, dengan adanya Node.js JavaScript dapat digunakan pada sisi
         server. Contoh penggunaan JavaScript pada sisi klien adalah Interaktivitas, Manipulasi DOM, EventListener, dan HTTP

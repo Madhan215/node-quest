@@ -6,9 +6,8 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Http\\Controllers\\AdminController' => $baseDir . '/app/Http/Controllers/AdminController.php',
     'App\\Http\\Controllers\\AuthController' => $baseDir . '/app/Http/Controllers/AuthController.php',
-    'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
-    'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
     'App\\Http\\Controllers\\BadgeController' => $baseDir . '/app/Http/Controllers/BadgeController.php',
     'App\\Http\\Controllers\\CertificateController' => $baseDir . '/app/Http/Controllers/CertificateController.php',
     'App\\Http\\Controllers\\ChatbotController' => $baseDir . '/app/Http/Controllers/ChatbotController.php',
@@ -30,6 +29,7 @@ return array(
     'App\\Models\\Badge' => $baseDir . '/app/Models/Badge.php',
     'App\\Models\\BadgeEarned' => $baseDir . '/app/Models/BadgeEarned.php',
     'App\\Models\\Certificate' => $baseDir . '/app/Models/Certificate.php',
+    'App\\Models\\PasswordResetsLog' => $baseDir . '/app/Models/PasswordResetsLog.php',
     'App\\Models\\Point' => $baseDir . '/app/Models/Point.php',
     'App\\Models\\Progress' => $baseDir . '/app/Models/Progress.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',

@@ -2,7 +2,16 @@
 
 @section('container-base-content')
     <h1>Data Mahasiswa</h1>
+    <style>
+        .badge-img {
+            transition: transform 0.2s ease-in-out;
+        }
 
+        .badge-img:hover {
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+    </style>
     @if ($mahasiswa->isEmpty())
         <div class="alert alert-warning text-center" role="alert">
             ⚠️ Tidak ada mahasiswa yang tersedia.
@@ -16,6 +25,7 @@
                         <th>Nama</th>
                         <th>Email</th>
                         <th>Progress</th>
+                        <th>Badge</th>
                         <th>Poin</th>
                         <th>Aksi</th>
                     </tr>
@@ -36,6 +46,15 @@
                                         {{ round($mhs->progress, 2) }}%
                                     </div>
                                 </div>
+                            </td>
+                            <td>
+                                @if ($mhs->badges)
+                                    @foreach (explode(',', $mhs->badges) as $badge)
+                                        <img src="{{ asset($badge) }}" alt="Badge" class="badge-img" width="40">
+                                    @endforeach
+                                @else
+                                    <p>Belum memiliki badge</p>
+                                @endif
                             </td>
                             <td>{{ $mhs->total_poin }}</td>
                             <td>
@@ -130,7 +149,7 @@
                 emptyTable: "Tidak ada data yang tersedia",
                 columnDefs: [{
                         searchable: false,
-                        targets: [0, 3, 4, 5]
+                        targets: [0, 3, 4, 5, 6]
                     } // Matikan pencarian untuk kolom Peringkat (0), Poin (3), dan Tindakan (4)
                 ]
             });

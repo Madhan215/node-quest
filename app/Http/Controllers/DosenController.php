@@ -63,16 +63,21 @@ class DosenController extends Controller
                 '=',
                 'progress.user_id'
             ) // Hitung jumlah step yang telah dikerjakan mahasiswa
+            ->leftJoin('badge_earned', 'users.id', '=', 'badge_earned.user_id') // Join dengan tabel badge_earned
+            ->leftJoin('badges', 'badge_earned.badge_id', '=', 'badges.id') // Ambil data badge
             ->select(
                 'users.id',
                 'users.name',
                 'users.email',
                 'users.profile_photo',
                 DB::raw('COALESCE(points.total_poin, 0) as total_poin'), // Total poin mahasiswa
-                DB::raw("COALESCE((progress.steps_done / 29) * 100, 0) as progress") // Hitung progress
+                DB::raw("COALESCE((progress.steps_done / 29) * 100, 0) as progress"), // Hitung progress
+                DB::raw('GROUP_CONCAT(DISTINCT badges.url) as badges') // Gabungkan badge yang diperoleh
             )
+            ->groupBy('users.id', 'users.name', 'users.email', 'users.profile_photo', 'total_poin', 'progress') // Kelompokkan per user
             ->orderByDesc('total_poin') // Urutkan dari nilai tertinggi
             ->get();
+
 
 
         return view('guard.data-mahasiswa', compact('mahasiswa'));

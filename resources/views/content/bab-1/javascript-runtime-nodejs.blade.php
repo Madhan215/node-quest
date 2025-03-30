@@ -23,13 +23,13 @@
                     <li class="text-dark m-0 p-0 border-0 ms-3 mt-2 list-group-item">
                         <div class="d-flex align-items-start">
                             <span class="h5 me-2 mb-0 p-0">•</span>
-                            Melakukan installasi Node.js
+                            Memahami cara installasi Node.js
                         </div>
                     </li>
                     <li class="text-dark m-0 p-0 border-0 ms-3 mt-2 list-group-item">
                         <div class="d-flex align-items-start">
                             <span class="h5 me-2 mb-0 p-0">•</span>
-                            Menggunakan Editor Window Node.js REPL
+                            Mampu membedakan Pemrograman pada sisi Server dan sisi Klien
                         </div>
                     </li>
                 </ul>
@@ -48,7 +48,18 @@
         Node.js diciptakan oleh Ryan Dahl pada tahun 2009. Karena pada awalnya dia ingin membuat web server menggunakan
         event loop, bukan menggunakan thread. Dia sudah mencoba membuat dengan berbagai bahasa seperti C, Lua, dan Haskell.
         Oleh karena itu dia menciptakan Node.js yang membuat Bahasa Pemrograman JavaScript bisa berjalan pada sisi server.
+        Gambar 1 menunjukkan logo dan maskot resmi dari Node.js.
     </p>
+
+    <figure class="text-center">
+        <img class="img-fluid d-block mx-auto my-2" src="{{ asset('img/Maskot dan Logo Nodejs.png') }}"
+            alt="Logo dan Maskot Nodejs" style="max-height: 200px;">
+        <figcaption class="figure-caption text-center">
+            Gambar 1. Logo dan Maskot Nodejs
+        </figcaption>
+    </figure>
+
+
 
     <p class="lh-lg">
         Node JS berjalan dalam single process, tanpa membuat thread baru dalam setiap permintaan. NodeJs menyediakan

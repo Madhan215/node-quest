@@ -741,9 +741,8 @@ class ComposerStaticInitb31d52e0ef877f1149e22273da535fec
     );
 
     public static $classMap = array (
+        'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
         'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthController.php',
-        'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
-        'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\BadgeController' => __DIR__ . '/../..' . '/app/Http/Controllers/BadgeController.php',
         'App\\Http\\Controllers\\CertificateController' => __DIR__ . '/../..' . '/app/Http/Controllers/CertificateController.php',
         'App\\Http\\Controllers\\ChatbotController' => __DIR__ . '/../..' . '/app/Http/Controllers/ChatbotController.php',
@@ -765,6 +764,7 @@ class ComposerStaticInitb31d52e0ef877f1149e22273da535fec
         'App\\Models\\Badge' => __DIR__ . '/../..' . '/app/Models/Badge.php',
         'App\\Models\\BadgeEarned' => __DIR__ . '/../..' . '/app/Models/BadgeEarned.php',
         'App\\Models\\Certificate' => __DIR__ . '/../..' . '/app/Models/Certificate.php',
+        'App\\Models\\PasswordResetsLog' => __DIR__ . '/../..' . '/app/Models/PasswordResetsLog.php',
         'App\\Models\\Point' => __DIR__ . '/../..' . '/app/Models/Point.php',
         'App\\Models\\Progress' => __DIR__ . '/../..' . '/app/Models/Progress.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',

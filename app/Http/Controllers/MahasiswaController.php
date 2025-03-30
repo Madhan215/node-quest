@@ -66,14 +66,25 @@ class MahasiswaController extends Controller
 
     public function leaderboard()
     {
+        $classToken = auth()->user()->class_token; // Ambil class_token dari dosen yang login
         // Ambil total poin setiap user, diurutkan dari terbesar ke terkecil
-        $leaderboard = User::where('role', 'mahasiswa')
-            ->select('users.id', 'users.name', 'users.profile_photo')
-            ->selectRaw('COALESCE(SUM(points.point_earned), 0) as total_points') // COALESCE untuk user tanpa points
-            ->leftJoin('points', 'users.id', '=', 'points.user_id')
-            ->groupBy('users.id', 'users.name')
+        $leaderboard = User::where('users.role', 'mahasiswa')
+            ->where('users.class_token', $classToken) // Hanya mahasiswa di kelas dosen
+            ->select(
+                'users.id',
+                'users.name',
+                'users.profile_photo'
+            )
+            ->selectRaw('(SELECT COALESCE(SUM(p.point_earned), 0) FROM points p WHERE p.user_id = users.id) as total_points') // Subquery untuk total poin
+            ->leftJoin('badge_earned', 'users.id', '=', 'badge_earned.user_id')
+            ->leftJoin('badges', 'badge_earned.badge_id', '=', 'badges.id')
+            ->selectRaw('GROUP_CONCAT(DISTINCT badges.url) as badges') // Ambil hanya badge unik
+            ->groupBy('users.id', 'users.name', 'users.profile_photo')
             ->orderByDesc('total_points')
             ->get();
+
+
+
 
         // dd($leaderboard);
 

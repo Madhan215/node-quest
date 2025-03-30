@@ -94,7 +94,7 @@ class AdminController extends Controller
     public function dataKelas()
     {
         // Ambil hanya user dengan role 'dosen' yang memiliki class_token
-        $classes = User::select('id', 'name', 'class_token')
+        $classes = User::select('id', 'name', 'class_token', 'profile_photo')
             ->where('role', 'dosen') // Hanya user dengan role dosen
             ->whereNotNull('class_token') // Pastikan class_token tidak null
             ->get();

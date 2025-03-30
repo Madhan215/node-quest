@@ -96,7 +96,7 @@
                                     <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
                                         id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown"
                                         aria-expanded="false">
-                                        Selamat datang, {{ auth()->user()->name }}
+                                        {{ auth()->user()->name }}
                                         <img src="{{ auth()->user()->profilePhotoUrl }}" alt="Profile Photo"
                                             class="rounded-circle border border-primary ms-1"
                                             style="width: 25px; height: 25px;">
