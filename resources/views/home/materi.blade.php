@@ -17,13 +17,16 @@
                             <p class="m-0 small card-text">Javascript Runtime Node.js</p>
                         </li>
                         <li>
+                            <p class="m-0 small card-text">Pemrograman Sisi Klien dan Sisi Server</p>
+                        </li>
+                        <li>
                             <p class="m-0 small card-text">Persiapan belajar Node.js</p>
                         </li>
                         <li>
                             <p class="m-0 small card-text">Pemrograman Sinkronus dan Asinkronus</p>
                         </li>
                         <li>
-                            <p class="m-0 small card-text">Hubungan Node,js dengan Browser</p>
+                            <p class="m-0 small card-text">Hubungan Node.js dengan Browser</p>
                         </li>
                         <li>
                             <p class="m-0 small card-text">Engine V8</p>
@@ -167,6 +170,7 @@
     <p class="fw-bold mb-0">Penjelasan:</p>
 
     <p>
-        Bab 1 sampai 3 Merupakan pengetahuan mendasar mengenai Node.js dan pada Bab 4 sampai 6 merupakan implementasi penerapan Modul Node.js.
+        Bab 1 sampai 3 Merupakan pengetahuan mendasar mengenai Node.js dan pada Bab 4 sampai 6 merupakan implementasi
+        penerapan Modul Node.js.
     </p>
 @endsection
