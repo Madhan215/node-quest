@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <div class="p-0 border-end card-body h-100">
-                        <textarea name="code" id="code"></textarea>
+                        <textarea name="code" id="code-js"></textarea>
                     </div>
                 </div>
             </form>
@@ -75,7 +75,8 @@
                     <div class="d-flex align-items-center justify-content-center text-primary">
                         <div class="d-block fw-semibold"><i class="bi bi-terminal"></i> TERMINAL</div>
                     </div>
-                    <button class="border btn btn-outline-danger"  onclick="clearOutput()"><i class="bi bi-trash"></i></button>
+                    <button class="border btn btn-outline-danger" onclick="clearOutput()"><i
+                            class="bi bi-trash"></i></button>
                 </div>
                 <div class="bg-light p-0 card-body">
                     <div class="m-0 h-100 text-muted overflow-auto">
@@ -90,7 +91,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+            var editor = CodeMirror.fromTextArea(document.getElementById("code-js"), {
                 lineNumbers: true,
                 mode: "javascript",
                 theme: "dracula",

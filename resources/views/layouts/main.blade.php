@@ -29,6 +29,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/chatbot.css') }}">
 
+
     {{-- CDN Code Mirror --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
@@ -67,37 +68,40 @@
             opacity: 1;
             transition: opacity 0.5s ease-in-out;
         }
-
-        /* Code Mirror */
-        .CodeMirror {
-            height: auto;
-            /* Sesuaikan dengan konten */
-            border: 2px solid #ddd;
-            /* Warna border abu-abu */
-            border-radius: 5px;
-            /* Membuat sudut melengkung */
-            padding: 5px;
-            /* Ruang di dalam border */
-            background: #f9f9f9;
-            /* Warna latar belakang */
-            margin: 10px 0;
-            /* Margin atas & bawah 20px, kiri & kanan 0 */
-            width: 100%;
-            /* Lebar penuh */
-            max-width: 100%;
-            /* Hindari melebihi container */
-
-        }
-
-        @media (max-width: 768px) {
-            .CodeMirror {
-                font-size: 14px;
-                /* Kecilkan teks untuk layar kecil */
-                max-height: 300px;
-                /* Batasi tinggi agar tidak terlalu panjang */
-            }
-        }
     </style>
+    @if (!request()->routeIs('editor'))
+        <style>
+            /* Code Mirror */
+            .CodeMirror {
+                height: auto;
+                /* Sesuaikan dengan konten */
+                border: 2px solid #ddd;
+                /* Warna border abu-abu */
+                border-radius: 5px;
+                /* Membuat sudut melengkung */
+                padding: 5px;
+                /* Ruang di dalam border */
+                background: #f9f9f9;
+                /* Warna latar belakang */
+                margin: 10px 0;
+                /* Margin atas & bawah 20px, kiri & kanan 0 */
+                width: 100%;
+                /* Lebar penuh */
+                max-width: 100%;
+                /* Hindari melebihi container */
+
+            }
+
+            @media (max-width: 768px) {
+                .CodeMirror {
+                    font-size: 14px;
+                    /* Kecilkan teks untuk layar kecil */
+                    max-height: 300px;
+                    /* Batasi tinggi agar tidak terlalu panjang */
+                }
+            }
+        </style>
+    @endif
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
