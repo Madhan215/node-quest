@@ -28,7 +28,7 @@
             Kalau sudah login, arahkan ke materi terakhir yang di akses (Membuat riwayat akses halaman) --}}
                 @if (auth()->guest() || auth()->user()->role == 'mahasiswa')
                     <a role="button" tabindex="0" class="btn btn-primary btn-lg" href="/mahasiswa/dashboard">
-                        MULAI BELAJAR <i class="bi bi-play-fill"></i>
+                        <i class="bi bi-play-fill"></i> MULAI BELAJAR
                     </a>
                 @endif
 

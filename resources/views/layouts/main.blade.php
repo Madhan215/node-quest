@@ -124,10 +124,10 @@
                                 aria-current="page" href="/">Beranda</a>
                             <a class="nav-link {{ Route::is('materi') ? 'active fw-semibold' : '' }}"
                                 href="/materi">Materi</a>
-                            <a class="nav-link {{ Route::is('editor') ? 'active fw-semibold' : '' }}"
+                            {{-- <a class="nav-link {{ Route::is('editor') ? 'active fw-semibold' : '' }}"
                                 href="/editor">JS-Editor</a>
                             <a class="nav-link {{ Route::is('terminal') ? 'active fw-semibold' : '' }}"
-                                href="/terminal">REPL</a>
+                                href="/terminal">REPL</a> --}}
                             <a class="nav-link {{ Route::is('perihal') ? 'active fw-semibold' : '' }}"
                                 href="/perihal">Perihal</a>
                         </div>
@@ -147,6 +147,19 @@
                                     </a>
 
                                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                        <li>
+                                            @if (auth()->user()->role == 'dosen')
+                                                <form action="{{ route('dosen.dashboard') }}" method="GET">
+                                                @elseif(auth()->user()->role == 'admin')
+                                                    <form action="{{ route('admin.dashboard') }}" method="GET">
+                                                    @elseif(auth()->user()->role == 'mahasiswa')
+                                                        <form action="{{ route('mahasiswa.dashboard') }}" method="GET">
+                                            @endif
+                                            <button type="submit" class="dropdown-item">
+                                                <i class="bi bi-speedometer"></i> Dashboard
+                                            </button>
+                                            </form>
+                                        </li>
                                         <li>
                                             <form action="{{ route('change.profile') }}" method="GET">
                                                 <button type="submit" class="dropdown-item">

@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Http;
 
 class ChatbotController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('chatbot');
     }
     public function askChatbot(Request $request)
@@ -15,7 +16,7 @@ class ChatbotController extends Controller
         $question = $request->input('question');
 
         // Kirim pertanyaan ke API Flask
-        $response = Http::post('http://127.0.0.1:5000/chatbot', [
+        $response = Http::post('https://chatbot-node-quest-production.up.railway.app/chatbot', [
             'question' => $question
         ]);
 

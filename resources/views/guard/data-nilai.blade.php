@@ -43,7 +43,7 @@
                         <td>{{ $mhs->kuis5 }}</td>
                         <td>{{ $mhs->kuis6 }}</td>
                         <td>{{ $mhs->evaluasi }}</td>
-                        <td>{{ $mhs->total_earned / 7 }}</td>
+                        <td>{{ number_format($mhs->total_earned / 7, 2) }}</td>
                     </tr>
                 @endforeach
             </tbody>

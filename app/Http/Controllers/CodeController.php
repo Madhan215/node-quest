@@ -33,7 +33,8 @@ class CodeController extends Controller
         return response()->json(['output' => $process->getOutput()]); // Kirim response JSON
     }
 
-    public function term(Request $request){
+    public function term(Request $request)
+    {
         $command = $request->input('command');
 
         // Cek apakah perintah adalah `php`
@@ -42,7 +43,7 @@ class CodeController extends Controller
         }
 
         // Amankan command untuk mencegah perintah berbahaya (opsional)
-        $safeCommands = ['node','node -v', 'npm -v', 'echo', 'whoami', 'dir','cls','type', 'npm init'];
+        $safeCommands = ['node', 'node -v', 'npm -v', 'echo', 'whoami', 'dir', 'cls', 'type', 'npm init'];
         $isSafe = false;
         foreach ($safeCommands as $allowed) {
             if (strpos($command, $allowed) === 0) {
