@@ -31,9 +31,8 @@
 
                             <a href="{{ auth()->user()->profilePhotoUrl }}" data-fancybox
                                 data-caption="{{ auth()->user()->name }}">
-                                <img class="rounded-circle border border-primary me-2"
+                                <img class="rounded-circle border border-primary me-3"
                                     src="{{ auth()->user()->profilePhotoUrl }}" alt="{{ auth()->user()->name }}"
-                                    class="rounded-circle border border-primary me-3"
                                     style="width: 80px; height: 80px; object-fit: cover;">
                             </a>
 
@@ -53,9 +52,8 @@
                                 style="width: 80px; height: 80px; object-fit: cover;"> --}}
 
                             <a href="{{ $dosen->profilePhotoUrl }}" data-fancybox data-caption="{{ $dosen->name }}">
-                                <img class="rounded-circle border border-primary me-2" src="{{ $dosen->profilePhotoUrl }}"
-                                    alt="{{ $dosen->name }}" class="rounded-circle border border-primary me-3"
-                                    style="width: 80px; height: 80px; object-fit: cover;">
+                                <img class="rounded-circle border border-primary me-3" src="{{ $dosen->profilePhotoUrl }}"
+                                    alt="{{ $dosen->name }}" style="width: 80px; height: 80px; object-fit: cover;">
                             </a>
 
                             <!-- Informasi Profil di Kanan -->

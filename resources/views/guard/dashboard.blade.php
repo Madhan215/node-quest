@@ -12,9 +12,16 @@
                         <h5 class="card-title">Profil</h5>
                         <div class=" d-flex align-items-center">
                             <!-- Foto Profil di Kiri -->
-                            <img src="{{ auth()->user()->profilePhotoUrl }}" alt="Profile Photo"
+                            {{-- <img src="{{ auth()->user()->profilePhotoUrl }}" alt="Profile Photo"
                                 class="rounded-circle border border-primary me-3"
-                                style="width: 80px; height: 80px; object-fit: cover;">
+                                style="width: 80px; height: 80px; object-fit: cover;"> --}}
+
+                            <a href="{{ auth()->user()->profilePhotoUrl }}" data-fancybox
+                                data-caption="{{ auth()->user()->name }}">
+                                <img class="rounded-circle border border-primary me-3"
+                                    src="{{ auth()->user()->profilePhotoUrl }}" alt="{{ auth()->user()->name }}"\
+                                    style="width: 80px; height: 80px; object-fit: cover;">
+                            </a>
 
                             <!-- Informasi Profil di Kanan -->
                             <div>
