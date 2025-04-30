@@ -25,9 +25,17 @@
                         <h5 class="card-title text-center">Profil Kamu</h5>
                         <div class=" d-flex align-items-center">
                             <!-- Foto Profil di Kiri -->
-                            <img src="{{ auth()->user()->profilePhotoUrl }}" alt="Profile Photo"
+                            {{-- <img src="{{ auth()->user()->profilePhotoUrl }}" alt="Profile Photo"
                                 class="rounded-circle border border-primary me-3"
-                                style="width: 80px; height: 80px; object-fit: cover;">
+                                style="width: 80px; height: 80px; object-fit: cover;"> --}}
+
+                            <a href="{{ auth()->user()->profilePhotoUrl }}" data-fancybox
+                                data-caption="{{ auth()->user()->name }}">
+                                <img class="rounded-circle border border-primary me-2"
+                                    src="{{ auth()->user()->profilePhotoUrl }}" alt="{{ auth()->user()->name }}"
+                                    class="rounded-circle border border-primary me-3"
+                                    style="width: 80px; height: 80px; object-fit: cover;">
+                            </a>
 
                             <!-- Informasi Profil di Kanan -->
                             <div>
@@ -40,9 +48,15 @@
                         <h5 class="card-title text-center">Profil Dosen</h5>
                         <div class=" d-flex align-items-center">
                             <!-- Foto Profil di Kiri -->
-                            <img src="{{ $dosen->profilePhotoUrl }}" alt="Profile Photo"
+                            {{-- <img src="{{ $dosen->profilePhotoUrl }}" alt="Profile Photo"
                                 class="rounded-circle border border-primary me-3"
-                                style="width: 80px; height: 80px; object-fit: cover;">
+                                style="width: 80px; height: 80px; object-fit: cover;"> --}}
+
+                            <a href="{{ $dosen->profilePhotoUrl }}" data-fancybox data-caption="{{ $dosen->name }}">
+                                <img class="rounded-circle border border-primary me-2" src="{{ $dosen->profilePhotoUrl }}"
+                                    alt="{{ $dosen->name }}" class="rounded-circle border border-primary me-3"
+                                    style="width: 80px; height: 80px; object-fit: cover;">
+                            </a>
 
                             <!-- Informasi Profil di Kanan -->
                             <div>
@@ -114,4 +128,15 @@
             </div>
         </div>
     </div>
+    <script>
+        Fancybox.bind("[data-fancybox]", {
+            Toolbar: {
+                display: ["close"] // Hanya tombol close
+            },
+            animated: true,
+            dragToClose: true,
+            showClass: "fancybox-zoomIn",
+            hideClass: "fancybox-zoomOut",
+        });
+    </script>
 @endsection

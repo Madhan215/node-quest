@@ -173,6 +173,7 @@ btnNext.addEventListener("click", () => {
         penjelasan.hidden = true;
         loadSoal();
     } else {
+        btnNext.disabled = true;
         var completeElement = document.getElementById("completeJS");
         var nextButton = document.getElementById("nextButton");
 
@@ -180,7 +181,7 @@ btnNext.addEventListener("click", () => {
             completeElement.style.display = "";
             nextButton.classList.remove("disabled");
         }
-        
+
         fetch("/poinKuis", {
             method: "POST",
             headers: {

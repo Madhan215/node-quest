@@ -13,7 +13,7 @@
                 <div class="container p-5">
                     <p class="mb-4 text-center">Media pembelajaran ini dibuat untuk memenuhi persyaratan dalam menyelesaikan
                         studi di program Strata-1 Pendidikan Komputer dengan judul:</p>
-                    <p class="fw-semibold fs-5 text-center">PENGEMBANGAN MEDIA MEDIA PEMBELAJARAN INTERAKTIF BERBASIS WEB
+                    <p class="fw-semibold fs-5 text-center">PENGEMBANGAN MEDIA PEMBELAJARAN INTERAKTIF BERBASIS WEB
                         PADA MATERI NODE.JS DASAR DENGAN METODE TUTORIAL MENGGUNAKAN PENDEKATAN GAMIFIKASI</p>
 
                     <div class="row align-items-center mt-5">
@@ -51,7 +51,7 @@
                                             <p class="me-5 mb-2">Dosen Pembimbing 2</p>
                                         </td>
                                         <td>
-                                            <p class="mb-2">: Novan Alkaf Bahrain Saputra, S.Kom., M.T.</p>
+                                            <p class="mb-2">: Novan Alkaf Bahraini Saputra, S.Kom., M.T.</p>
                                         </td>
                                     </tr>
                                     <tr>

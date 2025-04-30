@@ -9,11 +9,12 @@
 
     <div class="p-5 p-sm-5 mb-5 mb-sm-0 flex-grow-1 container">
         <div class="d-md-flex gap-5 align-items-center">
-            <img src="{{ asset('img/Reset Password.png') }}" alt="Ilustrasi Login" class="img-fluid p-3 d-none d-sm-block" width="360" height="360">
-            
+            <img src="{{ asset('img/Reset_password.png') }}" alt="Ilustrasi Login" class="img-fluid p-3 d-none d-sm-block"
+                width="360" height="360">
+
             <form class="w-100" method="POST" action="{{ route('update.auth') }}">
                 @csrf
-                
+
                 <div class="mb-5">
                     <h2 class="fw-semibold text-primary">RESET PASSWORD</h2>
                 </div>
@@ -21,7 +22,8 @@
                 <!-- Input Password Baru -->
                 <div class="mb-3">
                     <label for="password" class="form-label">Password Baru</label>
-                    <input type="password" name="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" id="password-input">
+                    <input type="password" name="password" placeholder="Password"
+                        class="form-control @error('password') is-invalid @enderror" id="password-input">
                     @error('password')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -32,7 +34,9 @@
                 <!-- Input Konfirmasi Password -->
                 <div class="mb-3">
                     <label for="password_confirmation" class="form-label">Konfirmasi Password</label>
-                    <input type="password" name="password_confirmation" placeholder="Konfirmasi Password" class="form-control @error('password_confirmation') is-invalid @enderror" id="password-confirmation-input">
+                    <input type="password" name="password_confirmation" placeholder="Konfirmasi Password"
+                        class="form-control @error('password_confirmation') is-invalid @enderror"
+                        id="password-confirmation-input">
                     @error('password_confirmation')
                         <div class="invalid-feedback">
                             {{ $message }}

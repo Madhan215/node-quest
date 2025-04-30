@@ -10,6 +10,10 @@
             transform: scale(1.2);
             cursor: pointer;
         }
+
+        td {
+            vertical-align: middle;
+        }
     </style>
     <h1 class="mb-4">🏆 Leaderboard</h1>
     <div class="table-responsive">
@@ -27,9 +31,17 @@
                     <tr class="{{ auth()->id() == $user->id ? 'table-info' : '' }}">
                         <td class="text-center">{{ $index + 1 }}</td>
 
-                        <td><img src="{{ $user->profilePhotoUrl }}" alt="Profile Photo"
-                                class="rounded-circle border border-primary ms-1" style="width: 25px; height: 25px;">
-                            {{ $user->name }}</td>
+                        <td class="align-middle">
+                            <div class="d-flex align-items-center">
+                                <a href="{{ $user->profilePhotoUrl }}" data-fancybox data-caption="{{ $user->name }}">
+                                    <img class="rounded-circle border border-primary me-2"
+                                        src="{{ $user->profilePhotoUrl }}" alt="{{ $user->name }}"
+                                        style="width: 30px; height: 30px;">
+                                </a>
+                                <span>{{ $user->name }}</span>
+                            </div>
+                        </td>
+
                         <td>
                             @if ($user->badges)
                                 @foreach (explode(',', $user->badges) as $badge)
@@ -45,4 +57,15 @@
             </tbody>
         </table>
     </div>
+    <script>
+        Fancybox.bind("[data-fancybox]", {
+            Toolbar: {
+                display: ["close"] // Hanya tombol close
+            },
+            animated: true,
+            dragToClose: true,
+            showClass: "fancybox-zoomIn",
+            hideClass: "fancybox-zoomOut",
+        });
+    </script>
 @endsection
