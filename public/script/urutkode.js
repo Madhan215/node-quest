@@ -6,6 +6,11 @@ const alertPenjelasan = document.getElementById("alertPenjelasan");
 const iconPenjelasan = document.getElementById("iconPenjelasan");
 let ketHasil = document.getElementById("ketHasil");
 
+// Inisialisasi audio
+const soundBenar = new Audio("/sfx/Correct.mp3");
+const soundPoin = new Audio("/sfx/Poin.mp3");
+const soundError = new Audio("/sfx/Error.mp3");
+
 function buatDraggable() {
     leftBox.innerHTML = '<p class="text-center fw-bold">Kode Acak</p>';
     rightBox.innerHTML =
@@ -122,6 +127,12 @@ checkBtn.addEventListener("click", () => {
         })
             .then((response) => response.json())
             .then((data) => {
+                if (data.status === "success") {
+                    soundPoin.play();
+                } else {
+                    soundError.play();
+                }
+
                 Swal.fire({
                     title: data.status === "success" ? "Selamat!" : "Oops!",
                     text: data.message,
@@ -136,6 +147,8 @@ checkBtn.addEventListener("click", () => {
                 });
             });
     } else {
+        const soundSalah = new Audio("/sfx/Wrong.mp3");
+        soundSalah.play();
         ketHasil.innerHTML = "BELUM BENAR";
         alertPenjelasan.classList.add("alert-danger");
         iconPenjelasan.classList.add("bi-x-circle");

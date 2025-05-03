@@ -1,5 +1,11 @@
 let currentSoal = 0;
 
+// Inisialisasi audio
+const soundBenar = new Audio("/sfx/Correct.mp3");
+const soundSalah = new Audio("/sfx/Wrong.mp3");
+const soundPoin = new Audio("/sfx/Poin.mp3");
+const soundError = new Audio("/sfx/Error.mp3");
+
 const noSoal = document.getElementById("noSoal");
 const totalSoal = document.getElementById("totalSoal");
 const soal = document.getElementById("soal");
@@ -103,6 +109,8 @@ function pilihJawaban(index, pilihanDiv) {
 
     // Jika jawabannya benar maka akan dirubah warna menjadi hijau
     if (index === soal.benar) {
+        soundBenar.play(); // ✅ Tambah di sini
+
         pilihanDiv.classList.remove("bg-light");
         pilihanDiv.classList.remove("alert-dark");
         pilihanDiv.classList.add("alert-primary");
@@ -124,6 +132,8 @@ function pilihJawaban(index, pilihanDiv) {
         ketHasil.innerHTML = "BENAR";
         ketPenjelasan.innerHTML = bankSoal[currentSoal]["penjelasan"];
     } else {
+        soundSalah.play(); // ❌ Tambah di sini
+
         pilihanDiv.classList.remove("bg-light");
         pilihanDiv.classList.remove("alert-dark");
         pilihanDiv.classList.add("alert-danger");
@@ -194,6 +204,12 @@ btnNext.addEventListener("click", () => {
         })
             .then((response) => response.json())
             .then((data) => {
+                if (data.status === "success") {
+                    soundPoin.play();
+                } else {
+                    soundError.play();
+                }
+
                 Swal.fire({
                     title: data.status === "success" ? "Selamat!" : "Oops!",
                     text: data.message,

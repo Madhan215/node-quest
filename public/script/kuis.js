@@ -3,6 +3,8 @@
 let currentQuestionIndex = 0;
 let score = 0;
 
+const soundBadge = new Audio("/sfx/Badge.mp3");
+
 function showElement(elementId) {
     document.getElementById(elementId).style.display = "block";
     setTimeout(
@@ -69,7 +71,7 @@ function hideElement(elementId) {
 }
 
 let timer; // Simpan interval timer sebagai variabel global
-let count = 30 * 60; // Durasi awal 30 menit
+let count = 20 * 60; // Durasi awal 20 menit
 
 function startQuiz() {
     hideElement("instructions");
@@ -80,8 +82,8 @@ function startQuiz() {
         clearInterval(timer);
     }
 
-    // Atur ulang waktu ke 45 menit saat restart
-    count = 30 * 60;
+    // Atur ulang waktu ke 20 menit saat restart
+    count = 20 * 60;
     console.log("Timer dimulai...");
 
     timer = setInterval(() => {
@@ -349,6 +351,7 @@ function checkAnswers() {
                 });
                 // Jika berhasil, tampilkan badge pertama
                 if (data.status === "success") {
+                    soundBadge.play();
                     await Swal.fire({
                         title: `Kamu Mendapatkan Badge ${data.name}!`,
                         text: data.info,

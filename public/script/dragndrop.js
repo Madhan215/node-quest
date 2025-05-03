@@ -6,6 +6,10 @@ const alertPenjelasan = document.getElementById("alertPenjelasan");
 const iconPenjelasan = document.getElementById("iconPenjelasan");
 let ketHasil = document.getElementById("ketHasil");
 
+const soundPoin = new Audio("/sfx/Poin.mp3");
+const soundSalah = new Audio("/sfx/Wrong.mp3");
+const soundError = new Audio("/sfx/Error.mp3");
+
 let draggedElement = null;
 
 // Drag & Drop untuk Desktop
@@ -110,6 +114,12 @@ checkBtn.addEventListener("click", () => {
         })
             .then((response) => response.json())
             .then((data) => {
+                if (data.status === "success") {
+                    soundPoin.play();
+                } else {
+                    soundError.play();
+                }
+
                 Swal.fire({
                     title: data.status === "success" ? "Selamat!" : "Oops!",
                     text: data.message,
@@ -126,6 +136,7 @@ checkBtn.addEventListener("click", () => {
     } else {
         // resultText.textContent = "❌ Masih ada yang salah, coba lagi!";
         // resultText.style.color = "red";
+        soundSalah.play();
         ketHasil.innerHTML = "BELUM BENAR";
         alertPenjelasan.classList.add("alert-danger");
         iconPenjelasan.classList.add("bi-x-circle");

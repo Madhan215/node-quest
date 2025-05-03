@@ -35,7 +35,7 @@
                                         </p>
                                     </li>
                                     <li>
-                                        <p class="mb-2 card-text">Waktu pengerjaan soal adalah 30 menit, terdapat timer pada
+                                        <p class="mb-2 card-text">Waktu pengerjaan soal adalah 20 menit, terdapat timer pada
                                             bagian kanan atas.</p>
                                     </li>
                                     <li>
@@ -54,7 +54,8 @@
                                             sudah dikerjakan tidak akan disimpan dan harus menjawab ulang dari awal.</p>
                                     </li>
                                     <li>
-                                        <p class="mb-2 card-text">Jika kuis telah memenuhi KKM, maka kuis tidak dapat dikerjakan lagi.</p>
+                                        <p class="mb-2 card-text">Jika kuis telah memenuhi KKM, maka kuis tidak dapat
+                                            dikerjakan lagi.</p>
                                     </li>
                                 </ol>
                             </div>
@@ -93,10 +94,9 @@
                                     <div id="completed-score" class="h1 text-success">
                                         {{ ($dataKuis->point_earned / 2) * 10 }}</div>
                                 </div>
-                                <div role="alert"
-                                class="fade text-center small alert alert-success show">
-                                Kamu telah selesai mengerjakan Kuis ini, silahkan mempelajari materi berikutnya
-                            </div>
+                                <div role="alert" class="fade text-center small alert alert-success show">
+                                    Kamu telah selesai mengerjakan Kuis ini, silahkan mempelajari materi berikutnya
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -120,7 +120,7 @@
                     <div class="d-flex justify-content-between card-header">
                         <div class="fw-semibold">KUIS 1</div>
                         <div class="text-danger fw-semibold"><i class="bi bi-stopwatch"></i> <span
-                                id="timer">30:00</span></div>
+                                id="timer">20:00</span></div>
                     </div>
                     <div class="card-body">
                         <div class="fw-semibold">

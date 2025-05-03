@@ -244,6 +244,9 @@
     </div>
     <script>
         let stepId = 3;
+        // const soundPoin = new Audio("/sfx/Poin.mp3");
+        // const soundSalah = new Audio("/sfx/Wrong.mp3");
+
         document.getElementById('checkBtn').addEventListener('click', () => {
             // Topik yang benar dalam Node.js
             const correctTopics = ["tipeData", "array", "variabel", "json"];
@@ -280,6 +283,13 @@
                     })
                     .then(response => response.json())
                     .then(data => {
+                        if (data.status === "success") {
+                            soundPoin.play();
+                        } else {
+                            soundError.play();
+                        }
+
+
                         Swal.fire({
                             title: data.status === "success" ? "Selamat!" : "Oops!",
                             text: data.message,
@@ -294,6 +304,7 @@
                         });
                     });
             } else {
+                soundSalah.play();
                 feedbackBox.className = "alert alert-danger mt-3";
                 feedbackBox.innerHTML =
                     "❌ Jawaban kurang tepat. Topik yang sesuai: Tipe Data, Array, Variabel, JSON.";

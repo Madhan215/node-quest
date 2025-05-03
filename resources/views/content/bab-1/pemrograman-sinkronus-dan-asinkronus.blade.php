@@ -163,7 +163,7 @@
                 <p class="fw-semibold bg-primary text-white p-2 rounded card-text">
                     Pertanyaan <span id="noSoal">1</span> dari <span id="totalSoal">1</span>
                 </p>
-                <div class="soal-container" style="height: 40vh; overflow-y: auto;">
+                <div class="soal-container" style="height: auto">
                     <p class="lh-lg" id="soal">Soal</p>
                     <div class="mb-4" id="pilihanContainer"></div>
                     <div id="penjelasan" hidden>

@@ -78,6 +78,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
 
     <script>
+        document.getElementById('MenuKanan').style.display = 'none';
+
+
+
         let cropper;
         const input = document.getElementById('profile-photo');
         const modal = new bootstrap.Modal(document.getElementById('cropModal'));

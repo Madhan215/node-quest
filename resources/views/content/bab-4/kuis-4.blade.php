@@ -12,60 +12,63 @@
         }
     </style>
     {{-- <div class="fade text-dark p-3 flex-grow-1 d-flex show align-items-center justify-content-center min-vh-100"> --}}
-        @if (!$isCompleted)
-    <div id="instructions" class="fade show d-flex align-items-center justify-content-center vh-100">
-        <div class="container">
-            <div class="g-0 my-auto row justify-content-center">
-                <div class="mx-auto col-lg-7">
-                    <div class="text-center">
-                        <h3 class="text-primary fw-semibold">KUIS 4</h3>
-                        <h5>Modul Event</h5>
-                        <hr class="my-4">
-                    </div>
-                    <div class="w-100 card">
-                        <div class="p-3 text-center bg-white card-header">
-                            <h5 class="m-0 fw-semibold card-title">Petunjuk Pengerjaan Kuis</h5>
+    @if (!$isCompleted)
+        <div id="instructions" class="fade show d-flex align-items-center justify-content-center vh-100">
+            <div class="container">
+                <div class="g-0 my-auto row justify-content-center">
+                    <div class="mx-auto col-lg-7">
+                        <div class="text-center">
+                            <h3 class="text-primary fw-semibold">KUIS 4</h3>
+                            <h5>Modul Event</h5>
+                            <hr class="my-4">
                         </div>
-                        <div class="small card-body">
-                            <ol class="mb-0">
-                                <li>
-                                    <p class="mb-2 card-text">Terdapat 10 soal pada kuis ini. Untuk memulai mengerjakan
-                                        kuis, tekan tombol "MULAI".
+                        <div class="w-100 card">
+                            <div class="p-3 text-center bg-white card-header">
+                                <h5 class="m-0 fw-semibold card-title">Petunjuk Pengerjaan Kuis</h5>
+                            </div>
+                            <div class="small card-body">
+                                <ol class="mb-0">
+                                    <li>
+                                        <p class="mb-2 card-text">Terdapat 10 soal pada kuis ini. Untuk memulai mengerjakan
+                                            kuis, tekan tombol "MULAI".
 
-                                    </p>
-                                </li>
-                                <li>
-                                    <p class="mb-2 card-text">Waktu pengerjaan soal adalah 30 menit, terdapat timer pada
-                                        bagian kanan atas.</p>
-                                </li>
-                                <li>
-                                    <p class="mb-2 card-text">Laman kuis terbagi menjadi dua sisi. Pada sisi bagian kiri
-                                        terdapat soal. Pada sisi bagian kanan terdapat nomor soal dan tombol "SELESAI".
-                                    </p>
-                                </li>
-                                <li>
-                                    <p class="mb-2 card-text">Jika sudah selesai tekan tombol "SELESAI". Jika waktu
-                                        pengerjaan soal habis maka laman soal akan otomatis
-                                        tertutup yang akan langsung diarahkan ke halaman hasil.</p>
-                                </li>
-                                <li>
-                                    <p class="mb-2 card-text">Jika keluar ketika sedang mengerjakan kuis, semua jawaban yang
-                                        sudah dikerjakan tidak akan disimpan dan harus menjawab ulang dari awal.</p>
-                                </li>
-                                <li>
-                                    <p class="mb-2 card-text">Jika kuis telah memenuhi KKM, maka kuis tidak dapat dikerjakan lagi.</p>
-                                </li>
-                            </ol>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="mb-2 card-text">Waktu pengerjaan soal adalah 20 menit, terdapat timer pada
+                                            bagian kanan atas.</p>
+                                    </li>
+                                    <li>
+                                        <p class="mb-2 card-text">Laman kuis terbagi menjadi dua sisi. Pada sisi bagian kiri
+                                            terdapat soal. Pada sisi bagian kanan terdapat nomor soal dan tombol "SELESAI".
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="mb-2 card-text">Jika sudah selesai tekan tombol "SELESAI". Jika waktu
+                                            pengerjaan soal habis maka laman soal akan otomatis
+                                            tertutup yang akan langsung diarahkan ke halaman hasil.</p>
+                                    </li>
+                                    <li>
+                                        <p class="mb-2 card-text">Jika keluar ketika sedang mengerjakan kuis, semua jawaban
+                                            yang
+                                            sudah dikerjakan tidak akan disimpan dan harus menjawab ulang dari awal.</p>
+                                    </li>
+                                    <li>
+                                        <p class="mb-2 card-text">Jika kuis telah memenuhi KKM, maka kuis tidak dapat
+                                            dikerjakan lagi.</p>
+                                    </li>
+                                </ol>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="text-center p-3">
-                    <button type="button" class="me-2 btn btn-primary" id="mulai-kuis" onclick="startQuiz()">MULAI</button>
-                    <a href="{{ url()->previous() }}" class="btn btn-outline-primary">KEMBALI</a>
+                    <div class="text-center p-3">
+                        <button type="button" class="me-2 btn btn-primary" id="mulai-kuis"
+                            onclick="startQuiz()">MULAI</button>
+                        <a href="{{ url()->previous() }}" class="btn btn-outline-primary">KEMBALI</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     @else
         {{-- Disini Kalau sudah selesai --}}
         <div id="completed" class="text-center show fade d-flex align-items-center justifiy-content-center vh-100">
@@ -74,7 +77,7 @@
                     <div class="mx-auto col-lg-7">
                         <div class="text-center">
                             <h3 class="text-primary fw-semibold">KUIS 4</h3>
-                        <h5>Modul Event</h5>
+                            <h5>Modul Event</h5>
                             <hr class="my-4">
                         </div>
                         <div class="w-100 card">
@@ -91,10 +94,9 @@
                                     <div id="completed-score" class="h1 text-success">
                                         {{ ($dataKuis->point_earned / 2) * 10 }}</div>
                                 </div>
-                                <div role="alert"
-                                class="fade text-center small alert alert-success show">
-                                Kamu telah selesai mengerjakan Kuis ini, silahkan mempelajari materi berikutnya
-                            </div>
+                                <div role="alert" class="fade text-center small alert alert-success show">
+                                    Kamu telah selesai mengerjakan Kuis ini, silahkan mempelajari materi berikutnya
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -118,7 +120,7 @@
                     <div class="d-flex justify-content-between card-header">
                         <div class="fw-semibold">KUIS 4</div>
                         <div class="text-danger fw-semibold"><i class="bi bi-stopwatch"></i> <span
-                                id="timer">30:00</span></div>
+                                id="timer">20:00</span></div>
                     </div>
                     <div class="card-body">
                         <div class="fw-semibold">
@@ -223,8 +225,10 @@
 
                 </div>
                 <div class="d-flex justify-content-center p-3">
-                    <button class="btn btn-outline-primary" onclick="restartQuiz()" id="btn_coba_lagi" style="display: none">Coba Lagi</button>
-                    <a href="/modul-file-system/modul-file-system" class="btn btn-primary" id="btn_materi_berikutnya" style="display: none">Materi Berikutnya</a>
+                    <button class="btn btn-outline-primary" onclick="restartQuiz()" id="btn_coba_lagi"
+                        style="display: none">Coba Lagi</button>
+                    <a href="/modul-file-system/modul-file-system" class="btn btn-primary" id="btn_materi_berikutnya"
+                        style="display: none">Materi Berikutnya</a>
                 </div>
             </div>
         </div>
@@ -239,89 +243,113 @@
 
         let timer_quiz = document.getElementById("timer");
 
-        const questions = [
-    {
-        "id": 0,
-        "type": "multiple_choice",
-        "question": "Apa peran utama EventEmitter dalam modul Event di Node.js?",
-        "options": ["Untuk mengakses database.", "Untuk menangani dan memicu event dalam aplikasi.", "Untuk membuat koneksi jaringan.", "Untuk menambahkan file dalam sistem."],
-        "answer": 1,
-        "userAnswer": null
-    },
-    {
-        "id": 1,
-        "type": "multiple_choice",
-        "question": "Metode mana yang digunakan untuk memicu event dalam EventEmitter?",
-        "options": ["on()", "emit()", "once()", "removeListener()"],
-        "answer": 1,
-        "userAnswer": null
-    },
-    {
-        "id": 2,
-        "type": "multiple_choice",
-        "question": "Bagaimana cara menggunakan listener satu kali saja untuk sebuah event tertentu?",
-        "options": ["Menggunakan metode emit.", "Menggunakan metode removeListener.", "Menggunakan metode once.", "Menggunakan metode on."],
-        "answer": 2,
-        "userAnswer": null
-    },
-    {
-        "id": 3,
-        "type": "multiple_choice",
-        "question": "Apa manfaat dari menggunakan modul Event dalam aplikasi Node.js?",
-        "options": ["Mengelola event secara asinkron tanpa memblokir thread utama.", "Meningkatkan struktur dan modularitas kode", "Memungkinkan komunikasi berbasis event dalam aplikasi.", "Semua jawaban benar."],
-        "answer": 3,
-        "userAnswer": null
-    },
-    {
-        "id": 4,
-        "type": "multiple_choice",
-        "question": "Apa fungsi dari removeListener dalam modul Event?",
-        "options": ["Menambah listener baru ke event.", "Menghapus listener yang terdaftar pada suatu event.", "Memicu event tertentu dalam aplikasi.", "Mengatur urutan event di dalam aplikasi."],
-        "answer": 1,
-        "userAnswer": null
-    },
-    {
-        "id": 5,
-        "type": "multiple_choice",
-        "question": "Apa tujuan utama dari modul Event dalam Node.js?",
-        "options": ["Mengelola kejadian atau event dalam aplikasi secara efisien.", "Menghubungkan aplikasi dengan basis data eksternal.", "Menjalankan tugas-tugas secara sinkron.", "Mempermudah manipulasi file sistem."],
-        "answer": 0,
-        "userAnswer": null
-    },
-    {
-        "id": 6,
-        "type": "multiple_choice",
-        "question": "Dalam modul EventEmitter, bagaimana cara mendaftarkan event agar bisa dijalankan berkali-kali?",
-        "options": ["Menggunakan metode once().", "Menggunakan metode on().", "Menggunakan metode emit().", "Menggunakan metode removeListener()."],
-        "answer": 1,
-        "userAnswer": null
-    },
-    {
-        "id": 7,
-        "type": "multiple_choice",
-        "question": "Apa yang terjadi jika sebuah event tidak memiliki listener dalam EventEmitter?",
-        "options": ["Event akan tetap dipicu tetapi tidak ada aksi yang dijalankan.", "Event akan otomatis dibatalkan oleh Node.js.", "Node.js akan menampilkan error dan menghentikan eksekusi program.", "Event akan disimpan dalam antrean sampai listener tersedia."],
-        "answer": 0,
-        "userAnswer": null
-    },
-    {
-        "id": 8,
-        "type": "multiple_choice",
-        "question": "Dalam konteks EventEmitter, apa yang dilakukan oleh metode removeAllListeners()?",
-        "options": ["Menghapus semua listener yang terdaftar untuk satu atau lebih event.", "Menghapus hanya satu listener dari sebuah event.", "Mencegah event untuk dipicu di masa mendatang.", "Mengaktifkan kembali event yang telah dihapus sebelumnya."],
-        "answer": 0,
-        "userAnswer": null
-    },
-    {
-        "id": 9,
-        "type": "multiple_choice",
-        "question": "Apa yang terjadi jika metode emit() dipanggil sebelum listener didaftarkan?",
-        "options": ["Event tetap dipicu, tetapi tidak ada kode yang dieksekusi.", "Event akan secara otomatis menunggu hingga listener tersedia.", "Node.js akan menampilkan pesan peringatan tetapi tetap melanjutkan eksekusi.", "Program akan mengalami error dan berhenti berjalan."],
-        "answer": 0,
-        "userAnswer": null
-    }
-];
-
+        const questions = [{
+                "id": 0,
+                "type": "multiple_choice",
+                "question": "Apa peran utama EventEmitter dalam modul Event di Node.js?",
+                "options": ["Untuk mengakses database.", "Untuk menangani dan memicu event dalam aplikasi.",
+                    "Untuk membuat koneksi jaringan.", "Untuk menambahkan file dalam sistem."
+                ],
+                "answer": 1,
+                "userAnswer": null
+            },
+            {
+                "id": 1,
+                "type": "multiple_choice",
+                "question": "Metode mana yang digunakan untuk memicu event dalam EventEmitter?",
+                "options": ["on()", "emit()", "once()", "removeListener()"],
+                "answer": 1,
+                "userAnswer": null
+            },
+            {
+                "id": 2,
+                "type": "multiple_choice",
+                "question": "Bagaimana cara menggunakan listener satu kali saja untuk sebuah event tertentu?",
+                "options": ["Menggunakan metode emit.", "Menggunakan metode removeListener.",
+                    "Menggunakan metode once.", "Menggunakan metode on."
+                ],
+                "answer": 2,
+                "userAnswer": null
+            },
+            {
+                "id": 3,
+                "type": "multiple_choice",
+                "question": "Apa manfaat dari menggunakan modul Event dalam aplikasi Node.js?",
+                "options": ["Mengelola event secara asinkron tanpa memblokir thread utama.",
+                    "Meningkatkan struktur dan modularitas kode",
+                    "Memungkinkan komunikasi berbasis event dalam aplikasi.", "Semua jawaban benar."
+                ],
+                "answer": 3,
+                "userAnswer": null
+            },
+            {
+                "id": 4,
+                "type": "multiple_choice",
+                "question": "Apa fungsi dari removeListener dalam modul Event?",
+                "options": ["Menambah listener baru ke event.", "Menghapus listener yang terdaftar pada suatu event.",
+                    "Memicu event tertentu dalam aplikasi.", "Mengatur urutan event di dalam aplikasi."
+                ],
+                "answer": 1,
+                "userAnswer": null
+            },
+            {
+                "id": 5,
+                "type": "multiple_choice",
+                "question": "Apa tujuan utama dari modul Event dalam Node.js?",
+                "options": ["Mengelola kejadian atau event dalam aplikasi secara efisien.",
+                    "Menghubungkan aplikasi dengan basis data eksternal.",
+                    "Menjalankan tugas-tugas secara sinkron.", "Mempermudah manipulasi file sistem."
+                ],
+                "answer": 0,
+                "userAnswer": null
+            },
+            {
+                "id": 6,
+                "type": "multiple_choice",
+                "question": "Dalam modul EventEmitter, bagaimana cara mendaftarkan event agar bisa dijalankan berkali-kali?",
+                "options": ["Menggunakan metode once().", "Menggunakan metode on().", "Menggunakan metode emit().",
+                    "Menggunakan metode removeListener()."
+                ],
+                "answer": 1,
+                "userAnswer": null
+            },
+            {
+                "id": 7,
+                "type": "multiple_choice",
+                "question": "Apa yang terjadi jika sebuah event tidak memiliki listener dalam EventEmitter?",
+                "options": ["Event akan tetap dipicu tetapi tidak ada aksi yang dijalankan.",
+                    "Event akan otomatis dibatalkan oleh Node.js.",
+                    "Node.js akan menampilkan error dan menghentikan eksekusi program.",
+                    "Event akan disimpan dalam antrean sampai listener tersedia."
+                ],
+                "answer": 0,
+                "userAnswer": null
+            },
+            {
+                "id": 8,
+                "type": "multiple_choice",
+                "question": "Dalam konteks EventEmitter, apa yang dilakukan oleh metode removeAllListeners()?",
+                "options": ["Menghapus semua listener yang terdaftar untuk satu atau lebih event.",
+                    "Menghapus hanya satu listener dari sebuah event.",
+                    "Mencegah event untuk dipicu di masa mendatang.",
+                    "Mengaktifkan kembali event yang telah dihapus sebelumnya."
+                ],
+                "answer": 0,
+                "userAnswer": null
+            },
+            {
+                "id": 9,
+                "type": "multiple_choice",
+                "question": "Apa yang terjadi jika metode emit() dipanggil sebelum listener didaftarkan?",
+                "options": ["Event tetap dipicu, tetapi tidak ada kode yang dieksekusi.",
+                    "Event akan secara otomatis menunggu hingga listener tersedia.",
+                    "Node.js akan menampilkan pesan peringatan tetapi tetap melanjutkan eksekusi.",
+                    "Program akan mengalami error dan berhenti berjalan."
+                ],
+                "answer": 0,
+                "userAnswer": null
+            }
+        ];
     </script>
-    <script src="{{asset('script/kuis.js')}}"></script>
+    <script src="{{ asset('script/kuis.js') }}"></script>
 @endsection

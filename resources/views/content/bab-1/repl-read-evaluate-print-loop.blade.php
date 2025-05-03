@@ -18,7 +18,7 @@
             <div class="ms-2 me-auto w-100">
                 <div>Untuk masuk pada sesi REPL, ketikkan perintah “node” pada Terminal:</div>
 
-                <figure class="text-center">
+                <figure class="text-center mt-3">
                     <a href="{{ asset('img/bab1-7/no-17.png') }}" data-fancybox="gallery"
                         data-caption="Gambar 19. Masuk sesi REPL">
                         <img class="img-fluid d-block mx-auto my-2 shadow" src="{{ asset('img/bab1-7/no-17.png') }}"
@@ -48,7 +48,7 @@
             <div class="ms-2 me-auto w-100">
                 <div>Mulai dengan input untuk menampilkan hello world dan ketik enter untuk menjalankan</div>
 
-                <figure class="text-center">
+                <figure class="text-center mt-3">
                     <a href="{{ asset('img/bab1-7/no-19.png') }}" data-fancybox="gallery"
                         data-caption="Gambar 21. Input sederhana">
                         <img class="img-fluid d-block mx-auto my-2 shadow" src="{{ asset('img/bab1-7/no-19.png') }}"
@@ -103,7 +103,7 @@
                     dalam mode multi-line agar pengguna dapat melanjutkan pengetikkan kodenya. Untuk menyelesaikan cukup
                     dengan menutuf definisi fungsi tersebut lalu tekan enter.</div>
 
-                <figure class="text-center">
+                <figure class="text-center mt-3">
                     <a href="{{ asset('img/bab1-7/no-22.png') }}" data-fancybox="gallery"
                         data-caption="Gambar 24. Menyelesaikan multi line code">
                         <img class="img-fluid d-block mx-auto my-2 shadow" src="{{ asset('img/bab1-7/no-22.png') }}"
@@ -213,7 +213,7 @@
                 <p class="fw-semibold bg-primary text-white p-2 rounded card-text">
                     Pertanyaan <span id="noSoal">1</span> dari <span id="totalSoal">1</span>
                 </p>
-                <div class="soal-container" style="height: 40vh; overflow-y: auto;">
+                <div class="soal-container" style="height: auto">
                     <p class="lh-lg" id="soal">Soal</p>
                     <div class="mb-4" id="pilihanContainer"></div>
                     <div id="penjelasan" hidden>

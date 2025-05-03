@@ -20,7 +20,7 @@
                         target="_blank">nodejs.org</a>, lalu download versi terbaru (node-v20.17.0) tanggal 25/09/2024 dari
                     Situs Node.js</div>
 
-                <figure class="text-center">
+                <figure class="text-center mt-4">
                     <a href="{{ asset('img/bab1-6/no-1.png') }}" data-fancybox="gallery"
                         data-caption="Gambar 4. Website Nodejs.org">
                         <img class="img-fluid d-block mx-auto my-2 shadow" src="{{ asset('img/bab1-6/no-1.png') }}"
@@ -209,7 +209,7 @@
                 <div>Untuk memastikan Node.js terinstal dan berjalan dengan baik, buka command prompt dan ketik ‘node’
                     kemudian tekan Enter.</div>
 
-                <figure class="text-center">
+                <figure class="text-center mt-3">
                     <a href="{{ asset('img/bab1-6/no-14.png') }}" data-fancybox="gallery"
                         data-caption="Gambar 16. Tampilan welcome to Node">
                         <img class="img-fluid d-block mx-auto my-2 shadow" src="{{ asset('img/bab1-6/no-14.png') }}"
@@ -288,7 +288,7 @@
                 <p class="fw-semibold bg-primary text-white p-2 rounded card-text">
                     Pertanyaan <span id="noSoal">1</span> dari <span id="totalSoal">1</span>
                 </p>
-                <div class="soal-container" style="height: 40vh; overflow-y: auto;">
+                <div class="soal-container" style="height: auto">
                     <p class="lh-lg" id="soal">Soal</p>
                     <div class="mb-4" id="pilihanContainer"></div>
                     <div id="penjelasan" hidden>

@@ -12,60 +12,63 @@
         }
     </style>
     {{-- <div class="fade text-dark p-3 flex-grow-1 d-flex show align-items-center justify-content-center min-vh-100"> --}}
-        @if (!$isCompleted)
-    <div id="instructions" class="fade show d-flex align-items-center justify-content-center vh-100">
-        <div class="container">
-            <div class="g-0 my-auto row justify-content-center">
-                <div class="mx-auto col-lg-7">
-                    <div class="text-center">
-                        <h3 class="text-primary fw-semibold">KUIS 5</h3>
-                        <h5>Modul File System</h5>
-                        <hr class="my-4">
-                    </div>
-                    <div class="w-100 card">
-                        <div class="p-3 text-center bg-white card-header">
-                            <h5 class="m-0 fw-semibold card-title">Petunjuk Pengerjaan Kuis</h5>
+    @if (!$isCompleted)
+        <div id="instructions" class="fade show d-flex align-items-center justify-content-center vh-100">
+            <div class="container">
+                <div class="g-0 my-auto row justify-content-center">
+                    <div class="mx-auto col-lg-7">
+                        <div class="text-center">
+                            <h3 class="text-primary fw-semibold">KUIS 5</h3>
+                            <h5>Modul File System</h5>
+                            <hr class="my-4">
                         </div>
-                        <div class="small card-body">
-                            <ol class="mb-0">
-                                <li>
-                                    <p class="mb-2 card-text">Terdapat 10 soal pada kuis ini. Untuk memulai mengerjakan
-                                        kuis, tekan tombol "MULAI".
+                        <div class="w-100 card">
+                            <div class="p-3 text-center bg-white card-header">
+                                <h5 class="m-0 fw-semibold card-title">Petunjuk Pengerjaan Kuis</h5>
+                            </div>
+                            <div class="small card-body">
+                                <ol class="mb-0">
+                                    <li>
+                                        <p class="mb-2 card-text">Terdapat 10 soal pada kuis ini. Untuk memulai mengerjakan
+                                            kuis, tekan tombol "MULAI".
 
-                                    </p>
-                                </li>
-                                <li>
-                                    <p class="mb-2 card-text">Waktu pengerjaan soal adalah 30 menit, terdapat timer pada
-                                        bagian kanan atas.</p>
-                                </li>
-                                <li>
-                                    <p class="mb-2 card-text">Laman kuis terbagi menjadi dua sisi. Pada sisi bagian kiri
-                                        terdapat soal. Pada sisi bagian kanan terdapat nomor soal dan tombol "SELESAI".
-                                    </p>
-                                </li>
-                                <li>
-                                    <p class="mb-2 card-text">Jika sudah selesai tekan tombol "SELESAI". Jika waktu
-                                        pengerjaan soal habis maka laman soal akan otomatis
-                                        tertutup yang akan langsung diarahkan ke halaman hasil.</p>
-                                </li>
-                                <li>
-                                    <p class="mb-2 card-text">Jika keluar ketika sedang mengerjakan kuis, semua jawaban yang
-                                        sudah dikerjakan tidak akan disimpan dan harus menjawab ulang dari awal.</p>
-                                </li>
-                                <li>
-                                    <p class="mb-2 card-text">Jika kuis telah memenuhi KKM, maka kuis tidak dapat dikerjakan lagi.</p>
-                                </li>
-                            </ol>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="mb-2 card-text">Waktu pengerjaan soal adalah 20 menit, terdapat timer pada
+                                            bagian kanan atas.</p>
+                                    </li>
+                                    <li>
+                                        <p class="mb-2 card-text">Laman kuis terbagi menjadi dua sisi. Pada sisi bagian kiri
+                                            terdapat soal. Pada sisi bagian kanan terdapat nomor soal dan tombol "SELESAI".
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="mb-2 card-text">Jika sudah selesai tekan tombol "SELESAI". Jika waktu
+                                            pengerjaan soal habis maka laman soal akan otomatis
+                                            tertutup yang akan langsung diarahkan ke halaman hasil.</p>
+                                    </li>
+                                    <li>
+                                        <p class="mb-2 card-text">Jika keluar ketika sedang mengerjakan kuis, semua jawaban
+                                            yang
+                                            sudah dikerjakan tidak akan disimpan dan harus menjawab ulang dari awal.</p>
+                                    </li>
+                                    <li>
+                                        <p class="mb-2 card-text">Jika kuis telah memenuhi KKM, maka kuis tidak dapat
+                                            dikerjakan lagi.</p>
+                                    </li>
+                                </ol>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="text-center p-3">
-                    <button type="button" class="me-2 btn btn-primary" id="mulai-kuis" onclick="startQuiz()">MULAI</button>
-                    <a href="{{ url()->previous() }}" class="btn btn-outline-primary">KEMBALI</a>
+                    <div class="text-center p-3">
+                        <button type="button" class="me-2 btn btn-primary" id="mulai-kuis"
+                            onclick="startQuiz()">MULAI</button>
+                        <a href="{{ url()->previous() }}" class="btn btn-outline-primary">KEMBALI</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     @else
         {{-- Disini Kalau sudah selesai --}}
         <div id="completed" class="text-center show fade d-flex align-items-center justifiy-content-center vh-100">
@@ -74,7 +77,7 @@
                     <div class="mx-auto col-lg-7">
                         <div class="text-center">
                             <h3 class="text-primary fw-semibold">KUIS 5</h3>
-                        <h5>Modul File System</h5>
+                            <h5>Modul File System</h5>
                             <hr class="my-4">
                         </div>
                         <div class="w-100 card">
@@ -91,10 +94,9 @@
                                     <div id="completed-score" class="h1 text-success">
                                         {{ ($dataKuis->point_earned / 2) * 10 }}</div>
                                 </div>
-                                <div role="alert"
-                                class="fade text-center small alert alert-success show">
-                                Kamu telah selesai mengerjakan Kuis ini, silahkan mempelajari materi berikutnya
-                            </div>
+                                <div role="alert" class="fade text-center small alert alert-success show">
+                                    Kamu telah selesai mengerjakan Kuis ini, silahkan mempelajari materi berikutnya
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -118,7 +120,7 @@
                     <div class="d-flex justify-content-between card-header">
                         <div class="fw-semibold">KUIS 5</div>
                         <div class="text-danger fw-semibold"><i class="bi bi-stopwatch"></i> <span
-                                id="timer">30:00</span></div>
+                                id="timer">20:00</span></div>
                     </div>
                     <div class="card-body">
                         <div class="fw-semibold">
@@ -223,8 +225,10 @@
 
                 </div>
                 <div class="d-flex justify-content-center p-3">
-                    <button class="btn btn-outline-primary" onclick="restartQuiz()" id="btn_coba_lagi" style="display: none">Coba Lagi</button>
-                    <a href="/modul-http/modul-http" class="btn btn-primary" id="btn_materi_berikutnya" style="display: none">Materi Berikutnya</a>
+                    <button class="btn btn-outline-primary" onclick="restartQuiz()" id="btn_coba_lagi"
+                        style="display: none">Coba Lagi</button>
+                    <a href="/modul-http/modul-http" class="btn btn-primary" id="btn_materi_berikutnya"
+                        style="display: none">Materi Berikutnya</a>
                 </div>
             </div>
         </div>
@@ -239,89 +243,97 @@
 
         let timer_quiz = document.getElementById("timer");
 
-        const questions = [
-    {
-        "id": 0,
-        "type": "multiple_choice",
-        "question": "Apa peran utama dari modul File System (FS) dalam Node.js?",
-        "options": ["Mengelola sesi pengguna.", "Menangani permintaan HTTP.", "Mengakses dan mengelola file serta direktori dalam sistem file.", "Mengelola koneksi jaringan."],
-        "answer": 2,
-        "userAnswer": null
-    },
-    {
-        "id": 1,
-        "type": "multiple_choice",
-        "question": "Operasi apa saja yang dapat dilakukan menggunakan modul File System?",
-        "options": ["Menghapus, membaca, menulis, dan mengubah file.", "Mengelola sesi pengguna.", "Menghasilkan data acak.", "Menangani koneksi server."],
-        "answer": 0,
-        "userAnswer": null
-    },
-    {
-        "id": 2,
-        "type": "multiple_choice",
-        "question": "Mengapa modul File System sangat penting dalam pengembangan aplikasi Node.js?",
-        "options": ["Memungkinkan program untuk mengelola koneksi ke server.", "Membantu aplikasi mengakses dan mengelola data dalam disk secara efisien.", "Menghubungkan aplikasi dengan database eksternal.", "Mengatur interaksi antara program dan pengguna."],
-        "answer": 1,
-        "userAnswer": null
-    },
-    {
-        "id": 3,
-        "type": "multiple_choice",
-        "question": "Perintah mana yang digunakan untuk membaca isi file dalam Node.js secara sinkron?",
-        "options": ["fs.writeFile()", "fs.renameFile()", "fs.readFileSync()", "fs.deleteFile()"],
-        "answer": 2,
-        "userAnswer": null
-    },
-    {
-        "id": 4,
-        "type": "multiple_choice",
-        "question": "Jika file yang dituju tidak ada saat menggunakan fs.writeFile(), apa yang akan terjadi?",
-        "options": ["Program akan melanjutkan tanpa perubahan.", "File baru akan dibuat secara otomatis.", "File lama akan terhapus.", "Program akan berhenti dengan error."],
-        "answer": 1,
-        "userAnswer": null
-    },
-    {
-        "id": 5,
-        "type": "multiple_choice",
-        "question": "Manakah metode yang digunakan untuk membaca isi file secara asinkron di Node.js?",
-        "options": ["fs.readFile", "fs.unlink", "fs.rename", "fs.writeFile"],
-        "answer": 0,
-        "userAnswer": null
-    },
-    {
-        "id": 6,
-        "type": "multiple_choice",
-        "question": "Metode mana yang digunakan untuk menghapus file dalam Node.js?",
-        "options": ["fs.writeFile", "fs.readFile", "fs.rename", "fs.unlink"],
-        "answer": 3,
-        "userAnswer": null
-    },
-    {
-        "id": 7,
-        "type": "multiple_choice",
-        "question": "Bagaimana cara membuat file secara asinkron dalam Node.js?",
-        "options": ["fs.unlink", "fs.writeFile", "fs.readFile", "fs.rename"],
-        "answer": 1,
-        "userAnswer": null
-    },
-    {
-        "id": 8,
-        "type": "multiple_choice",
-        "question": "Metode apa yang digunakan untuk mengubah nama file dalam Node.js?",
-        "options": ["fs.readFile", "fs.rename", "fs.unlink", "fs.writeFile"],
-        "answer": 1,
-        "userAnswer": null
-    },
-    {
-        "id": 9,
-        "type": "multiple_choice",
-        "question": "Jika ingin melihat daftar file dalam suatu direktori, metode mana yang harus digunakan?",
-        "options": ["fs.readFile", "fs.writeFile", "fs.readdir", "fs.rename"],
-        "answer": 2,
-        "userAnswer": null
-    }
-];
-
+        const questions = [{
+                "id": 0,
+                "type": "multiple_choice",
+                "question": "Apa peran utama dari modul File System (FS) dalam Node.js?",
+                "options": ["Mengelola sesi pengguna.", "Menangani permintaan HTTP.",
+                    "Mengakses dan mengelola file serta direktori dalam sistem file.", "Mengelola koneksi jaringan."
+                ],
+                "answer": 2,
+                "userAnswer": null
+            },
+            {
+                "id": 1,
+                "type": "multiple_choice",
+                "question": "Operasi apa saja yang dapat dilakukan menggunakan modul File System?",
+                "options": ["Menghapus, membaca, menulis, dan mengubah file.", "Mengelola sesi pengguna.",
+                    "Menghasilkan data acak.", "Menangani koneksi server."
+                ],
+                "answer": 0,
+                "userAnswer": null
+            },
+            {
+                "id": 2,
+                "type": "multiple_choice",
+                "question": "Mengapa modul File System sangat penting dalam pengembangan aplikasi Node.js?",
+                "options": ["Memungkinkan program untuk mengelola koneksi ke server.",
+                    "Membantu aplikasi mengakses dan mengelola data dalam disk secara efisien.",
+                    "Menghubungkan aplikasi dengan database eksternal.",
+                    "Mengatur interaksi antara program dan pengguna."
+                ],
+                "answer": 1,
+                "userAnswer": null
+            },
+            {
+                "id": 3,
+                "type": "multiple_choice",
+                "question": "Perintah mana yang digunakan untuk membaca isi file dalam Node.js secara sinkron?",
+                "options": ["fs.writeFile()", "fs.renameFile()", "fs.readFileSync()", "fs.deleteFile()"],
+                "answer": 2,
+                "userAnswer": null
+            },
+            {
+                "id": 4,
+                "type": "multiple_choice",
+                "question": "Jika file yang dituju tidak ada saat menggunakan fs.writeFile(), apa yang akan terjadi?",
+                "options": ["Program akan melanjutkan tanpa perubahan.", "File baru akan dibuat secara otomatis.",
+                    "File lama akan terhapus.", "Program akan berhenti dengan error."
+                ],
+                "answer": 1,
+                "userAnswer": null
+            },
+            {
+                "id": 5,
+                "type": "multiple_choice",
+                "question": "Manakah metode yang digunakan untuk membaca isi file secara asinkron di Node.js?",
+                "options": ["fs.readFile", "fs.unlink", "fs.rename", "fs.writeFile"],
+                "answer": 0,
+                "userAnswer": null
+            },
+            {
+                "id": 6,
+                "type": "multiple_choice",
+                "question": "Metode mana yang digunakan untuk menghapus file dalam Node.js?",
+                "options": ["fs.writeFile", "fs.readFile", "fs.rename", "fs.unlink"],
+                "answer": 3,
+                "userAnswer": null
+            },
+            {
+                "id": 7,
+                "type": "multiple_choice",
+                "question": "Bagaimana cara membuat file secara asinkron dalam Node.js?",
+                "options": ["fs.unlink", "fs.writeFile", "fs.readFile", "fs.rename"],
+                "answer": 1,
+                "userAnswer": null
+            },
+            {
+                "id": 8,
+                "type": "multiple_choice",
+                "question": "Metode apa yang digunakan untuk mengubah nama file dalam Node.js?",
+                "options": ["fs.readFile", "fs.rename", "fs.unlink", "fs.writeFile"],
+                "answer": 1,
+                "userAnswer": null
+            },
+            {
+                "id": 9,
+                "type": "multiple_choice",
+                "question": "Jika ingin melihat daftar file dalam suatu direktori, metode mana yang harus digunakan?",
+                "options": ["fs.readFile", "fs.writeFile", "fs.readdir", "fs.rename"],
+                "answer": 2,
+                "userAnswer": null
+            }
+        ];
     </script>
-    <script src="{{asset('script/kuis.js')}}"></script>
+    <script src="{{ asset('script/kuis.js') }}"></script>
 @endsection

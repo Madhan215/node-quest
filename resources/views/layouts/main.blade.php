@@ -136,7 +136,7 @@
                                 <a role="button" tabindex="0" class="btn btn-outline-primary" href="/register">DAFTAR</a>
                                 <a role="button" tabindex="0" class="btn btn-primary" href="/login">MASUK</a>
                             @else
-                                <li class="nav-item dropdown">
+                                <li class="nav-item dropdown" id="MenuKanan">
                                     <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
                                         id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown"
                                         aria-expanded="false">
@@ -232,7 +232,18 @@
                     </div>
                     <button id="chatbot-close">&times;</button>
                 </div>
-                <div id="chatbot-content"></div>
+                <div id="chatbot-content">
+                    <div class="chat-message bot-message">
+                        <div class="chat-bubble" style="text-align: left">
+                            <span class="chat-name">Rotel</span>
+                            <p>Hai!👋 Saya <strong>Rotel</strong>, chatbot yang siap membantu kamu memahami dasar-dasar
+                                seputar
+                                <strong>Node.js</strong>. Silakan ketik pertanyaanmu!
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
                 <div id="chatbot-input-container">
                     <input type="text" id="chatbot-input" placeholder="Ketik pesan...">
                     <button id="chatbot-send" onclick="sendMessage()"><i class="bi bi-send"></i></button>
