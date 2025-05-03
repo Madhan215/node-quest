@@ -7,9 +7,16 @@ const iconPenjelasan = document.getElementById("iconPenjelasan");
 let ketHasil = document.getElementById("ketHasil");
 
 // Inisialisasi audio
-const soundBenar = new Audio("/sfx/Correct.mp3");
-const soundPoin = new Audio("/sfx/Poin.mp3");
-const soundError = new Audio("/sfx/Error.mp3");
+// Inisialisasi audio
+const soundBenar = new Audio(
+    "https://docs.google.com/uc?export=download&id=1ON-st92wqRTh3tdkO_eBulPKQDl-TtIs3"
+);
+const soundPoin = new Audio(
+    "https://docs.google.com/uc?export=download&id=1hvcYtYdFbNIDrgU9kd5CVRiv-rrU8XAX"
+);
+const soundError = new Audio(
+    "https://docs.google.com/uc?export=download&id=10KP4wvIPS9gKEAi2H_-uPAkbLfjCpSAA"
+);
 
 function buatDraggable() {
     leftBox.innerHTML = '<p class="text-center fw-bold">Kode Acak</p>';
@@ -147,7 +154,9 @@ checkBtn.addEventListener("click", () => {
                 });
             });
     } else {
-        const soundSalah = new Audio("/sfx/Wrong.mp3");
+        const soundSalah = new Audio(
+            "https://docs.google.com/uc?export=download&id=1FXM_TotuaYUfPdCvYzf_1vL9W18Xudil"
+        );
         soundSalah.play();
         ketHasil.innerHTML = "BELUM BENAR";
         alertPenjelasan.classList.add("alert-danger");

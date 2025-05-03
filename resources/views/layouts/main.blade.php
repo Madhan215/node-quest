@@ -106,6 +106,13 @@
 </head>
 
 <body>
+    {{-- Sound FX --}}
+    <audio id="soundSalah" preload="auto">
+        <source src="https://drive.google.com/file/d/1FXM_TotuaYUfPdCvYzf_1vL9W18Xudil/view?usp=drive_link"
+            type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     @if (request()->routeIs('kuis-*') || request()->routeIs('evaluasi'))
         @yield('container-kuis')
     @else

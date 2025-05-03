@@ -3,7 +3,9 @@
 let currentQuestionIndex = 0;
 let score = 0;
 
-const soundBadge = new Audio("/sfx/Badge.mp3");
+const soundBadge = new Audio(
+    "https://docs.google.com/uc?export=download&id=1c6xryu46yzJGWXS91FSpZrXDI3-Tl0bc"
+);
 
 function showElement(elementId) {
     document.getElementById(elementId).style.display = "block";
