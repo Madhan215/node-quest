@@ -8,15 +8,10 @@ let ketHasil = document.getElementById("ketHasil");
 
 // Inisialisasi audio
 // Inisialisasi audio
-const soundBenar = new Audio(
-    "https://docs.google.com/uc?export=download&id=1ON-st92wqRTh3tdkO_eBulPKQDl-TtIs3"
-);
-const soundPoin = new Audio(
-    "https://docs.google.com/uc?export=download&id=1hvcYtYdFbNIDrgU9kd5CVRiv-rrU8XAX"
-);
-const soundError = new Audio(
-    "https://docs.google.com/uc?export=download&id=10KP4wvIPS9gKEAi2H_-uPAkbLfjCpSAA"
-);
+// const soundBenar = document.getElementById("soundBenar");
+// const soundSalah = document.getElementById("soundSalah");
+// const soundPoin = document.getElementById("soundPoin");
+// const soundError = document.getElementById("soundError");
 
 function buatDraggable() {
     leftBox.innerHTML = '<p class="text-center fw-bold">Kode Acak</p>';
@@ -108,6 +103,7 @@ checkBtn.addEventListener("click", () => {
         JSON.stringify(kodeUrutan.map((k) => k.order.toString()));
 
     if (benar) {
+        checkBtn.disabled = true;
         ketHasil.innerHTML = "BENAR";
         alertPenjelasan.classList.remove("alert-danger");
         alertPenjelasan.classList.add("alert-success");
@@ -154,9 +150,6 @@ checkBtn.addEventListener("click", () => {
                 });
             });
     } else {
-        const soundSalah = new Audio(
-            "https://docs.google.com/uc?export=download&id=1FXM_TotuaYUfPdCvYzf_1vL9W18Xudil"
-        );
         soundSalah.play();
         ketHasil.innerHTML = "BELUM BENAR";
         alertPenjelasan.classList.add("alert-danger");

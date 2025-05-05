@@ -6,15 +6,9 @@ const alertPenjelasan = document.getElementById("alertPenjelasan");
 const iconPenjelasan = document.getElementById("iconPenjelasan");
 let ketHasil = document.getElementById("ketHasil");
 
-const soundSalah = new Audio(
-    "https://docs.google.com/uc?export=download&id=1FXM_TotuaYUfPdCvYzf_1vL9W18Xudil"
-);
-const soundPoin = new Audio(
-    "https://docs.google.com/uc?export=download&id=1hvcYtYdFbNIDrgU9kd5CVRiv-rrU8XAX"
-);
-const soundError = new Audio(
-    "https://docs.google.com/uc?export=download&id=10KP4wvIPS9gKEAi2H_-uPAkbLfjCpSAA"
-);
+// const soundSalah = document.getElementById("soundSalah");
+// const soundPoin = document.getElementById("soundPoin");
+// const soundError = document.getElementById("soundError");
 
 let draggedElement = null;
 

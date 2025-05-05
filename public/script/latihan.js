@@ -1,17 +1,11 @@
 let currentSoal = 0;
 
 // Inisialisasi audio
-const soundBenar = new Audio(
-    "https://docs.google.com/uc?export=download&id=1ON-st92wqRTh3tdkO_eBulPKQDl-TtIs3"
-);
+const soundBenar = document.getElementById("soundBenar");
 const soundSalah = document.getElementById("soundSalah");
 
-const soundPoin = new Audio(
-    "https://docs.google.com/uc?export=download&id=1hvcYtYdFbNIDrgU9kd5CVRiv-rrU8XAX"
-);
-const soundError = new Audio(
-    "https://docs.google.com/uc?export=download&id=10KP4wvIPS9gKEAi2H_-uPAkbLfjCpSAA"
-);
+const soundPoin = document.getElementById("soundPoin");
+const soundError = document.getElementById("soundError");
 
 const noSoal = document.getElementById("noSoal");
 const totalSoal = document.getElementById("totalSoal");

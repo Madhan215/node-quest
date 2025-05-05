@@ -107,9 +107,24 @@
 
 <body>
     {{-- Sound FX --}}
+    <audio id="soundBenar" preload="auto">
+        <source src="https://node-quest-sfx.vercel.app/Correct.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
     <audio id="soundSalah" preload="auto">
-        <source src="https://drive.google.com/file/d/1FXM_TotuaYUfPdCvYzf_1vL9W18Xudil/view?usp=drive_link"
-            type="audio/mpeg">
+        <source src="https://node-quest-sfx.vercel.app/Wrong.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="soundError" preload="auto">
+        <source src="https://node-quest-sfx.vercel.app/Error.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="soundPoin" preload="auto">
+        <source src="https://node-quest-sfx.vercel.app/Poin.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="soundBadge" preload="auto">
+        <source src="https://node-quest-sfx.vercel.app/Badge.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 

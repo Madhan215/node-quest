@@ -3,9 +3,7 @@
 let currentQuestionIndex = 0;
 let score = 0;
 
-const soundBadge = new Audio(
-    "https://docs.google.com/uc?export=download&id=1c6xryu46yzJGWXS91FSpZrXDI3-Tl0bc"
-);
+const soundBadge = document.getElementById("soundBadge");
 
 function showElement(elementId) {
     document.getElementById(elementId).style.display = "block";
@@ -346,6 +344,12 @@ function checkAnswers() {
         })
             .then((response) => response.json())
             .then(async (data) => {
+                if (data.status === "success") {
+                    soundPoin.play();
+                } else {
+                    soundError.play();
+                }
+
                 await Swal.fire({
                     title: data.status === "success" ? "Selamat!" : "Oops!",
                     text: data.message,
