@@ -17,7 +17,31 @@
     </style>
     <h1>Dashboard</h1>
     <div class="container">
-        <div class="row g-3">
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        <strong><i class="bi bi-info-circle"></i> Panduan Penggunaan Media</strong>
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <ul class="mb-0">
+                            <li>Pelajari materi dan ikuti petunjuk secara berurutan.</li>
+                            <li>Selesaikan aktivitas pada sub bab untuk membuka sub berikutnya.</li>
+                            <li>Sub bab terkunci ditandai dengan ikon gembok <i class="bi bi-lock"></i>.</li>
+                            <li>Tombol <strong>Selanjutnya</strong> aktif jika aktivitas sub bab diselesaikan.</li>
+                            <li>Setiap akhir bab ada evaluasi, KKM 70 untuk melanjutkan ke bab berikutnya.</li>
+                            <li>Setelah semua bab selesai, ikuti evaluasi akhir untuk mendapat sertifikat.</li>
+                            <li>Kumpulkan poin tertinggi untuk naik peringkat di leaderboard 🏆.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-3 mt-3">
             <!-- Card 1: Progress Pembelajaran -->
             <div class="col-md-6">
                 <div class="card shadow-sm h-100">
