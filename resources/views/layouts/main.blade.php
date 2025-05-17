@@ -242,37 +242,39 @@
                 </section>
             @endif
         </div>
-        <div id="chatbot-container">
-            <button id="chatbot-toggle">
-                <i class="bi bi-chat"></i>
-            </button>
-            <div id="chatbot-box">
-                <div id="chatbot-header">
-                    <div class="chatbot-header-content">
-                        <img src="{{ asset('img/Rotel.png') }}" alt="Chatbot">
-                        <span class="chatbot-title">Rotel</span>
-                    </div>
-                    <button id="chatbot-close">&times;</button>
-                </div>
-                <div id="chatbot-content">
-                    <div class="chat-message bot-message">
-                        <div class="chat-bubble" style="text-align: left">
-                            <span class="chat-name">Rotel</span>
-                            <p>Hai!👋 Saya <strong>Rotel</strong>, chatbot yang siap membantu kamu memahami dasar-dasar
-                                seputar
-                                <strong>Node.js</strong>. Silakan ketik pertanyaanmu!
-                            </p>
+        @auth
+            <div id="chatbot-container">
+                <button id="chatbot-toggle">
+                    <i class="bi bi-chat"></i>
+                </button>
+                <div id="chatbot-box">
+                    <div id="chatbot-header">
+                        <div class="chatbot-header-content">
+                            <img src="{{ asset('img/Rotel.png') }}" alt="Chatbot">
+                            <span class="chatbot-title">Rotel</span>
                         </div>
+                        <button id="chatbot-close">&times;</button>
+                    </div>
+                    <div id="chatbot-content">
+                        <div class="chat-message bot-message">
+                            <div class="chat-bubble" style="text-align: left">
+                                <span class="chat-name">Rotel</span>
+                                <p>Hai!👋 Saya <strong>Rotel</strong>, chatbot yang siap membantu kamu memahami dasar-dasar
+                                    seputar
+                                    <strong>Node.js</strong>. Silakan ketik pertanyaanmu!
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div id="chatbot-input-container">
+                        <input type="text" id="chatbot-input" placeholder="Ketik pesan...">
+                        <button id="chatbot-send" onclick="sendMessage()"><i class="bi bi-send"></i></button>
                     </div>
 
                 </div>
-                <div id="chatbot-input-container">
-                    <input type="text" id="chatbot-input" placeholder="Ketik pesan...">
-                    <button id="chatbot-send" onclick="sendMessage()"><i class="bi bi-send"></i></button>
-                </div>
-
             </div>
-        </div>
+        @endauth
         <script>
             let prompt = 0;
             document.getElementById("chatbot-toggle").addEventListener("click", function(event) {

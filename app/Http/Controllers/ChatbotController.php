@@ -24,13 +24,15 @@ class ChatbotController extends Controller
             'question' => $question
         ]);
 
+        // Mengambil id
         $userId = auth()->id();
         $badgeRotelFriend = null;
         $status = 'error';
 
         // Dapat Badge Rotel Friend
 
-        if ($kePrompt >= 3) {
+        // Tentukan lebih dari 3 prompt dan user hanya bisa yang Mahasiswa.
+        if ($kePrompt >= 3 && auth()->user()->role === 'mahasiswa') {
             // Ini Badge nya
             $badgeRotelFriend = Badge::where('name', 'Rotel Friend')->first();
 
