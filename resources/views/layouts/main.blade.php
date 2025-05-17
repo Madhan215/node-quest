@@ -274,6 +274,7 @@
             </div>
         </div>
         <script>
+            let prompt = 0;
             document.getElementById("chatbot-toggle").addEventListener("click", function(event) {
                 let chatbox = document.getElementById("chatbot-box");
                 chatbox.style.display = (chatbox.style.display === "block") ? "none" : "block";
@@ -318,65 +319,77 @@
                 if (event.key === 'Enter' || event.keyCode === 13) {
                     event.preventDefault(); // Mencegah aksi default (jika diperlukan)
                     sendMessage(); // Panggil fungsi untuk mengirim pesan
+
+                    // console.log(prompt);
                 }
             });
 
-            function askChatbot(question) {
+            function askChatbot(question, kePrompt) {
                 console.log(question)
+                console.log(kePrompt)
                 $.ajax({
                     url: '/ask-chatbot',
                     type: 'POST',
                     data: {
-                        question: question
+                        question: question,
+                        prompt: kePrompt
                     },
                     headers: {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    success: function(response) {
-                        $('#response').text(response.response);
-                        console.log(response.response)
-                        // Tambahkan respons chatbot (contoh statis)
-                        const pesanDiv = document.createElement('div');
-                        pesanDiv.classList.add('chat-message', 'bot-message');
-
-                        const userMessage = document.createElement('div');
-                        userMessage.className = 'chat-bubble';
-
-                        // Membuat elemen nama
-                        const userName = document.createElement('span');
-                        userName.className = 'chat-name';
-                        // userName.textContent = 'NodeBot ' + response.confidence; // Bisa diganti sesuai user
-                        userName.textContent = 'Rotel '; // Bisa diganti sesuai user
-
-                        // Membuat elemen waktu
-                        const timeStamp = document.createElement('span');
-                        timeStamp.className = 'chat-time';
-                        timeStamp.textContent = waktu_now();
-
-                        // Menambahkan teks pesan
-                        const messageText = document.createElement('p');
-                        messageText.textContent = response.response;
-
-                        // Menggabungkan elemen
-                        userMessage.appendChild(userName);
-                        userMessage.appendChild(messageText);
-                        userMessage.appendChild(timeStamp);
-
-                        // Menata posisi teks agar tetap rapi
-                        userMessage.style.textAlign = 'left';
-
-                        // Menambahkan ke dalam pesanDiv
-                        pesanDiv.appendChild(userMessage);
-                        chatBody.appendChild(pesanDiv);
-                    },
-                    error: function() {
-                        $('#response').text("Terjadi kesalahan.");
                     }
+                }).then(async function(data) {
+                    $('#response').text(data.response.answer); // atau .message, .text sesuai struktur
+
+                    console.log(data); // 👉 tampilkan semua isi respons
+                    console.log(data.response); // 👉 tampilkan isi properti 'response' dari JSON
+                    console.log(data.response.answer); // 👉 jika kamu tahu ada properti 'answer'
+
+                    // Tampilkan pesan chatbot
+                    const pesanDiv = document.createElement('div');
+                    pesanDiv.classList.add('chat-message', 'bot-message');
+
+                    const userMessage = document.createElement('div');
+                    userMessage.className = 'chat-bubble';
+
+                    const userName = document.createElement('span');
+                    userName.className = 'chat-name';
+                    userName.textContent = 'Rotel';
+
+                    const timeStamp = document.createElement('span');
+                    timeStamp.className = 'chat-time';
+                    timeStamp.textContent = waktu_now();
+
+                    const messageText = document.createElement('p');
+                    messageText.textContent = data.response.answer;
+
+                    userMessage.appendChild(userName);
+                    userMessage.appendChild(messageText);
+                    userMessage.appendChild(timeStamp);
+                    userMessage.style.textAlign = 'left';
+
+                    pesanDiv.appendChild(userMessage);
+                    chatBody.appendChild(pesanDiv);
+
+                    // Logika tambahan setelah respon sukses
+                    if (data.status === "success") {
+                        soundBadge.play();
+                        await Swal.fire({
+                            title: `Kamu Mendapatkan Badge ${data.name}!`,
+                            text: data.info,
+                            imageUrl: `${data.url}`,
+                            imageHeight: 200,
+                            imageAlt: "Custom image",
+                            confirmButtonText: "Klaim!",
+                        });
+                    }
+                }).catch(function() {
+                    $('#response').text("Terjadi kesalahan.");
                 });
+
             }
 
             function sendMessage() {
-
+                prompt += 1;
                 console.log(waktu())
                 if (userInput.value.trim() !== '') {
                     // Tambahkan pesan pengguna ke chat body
@@ -414,7 +427,7 @@
 
 
                     // Kirim ke fungsi ask
-                    askChatbot(userInput.value)
+                    askChatbot(userInput.value, prompt)
 
 
 

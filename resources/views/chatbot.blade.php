@@ -153,7 +153,7 @@
     <script>
         const userInput = document.getElementById('user-input');
         const chatBody = document.getElementById('chat-body');
-        const now = new Date();
+        const nowsds = new Date();
 
         function waktu() {
             const sekarang = new Date();
@@ -178,7 +178,9 @@
             if (event.key === 'Enter' || event.keyCode === 13) {
                 event.preventDefault(); // Mencegah aksi default (jika diperlukan)
                 sendMessage(); // Panggil fungsi untuk mengirim pesan
+
             }
+
         });
 
         function askChatbot(question) {
