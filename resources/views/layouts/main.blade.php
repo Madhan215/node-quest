@@ -340,11 +340,11 @@
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
                     }
                 }).then(async function(data) {
-                    $('#response').text(data.response.answer); // atau .message, .text sesuai struktur
+                    $('#response').text(data.response.response); // atau .message, .text sesuai struktur
 
                     console.log(data); // 👉 tampilkan semua isi respons
                     console.log(data.response); // 👉 tampilkan isi properti 'response' dari JSON
-                    console.log(data.response.answer); // 👉 jika kamu tahu ada properti 'answer'
+                    console.log(data.response.response); // 👉 jika kamu tahu ada properti 'response'
 
                     // Tampilkan pesan chatbot
                     const pesanDiv = document.createElement('div');
@@ -362,7 +362,7 @@
                     timeStamp.textContent = waktu_now();
 
                     const messageText = document.createElement('p');
-                    messageText.textContent = data.response.answer;
+                    messageText.textContent = data.response.response;
 
                     userMessage.appendChild(userName);
                     userMessage.appendChild(messageText);
