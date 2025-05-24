@@ -41,7 +41,12 @@
                     <figcaption class="figure-caption text-center">Gambar 26. Menjalankan Program Javasript dengan Node.js
                     </figcaption>
                 </figure>
-
+            </div>
+        </li>
+        <li class="text-dark m-0 p-0 border-0 ms-3 mt-2 list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto w-100">
+                <div>Kamu dapat mempraktekan program tersebut pada <a href="/livenode"><span class="fw-bold">Live Node
+                            <sup><i class="bi bi-arrow-up-right"></i></sup></span></a></div>
             </div>
         </li>
     </ol>

@@ -101,6 +101,11 @@ console.log(`Informasi CPU: ${cpuInfo.length} cores`);
 // Mendapatkan arsitektur sistem
 const architecture = os.arch();
 console.log(`Arsitektur Sistem: ${architecture}`);</textarea>
+
+    <p class="lh-lg">
+        Kamu dapat mempraktekan kode program diatas pada <a href="/livenode"><span class="fw-bold">Live Node
+                <sup><i class="bi bi-arrow-up-right"></i></sup></span></a>
+    </p>
     <div class="p-0 p-md-3 my-4 my-md-2" id="aktivitas">
         <div class="card">
             <div class="p-3 d-flex align-items-center justify-content-between card-header">

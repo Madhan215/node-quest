@@ -116,5 +116,8 @@
         Dengan menggunakan NPM, kita dapat membagikan projek yang kita buat. Projek tersebut dapat diterbitkan ke NPM,
         dengan cara membuat akun terlebih dahulu.
     </p>
-    <script></script>
+    <p class="lh-lg ">
+        Kamu dapat mempraktekan kode program diatas pada <a href="/livenode"><span class="fw-bold">Live Node
+                <sup><i class="bi bi-arrow-up-right"></i></sup></span></a>
+    </p>
 @endsection
