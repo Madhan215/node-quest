@@ -6,10 +6,6 @@ const alertPenjelasan = document.getElementById("alertPenjelasan");
 const iconPenjelasan = document.getElementById("iconPenjelasan");
 let ketHasil = document.getElementById("ketHasil");
 
-// const soundSalah = document.getElementById("soundSalah");
-// const soundPoin = document.getElementById("soundPoin");
-// const soundError = document.getElementById("soundError");
-
 let draggedElement = null;
 
 // Drag & Drop untuk Desktop

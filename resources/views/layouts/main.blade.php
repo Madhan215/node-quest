@@ -146,9 +146,9 @@
                                 aria-current="page" href="/">Beranda</a>
                             <a class="nav-link {{ Route::is('materi') ? 'active fw-semibold' : '' }}"
                                 href="/materi">Materi</a>
-                            {{-- <a class="nav-link {{ Route::is('editor') ? 'active fw-semibold' : '' }}"
-                                href="/editor">JS-Editor</a>
-                            <a class="nav-link {{ Route::is('terminal') ? 'active fw-semibold' : '' }}"
+                            <a class="nav-link {{ Route::is('livenode') ? 'active fw-semibold' : '' }}"
+                                href="/livenode">Live Node</a>
+                            {{-- <a class="nav-link {{ Route::is('terminal') ? 'active fw-semibold' : '' }}"
                                 href="/terminal">REPL</a> --}}
                             <a class="nav-link {{ Route::is('perihal') ? 'active fw-semibold' : '' }}"
                                 href="/perihal">Perihal</a>

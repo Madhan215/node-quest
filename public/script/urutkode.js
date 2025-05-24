@@ -6,13 +6,6 @@ const alertPenjelasan = document.getElementById("alertPenjelasan");
 const iconPenjelasan = document.getElementById("iconPenjelasan");
 let ketHasil = document.getElementById("ketHasil");
 
-// Inisialisasi audio
-// Inisialisasi audio
-// const soundBenar = document.getElementById("soundBenar");
-// const soundSalah = document.getElementById("soundSalah");
-// const soundPoin = document.getElementById("soundPoin");
-// const soundError = document.getElementById("soundError");
-
 function buatDraggable() {
     leftBox.innerHTML = '<p class="text-center fw-bold">Kode Acak</p>';
     rightBox.innerHTML =
