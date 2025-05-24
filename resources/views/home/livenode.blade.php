@@ -12,15 +12,17 @@
             <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                    <strong><i class="bi bi-info-circle"></i> Panduan Live Node</strong>
+                    <strong><i class="bi bi-info-circle underline primary"></i><u>Panduan Live Node</u></strong>
                 </button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                     <ul class="mb-0">
-                        <li>List</li>
-                        <li>List</li>
-                        <li>List</li>
+                        <li>Live Node digunakan untuk mempraktikkan kode JavaScript secara langsung dengan Node.js.</li>
+                        <li>File dan folder yang kamu buat bersifat sementara.</li>
+                        <li>Dilengkapi fitur WebContainer untuk menjalankan server dan melihat hasil tampilannya.
+                        </li>
+                        <li>Kamu dapat masuk ke Sesi REPL dengan mengetikkan 'node' pada terminal.</li>
                     </ul>
                 </div>
             </div>
