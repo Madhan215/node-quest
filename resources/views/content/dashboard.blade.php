@@ -15,6 +15,7 @@
             filter: grayscale(100%);
         }
     </style>
+
     <h1>Dashboard</h1>
     <div class="container">
         <div class="accordion" id="accordionExample">
@@ -22,7 +23,7 @@
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                        <strong><i class="bi bi-info-circle"></i> Panduan Penggunaan Media</strong>
+                        <strong><i class="bi bi-info-circle"></i> (Klik untuk lihat) Panduan Penggunaan Media</strong>
                     </button>
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">

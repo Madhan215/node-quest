@@ -7,12 +7,17 @@
             height: 600px;
         }
     </style>
+    <a href="{{ url()->previous() }}" class="btn btn-primary mb-2">
+        <i class="bi bi-arrow-left"></i> Kembali
+    </a>
+
     <div class="accordion" id="accordionExample">
         <div class="accordion-item">
             <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                    <strong><i class="bi bi-info-circle underline primary"></i><u>Panduan Live Node</u></strong>
+                    <strong><i class="bi bi-info-circle underline"></i> <u>(Klik untuk lihat) Panduan Live
+                            Node</u></strong>
                 </button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -29,6 +34,6 @@
         </div>
     </div>
 
-    <iframe id="stackblitzEmbed" class="mt-1"
+    <iframe id="stackblitzEmbed" class="mt-2"
         src="https://stackblitz.com/edit/stackblitz-starters-i4ur7g?embed=1&file=index.js"></iframe>
 @endsection
