@@ -101,7 +101,7 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-center p-3">
-                        <a href="/npm/npm" class="btn btn-primary">Materi Berikutnya</a>
+                        <a id="rangkumanBtn" class="btn btn-primary">Rangkuman</a>
                     </div>
                 </div>
             </div>
@@ -227,8 +227,7 @@
                 <div class="d-flex justify-content-center p-3">
                     <button class="btn btn-outline-primary" onclick="restartQuiz()" id="btn_coba_lagi"
                         style="display: none">Coba Lagi</button>
-                    <a href="/npm/npm" class="btn btn-primary" id="btn_materi_berikutnya" style="display: none">Materi
-                        Berikutnya</a>
+                    <a id="rangkumanBtn" class="btn btn-primary" style="display: none">Rangkuman</a>
                 </div>
             </div>
         </div>
@@ -330,4 +329,36 @@
         ];
     </script>
     <script src="{{ asset('script/kuis.js') }}"></script>
+    <script>
+        // Ketika tombol diklik, tampilkan SweetAlert
+        document.getElementById('rangkumanBtn').addEventListener('click', function() {
+            Swal.fire({
+                title: 'Rangkuman BAB 2 <br> Modul',
+                width: 800,
+                html: `
+            <p class="lh-lg">
+                Selamat, kamu telah menyelesaikan semua materi pada bab ini. Adapun rangkuman materi pada bab ini adalah sebagai berikut:
+            </p>
+            <ul style="text-align: left;">
+                <li>Modul pada Node.js merupakan kumpulan fungsi yang dapat digunakan dalam aplikasi.</li>
+                <li>Sebelum menggunakan modul, pengguna perlu mengimpor ke dalam file program.</li>
+                <li>Node.js memiliki tiga jenis modul yaitu Core Modules, Local Modules, dan Third Party Modules.</li>
+                <li>Core Modules merupakan modul bawaan yang ada pada sistem Node.js.</li>
+                <li>Local Modules merupakan program yang dibuat oleh pengembang, dan menggunakan fungsi <code>exports</code> agar bisa digunakan dalam program lain.</li>
+                <li>Third Party Modules merupakan modul yang dibuat oleh pihak ketiga, yang dapat dipakai pada script Node.js.</li>
+                <li>NPM (Node Package Manager) merupakan paket modul yang digunakan untuk menginstal third party modules.</li>
+                <li>Fungsi <code>require</code> digunakan untuk mengimpor modul ke dalam script atau program Node.js.</li>
+                <li>Prioritas saat mengimpor modul: pertama dicari dalam Core Modules, kedua dari Local Modules, dan ketiga dari Third Party Modules dalam folder <code>node_modules</code>.</li>
+                <li>Core Modules tidak perlu diinstal dengan NPM.</li>
+                <li>Paket Core Modules di antaranya <code>http</code>, <code>fs</code>, <code>url</code>, <code>os</code>, dan lainnya.</li>
+            </ul>
+            `,
+                confirmButtonText: 'Materi Berikutnya'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '/npm/npm'; // Ganti URL sesuai materi berikutnya
+                }
+            });
+        });
+    </script>
 @endsection

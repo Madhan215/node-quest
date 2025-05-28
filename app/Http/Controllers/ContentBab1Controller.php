@@ -20,8 +20,8 @@ class ContentBab1Controller extends Controller
 
         // Cek Aktivitas yang Complete
         $isCompleted = Point::where('user_id', $userId)
-                        ->where('step_id', $stepId)
-                        ->exists();
+            ->where('step_id', $stepId)
+            ->exists();
 
         // Cek apakah progress sudah ada atau buat baru
         $progress = Progress::firstOrNew([
@@ -49,8 +49,8 @@ class ContentBab1Controller extends Controller
 
         // Cek Aktivitas yang Complete
         $isCompleted = Point::where('user_id', $userId)
-                        ->where('step_id', $stepId)
-                        ->exists();
+            ->where('step_id', $stepId)
+            ->exists();
 
         // Cek apakah progress sudah ada atau buat baru
         $progress = Progress::firstOrNew([
@@ -78,8 +78,8 @@ class ContentBab1Controller extends Controller
 
         // Cek Aktivitas yang Complete
         $isCompleted = Point::where('user_id', $userId)
-                        ->where('step_id', $stepId)
-                        ->exists();
+            ->where('step_id', $stepId)
+            ->exists();
 
         // Cek apakah progress sudah ada atau buat baru
         $progress = Progress::firstOrNew([
@@ -108,8 +108,8 @@ class ContentBab1Controller extends Controller
 
         // Cek Aktivitas yang Complete
         $isCompleted = Point::where('user_id', $userId)
-                        ->where('step_id', $stepId)
-                        ->exists();
+            ->where('step_id', $stepId)
+            ->exists();
 
         // Cek apakah progress sudah ada atau buat baru
         $progress = Progress::firstOrNew([
@@ -137,8 +137,8 @@ class ContentBab1Controller extends Controller
 
         // Cek Aktivitas yang Complete
         $isCompleted = Point::where('user_id', $userId)
-                        ->where('step_id', $stepId)
-                        ->exists();
+            ->where('step_id', $stepId)
+            ->exists();
 
         // Cek apakah progress sudah ada atau buat baru
         $progress = Progress::firstOrNew([
@@ -166,8 +166,8 @@ class ContentBab1Controller extends Controller
 
         // Cek Aktivitas yang Complete
         $isCompleted = Point::where('user_id', $userId)
-                        ->where('step_id', $stepId)
-                        ->exists();
+            ->where('step_id', $stepId)
+            ->exists();
 
         // Cek apakah progress sudah ada atau buat baru
         $progress = Progress::firstOrNew([
@@ -195,8 +195,8 @@ class ContentBab1Controller extends Controller
 
         // Cek Aktivitas yang Complete
         $isCompleted = Point::where('user_id', $userId)
-                        ->where('step_id', $stepId)
-                        ->exists();
+            ->where('step_id', $stepId)
+            ->exists();
 
         // Cek apakah progress sudah ada atau buat baru
         $progress = Progress::firstOrNew([
@@ -224,8 +224,8 @@ class ContentBab1Controller extends Controller
 
         // Cek Aktivitas yang Complete
         $isCompleted = Point::where('user_id', $userId)
-                        ->where('step_id', $stepId)
-                        ->exists();
+            ->where('step_id', $stepId)
+            ->exists();
 
         // Cek apakah progress sudah ada atau buat baru
         $progress = Progress::firstOrNew([
@@ -274,12 +274,12 @@ class ContentBab1Controller extends Controller
 
         // Cek Aktivitas yang Complete
         $isCompleted = Point::where('user_id', $userId)
-                        ->where('step_id', $stepId)
-                        ->exists();
+            ->where('step_id', $stepId)
+            ->exists();
 
         // Data Kuis
         $dataKuis = Point::where('user_id', $userId)
-        ->where('step_id', $stepId)->first();
+            ->where('step_id', $stepId)->first();
 
         // dd($dataKuis->point_earned);
 
@@ -295,7 +295,6 @@ class ContentBab1Controller extends Controller
             $progress->completed_at = Carbon::now('Asia/Makassar'); // Set waktu ke WITA hanya sekali
             $progress->save();
         }
-        
-        return view('content.bab-1.kuis-1',compact('isCompleted', 'dataKuis'));
+        return view('content.bab-1.kuis-1', compact('isCompleted', 'dataKuis'));
     }
 }

@@ -101,7 +101,7 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-center p-3">
-                        <a href="/evaluasi" class="btn btn-primary">Kerjakan Evaluasi</a>
+                        <a id="rangkumanBtn" class="btn btn-primary">Rangkuman</a>
                     </div>
                 </div>
             </div>
@@ -227,8 +227,7 @@
                 <div class="d-flex justify-content-center p-3">
                     <button class="btn btn-outline-primary" onclick="restartQuiz()" id="btn_coba_lagi"
                         style="display: none">Coba Lagi</button>
-                    <a href="/evaluasi" class="btn btn-primary" id="btn_materi_berikutnya"
-                        style="display: none">Kerjakan Evaluasi</a>
+                    <a class="btn btn-primary" id="rangkumanBtn" style="display: none">Rangkuman</a>
                 </div>
             </div>
         </div>
@@ -359,4 +358,32 @@
         ];
     </script>
     <script src="{{ asset('script/kuis.js') }}"></script>
+    <script>
+        // Ketika tombol diklik, tampilkan SweetAlert
+        document.getElementById('rangkumanBtn').addEventListener('click', function() {
+            Swal.fire({
+                title: 'Rangkuman BAB 6 <br> Modul HTTP',
+                width: 800,
+                html: `
+            <p class="lh-lg">
+                Selamat, kamu telah menyelesaikan semua materi pada bab ini. Adapun rangkuman materi pada bab ini adalah sebagai berikut:
+            </p>
+            <ul style="text-align: left;">
+                <li>HTTP merupakan kepanjangan dari Hypertext Transfer Protocol.</li>
+                <li>Modul HTTP memungkinkan Node.js untuk bertindak sebagai server web yang memfasilitasi komunikasi antara klien dan server melalui Protokol HTTP.</li>
+                <li>Modul HTTP berguna untuk mengembangkan aplikasi web dan API secara cepat dan efisien.</li>
+                <li>Modul HTTP menyediakan respons yang cepat untuk permintaan klien.</li>
+                <li>Dengan menggunakan modul HTTP, dapat menangani berbagai jenis permintaan seperti <code>GET</code>, <code>POST</code>, <code>PUT</code>, dan <code>DELETE</code>.</li>
+                <li>Dapat menangani header dan status kode menggunakan modul HTTP.</li>
+                <li>Modul HTTP dapat menyediakan akses ke data dari URL.</li>
+            </ul>
+            `,
+                confirmButtonText: 'Kerjakan Evaluasi'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '/evaluasi'; // Ganti sesuai rute materi selanjutnya
+                }
+            });
+        });
+    </script>
 @endsection

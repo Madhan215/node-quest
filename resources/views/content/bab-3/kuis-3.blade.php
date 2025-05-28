@@ -101,7 +101,7 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-center p-3">
-                        <a href="/modul-event/modul-event" class="btn btn-primary">Materi Berikutnya</a>
+                        <a id="rangkumanBtn" class="btn btn-primary">Rangkuman</a>
                     </div>
                 </div>
             </div>
@@ -227,8 +227,7 @@
                 <div class="d-flex justify-content-center p-3">
                     <button class="btn btn-outline-primary" onclick="restartQuiz()" id="btn_coba_lagi"
                         style="display: none">Coba Lagi</button>
-                    <a href="/modul-event/modul-event" class="btn btn-primary" id="btn_materi_berikutnya"
-                        style="display: none">Materi Berikutnya</a>
+                    <a class="btn btn-primary" id="rangkumanBtn" style="display: none">Rangkuman</a>
                 </div>
             </div>
         </div>
@@ -337,4 +336,38 @@
         ];
     </script>
     <script src="{{ asset('script/kuis.js') }}"></script>
+    <script>
+        // Ketika tombol diklik, tampilkan SweetAlert
+        document.getElementById('rangkumanBtn').addEventListener('click', function() {
+            Swal.fire({
+                title: 'Rangkuman BAB 3 <br> NPM',
+                width: 800,
+                html: `
+            <p class="lh-lg">
+                Selamat, kamu telah menyelesaikan semua materi pada bab ini. Adapun rangkuman materi pada bab ini adalah sebagai berikut:
+            </p>
+            <ul style="text-align: left;">
+                <li>NPM (Node Package Manager) merupakan fitur yang ada di dalam Node.js untuk mengatur dalam manajemen paket.</li>
+                <li>Paket program NPM dapat ditemukan di <a href="https://www.npmjs.com/" target="_blank">https://www.npmjs.com/</a>.</li>
+                <li>Modul NPM yang populer di antaranya <strong>Express.js</strong> untuk membangun aplikasi web dan API.</li>
+                <li>Modul NPM <strong>Moment.js</strong> digunakan untuk manajemen waktu dan tanggal.</li>
+                <li>Modul NPM <strong>Mongoose</strong> digunakan untuk berinteraksi dengan database MongoDB.</li>
+                <li>Modul NPM <strong>Chalk</strong> untuk memberikan tampilan dan gaya serta efek pada terminal.</li>
+                <li>Modul NPM <strong>Async</strong> digunakan untuk mengelola operasi asinkron seperti callback dan promise.</li>
+                <li>NPM digunakan oleh lebih dari 17 juta pengembang di dunia.</li>
+                <li>NPM menghadirkan 2 juta lebih kode sumber terbuka yang dapat digunakan oleh pengembang.</li>
+                <li>NPM digunakan untuk berbagi kode program JavaScript.</li>
+                <li>Pengguna dapat membuat proyek NPM-nya sendiri dengan menggunakan perintah <code>npm init</code> pada terminal.</li>
+                <li>Projek NPM yang telah dibuat dapat dipublish ke NPM dengan perintah “npm publish” pada terminal.</li>
+            </ul>
+            `,
+                confirmButtonText: 'Materi Berikutnya'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href =
+                        '/modul-event/modul-event'; // Ganti sesuai rute materi berikutnya
+                }
+            });
+        });
+    </script>
 @endsection

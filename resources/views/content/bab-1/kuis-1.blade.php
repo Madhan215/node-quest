@@ -101,7 +101,7 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-center p-3">
-                        <a href="/modul/pengertian-modul-pada-nodejs" class="btn btn-primary">Materi Berikutnya</a>
+                        <a id="rangkumanBtn" class="btn btn-primary">Rangkuman</a>
                     </div>
                 </div>
             </div>
@@ -227,13 +227,11 @@
                 <div class="d-flex justify-content-center p-3">
                     <button class="btn btn-outline-primary" onclick="restartQuiz()" id="btn_coba_lagi"
                         style="display: none">Coba Lagi</button>
-                    <a href="/modul/pengertian-modul-pada-nodejs" class="btn btn-primary" id="btn_materi_berikutnya"
-                        style="display: none">Materi Berikutnya</a>
+                    <a id="rangkumanBtn" class="btn btn-primary" style="display: none">Rangkuman</a>
                 </div>
             </div>
         </div>
     </div>
-
     <script>
         let stepId = 10;
         // ID nya adalah nomor soal
@@ -367,4 +365,40 @@
         ];
     </script>
     <script src="{{ asset('script/kuis.js') }}"></script>
+
+    <script>
+        // Ketika tombol diklik, tampilkan SweetAlert
+        document.getElementById('rangkumanBtn').addEventListener('click', function() {
+            Swal.fire({
+                title: 'Rangkuman BAB 1 <br> Pengenalan',
+                width: 800,
+                html: `
+          <p class="lh-lg">
+            Selamat, kamu telah menyelesaikan semua materi pada bab ini. Adapun rangkuman
+            materi pada bab ini adalah sebagai berikut:
+          </p>
+          <ul style="text-align: left;">
+            <li>Node.js menggunakan bahasa pemrograman Javascript.</li>
+            <li>Node.js merupakan Runtime Environment Javascript yang mampu menjalankan Javascript di luar browser.</li>
+            <li>Node.js bersifat Open Source dan Cross Platform.</li>
+            <li>Node.js dijalankan dengan menggunakan mesin Javascript Engine V8.</li>
+            <li>Node.js diciptakan oleh Ryan Dahl pada tahun 2009.</li>
+            <li>Node.js berjalan dalam single process, dengan sistem asynchronous yang mencegah kode Javascript dari blocking.</li>
+            <li>Pengetahuan mendasar yang perlu dikuasai dalam mempelajari Node.js adalah dasar-dasar pemrograman Javascript seperti ekspresi, tipe data, variabel, fungsi, dan sebagainya.</li>
+            <li>Node.js menerapkan sistem pemrograman asynchronous yang memungkinkan program melakukan banyak tugas bersamaan tanpa menunggu proses lainnya selesai.</li>
+            <li>Perbedaan mendasar dari Node.js dan browser adalah pada ekosistemnya; browser terbatas pada DOM dan API, sementara Node.js dapat mengakses semua sisi server.</li>
+            <li>Semua engine pada Javascript menerapkan standar ECMA ES-262.</li>
+            <li>Node.js memiliki lingkungan bahasa pemrograman yang berjalan di konsol yang disebut REPL (Read, Evaluate, Print, Loop).</li>
+            <li>REPL berguna untuk pengujian atau debugging kode JavaScript secara cepat dan sederhana.</li>
+            <li>Untuk menjalankan program JavaScript di terminal, pengguna dapat mengetikkan perintah <code>node nama_file</code>.</li>
+          </ul>
+        `,
+                confirmButtonText: 'Meteri Berikutnya'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '/modul/pengertian-modul-pada-nodejs'; // Ganti dengan URL tujuan
+                };
+            });
+        })
+    </script>
 @endsection

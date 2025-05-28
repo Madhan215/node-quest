@@ -508,7 +508,11 @@
             @endif
             <div class="p-4 p-lg-5">
                 @yield('container-base-content')
-                @if (!request()->is('dosen/*') && !request()->is('mahasiswa/*') && !request()->is('admin/*'))
+                @if (
+                    !request()->is('dosen/*') &&
+                        !request()->is('mahasiswa/*') &&
+                        !request()->is('admin/*') &&
+                        !request()->is('*/rangkuman'))
                     <div class="w-100 py-5 d-flex align-items-center justify-content-between bottom-0  ">
                         {{-- Tombol Sebelumnya --}}
                         @if ($prevUrl)

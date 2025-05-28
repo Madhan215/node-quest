@@ -101,7 +101,7 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-center p-3">
-                        <a href="/modul-http/modul-http" class="btn btn-primary">Materi Berikutnya</a>
+                        <a id="rangkumanBtn" class="btn btn-primary">Rangkuman</a>
                     </div>
                 </div>
             </div>
@@ -227,8 +227,7 @@
                 <div class="d-flex justify-content-center p-3">
                     <button class="btn btn-outline-primary" onclick="restartQuiz()" id="btn_coba_lagi"
                         style="display: none">Coba Lagi</button>
-                    <a href="/modul-http/modul-http" class="btn btn-primary" id="btn_materi_berikutnya"
-                        style="display: none">Materi Berikutnya</a>
+                    <a class="btn btn-primary" id="rangkumanBtn" style="display: none">Rangkuman</a>
                 </div>
             </div>
         </div>
@@ -336,4 +335,35 @@
         ];
     </script>
     <script src="{{ asset('script/kuis.js') }}"></script>
+    <script>
+        // Ketika tombol diklik, tampilkan SweetAlert
+        document.getElementById('rangkumanBtn').addEventListener('click', function() {
+            Swal.fire({
+                title: 'Rangkuman BAB 5 <br> Modul File System',
+                width: 800,
+                html: `
+            <p class="lh-lg">
+                Selamat, kamu telah menyelesaikan semua materi pada bab ini. Adapun rangkuman materi pada bab ini adalah sebagai berikut:
+            </p>
+            <ul style="text-align: left;">
+                <li>Modul File System merupakan modul bawaan dari Node.js yang memungkinkan aplikasi untuk berinteraksi dengan sistem pada server.</li>
+                <li>Fungsi utama dari Modul File System adalah memungkinkan pengembang melakukan pengelolaan file dengan cara yang efisien.</li>
+                <li>Operasi umum yang digunakan dalam File System di antaranya:</li>
+                <ul>
+                    <li><code>fs.readFile()</code> untuk membaca isi file.</li>
+                    <li><code>fs.writeFile()</code> untuk menulis data ke file.</li>
+                    <li><code>fs.unlink()</code> untuk menghapus file.</li>
+                    <li><code>fs.rename()</code> untuk mengubah nama file.</li>
+                </ul>
+            </ul>
+            `,
+                confirmButtonText: 'Materi Berikutnya'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href =
+                    '/modul-http/modul-http'; // Ganti sesuai dengan rute materi selanjutnya
+                }
+            });
+        });
+    </script>
 @endsection
