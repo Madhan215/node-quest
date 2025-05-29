@@ -324,8 +324,7 @@ function checkAnswers() {
             "Selamat, skor kamu memenuhi untuk dapat lanjut ke materi berikutnya";
         alertBox.classList.add("alert-success");
         alertBox.classList.remove("alert-danger");
-        document.getElementById("btn_materi_berikutnya").style.display =
-            "block";
+        document.getElementById("rangkumanBtn").style.display = "block";
         document.getElementById("btn_coba_lagi").style.display = "none";
 
         // Poin sesungguhnya untuk pengerjaan kuis
@@ -393,7 +392,7 @@ function checkAnswers() {
         alertBox.classList.add("alert-danger");
         alertBox.classList.remove("alert-success");
         document.getElementById("btn_coba_lagi").style.display = "block";
-        document.getElementById("btn_materi_berikutnya").style.display = "none";
+        document.getElementById("rangkumanBtn").style.display = "none";
     }
 }
 
