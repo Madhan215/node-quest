@@ -187,6 +187,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/certificate/template', 'showTemplate')->name('certificate.template.show');
     });
 
+    // Halaman Modul Ajar
+    Route::get('/dosen/modul', function () {
+        return view('content.modul');
+    })->name('modul');
+
 });
 
 // ChatBot

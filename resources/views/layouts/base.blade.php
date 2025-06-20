@@ -28,6 +28,9 @@
                         <a href="/dosen/data-nilai"
                             class="py-3 d-flex align-items-center justify-content-between bg-primary-light text-primary-dark false list-group-item {{ Route::is('dosen.data-nilai') ? 'active' : '' }}">
                             <span><i class="bi bi-list-task"></i> Data Nilai</span></a>
+                        <a href="/dosen/modul"
+                            class="py-3 d-flex align-items-center justify-content-between bg-primary-light text-primary-dark false list-group-item {{ Route::is('modul') ? 'active' : '' }}">
+                            <span><i class="bi bi-book"></i> Modul Ajar</span></a>
                     </div>
                 @elseif(auth()->user()->role == 'admin')
                     <div class="border list-group list-group-flush">

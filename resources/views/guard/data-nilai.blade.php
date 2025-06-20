@@ -2,7 +2,7 @@
 
 @section('container-base-content')
     <div class="d-flex justify-content-between align-items-center">
-        <h1 class="mb-0">Data Nilai</h1>
+        <h2 class="mb-0">Data Nilai</h2>
         @if (!$mahasiswa->isEmpty())
             <a href="/dosen/export-nilai" class="btn btn-primary"><i class="bi bi-download"></i> Export</a>
         @endif

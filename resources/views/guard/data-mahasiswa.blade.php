@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('container-base-content')
-    <h1>Data Mahasiswa</h1>
+    <h2>Data Mahasiswa</h2>
     <style>
         .badge-img {
             transition: transform 0.2s ease-in-out;

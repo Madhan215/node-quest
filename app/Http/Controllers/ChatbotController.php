@@ -20,7 +20,7 @@ class ChatbotController extends Controller
         $kePrompt = $request->input('prompt');
 
         // Kirim pertanyaan ke API Flask
-        $response = Http::post('https://chatbot-node-quest-production.up.railway.app/chatbot', [
+        $response = Http::post('http:/127.0.0.1:5000/chatbot', [
             'question' => $question
         ]);
 

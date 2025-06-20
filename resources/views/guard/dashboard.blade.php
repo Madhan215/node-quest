@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('container-base-content')
-    <h1>Dashboard Dosen</h1>
+    <h2>Dashboard Dosen</h2>
 
     <div class="mt-4">
         <div class="row">
